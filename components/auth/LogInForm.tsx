@@ -5,6 +5,7 @@ import { useForm } from "react-hook-form"
 import { useState, useTransition } from "react"
 import { z } from "zod"
 import { FcGoogle } from "react-icons/fc";
+import logo from '@/public/img/logo-icon.png'
 import Link from "next/link";
 import { loginSchema } from "@/lib/schema"
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
@@ -24,6 +25,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form"
+import Image from "next/image"
 import { Input } from "@/components/ui/input"
 import { FormError } from "../FormError";
 import { FormSuccess } from "../FormSuccess";
@@ -88,7 +90,10 @@ export function LoginForm() {
   }
 
   return (
-    <div className=" flex flex-col w-full">
+    <div className=" flex flex-col bg-white px-12 py-12 border border-yellow-500 shadow-lg rounded-lg  w-full">
+      <div className=" w-full items-center justify-center py-2 ">
+        <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
+      </div>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
         {showTwoFactor && (
@@ -144,9 +149,6 @@ export function LoginForm() {
                <FormControl>
                  <Input type="password" disabled={isPending} className=" outline-yellow-500" placeholder="Password" {...field} />
                </FormControl>
-               <Button asChild size={'sm'} variant={'link'} className=" px-0 font-normal text-sm text-black ">
-                 <Link href={'/forgot-password'}>Forgot Password</Link>
-               </Button>
                <FormMessage />
              </FormItem>
            )}
@@ -158,7 +160,7 @@ export function LoginForm() {
         }
         <FormError message={error ||  urlError} />
         <FormSuccess message={success} />
-       <Button type="submit" disabled={isPending} className=" bg-black text-primary hover:bg-black/90 w-full"> {showTwoFactor ? "Confirm OTP" : "Log In"} </Button>
+       <Button type="submit" disabled={isPending} className=" bg-yellow-500 text-white hover:bg-black/90 w-full"> {showTwoFactor ? "Confirm OTP" : "Log In"} </Button>
       </form>
     </Form>
     <div className=" py-6">
@@ -168,11 +170,15 @@ export function LoginForm() {
     </Link>
       <fieldset className=" border-t-2 flex flex-col text-center items-center align-middle justify-center">
           <legend className=" self-center flex px-2 text-sm text-gray-600" >or log in with</legend>
-          <div className=" py-4 w-full ">
-            <button onClick={() => googleSignIn("google")} className=" rounded-md hover:bg-gray-100 transition-all ease-in-out flex space-x-3 items-center justify-center bg-white py-2 border-2  border-gray-300 w-full ">
+          <div className=" py-4 w-full flex flex-row justify-between items-center  ">
+            {/* <button onClick={() => googleSignIn("google")} className=" rounded-md hover:bg-gray-100 transition-all ease-in-out px-3 py-1 flex space-x-3  justify-center bg-white border-2  border-gray-300 ">
             <p className=" text-md">Log in with Google</p>
             <FcGoogle size={23} />
-            </button>
+            </button> */}
+
+            <Button asChild size={'sm'} variant={'link'} className=" font-semibold font-popping px-0 text-sm text-black ">
+                 <Link href={'/forgot-password'}>Forgot Password</Link>
+               </Button>
           </div>
         </fieldset>
       </div>

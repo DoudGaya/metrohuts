@@ -3,7 +3,8 @@
 import { zodResolver } from "@hookform/resolvers/zod"
 import { useForm } from "react-hook-form"
 import { z } from "zod"
-import { FcGoogle } from "react-icons/fc";
+import logo from '@/public/img/logo-icon.png'
+import Image from "next/image"
 import { useState } from "react";
 import { Checkbox } from "@/components/ui/checkbox"
 import { useTransition } from "react";
@@ -16,7 +17,6 @@ import { Button } from "@/components/ui/button"
 import {
   Form,
   FormControl,
-  FormDescription,
   FormField,
   FormItem,
   FormLabel,
@@ -83,8 +83,10 @@ export function SignUpForm() {
 
 
   return (
-    <div className=" flex mt-20 flex-col">
-     
+    <div className=" mt-20 flex flex-col bg-white px-12 py-12 border border-yellow-500 shadow-lg rounded-lg  w-full">
+       <div className=" w-full items-center justify-center py-2 ">
+        <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
+      </div>
       <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4 w-full">
         <FormField
@@ -159,36 +161,26 @@ export function SignUpForm() {
         />
        </div>
        <div className="flex items-center space-x-2">
-      <Checkbox id="terms" 
-       checked={terms}
-       onCheckedChange={changeTerms}
-      />
-      <label
-        htmlFor="terms"
-        className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-      >
-        Accept terms and conditions
-      </label>
     </div>
           <FormSuccess message={success} />
           <FormError message={error} />
-       <Button type="submit" disabled={isPending} className=" bg-black hover:bg-black/80 text-primary w-full">Create an Account</Button>
+       <Button type="submit" disabled={isPending} className=" bg-yellow-500 hover:bg-black/80 text-white w-full">Create an Account</Button>
       </form>
     </Form>
-   <div className=" flex flex-col space-y-4 py-6">
+   <div className=" flex flex-col space-y-4 pt-6">
     <Link href="/login" className=" flex space-x-2">
         <p className=""> Already have an account ? </p>
         <span className=" font-semibold">Log In</span>
     </Link>
-   <fieldset className=" border-t-2 flex flex-col text-center items-center align-middle justify-center">
+   {/* <fieldset className=" border-t-2 flex flex-col text-center items-center align-middle justify-center">
       <legend className=" self-center flex px-2 text-sm text-gray-600" >or log in with</legend>
-      <div className=" py-4 w-full ">
+      <div className=" pt-4 w-full ">
         <button onClick={() => googleSignIn("google")} className=" rounded-md hover:bg-gray-100 transition-all ease-in-out flex space-x-3 items-center justify-center bg-white py-2 border-2  border-gray-300 w-full ">
          <p className=" text-md"> Sign Up with Google</p>
          <FcGoogle size={23} />
         </button>
       </div>
-    </fieldset>
+    </fieldset> */}
    </div>
     </div>
   )

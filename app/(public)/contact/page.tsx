@@ -1,6 +1,6 @@
 import React from 'react'
 import { ContactBanner } from './_components/ContactBanner'
-import stablebricks from '@/public/stablebricks.png'
+// import stablebricks from '@/public/stablebricks.png'
 import { RiTwitterXFill } from "react-icons/ri";
 import { RiWhatsappLine } from "react-icons/ri";
 import { FaFacebookF } from "react-icons/fa";
@@ -55,7 +55,7 @@ const page = () => {
       <div className=" w-full flex flex-col py-20 border">
         <div className=" flex flex-col space-y-4 mx-auto max-w-4xl w-full px-10 items-center text-center ">
          <div className=" flex ">
-          <Image src={stablebricks} className=' h-20 object-contain object-center' alt='Stable Bricks Logo ' />
+          {/* <Image src={stablebricks} className=' h-20 object-contain object-center' alt='Stable Bricks Logo ' /> */}
          </div>
           <p className=' text-lg'>
             The Nigerian Construction and Real Estate company

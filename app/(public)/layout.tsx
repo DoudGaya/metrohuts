@@ -11,7 +11,7 @@ const AuthLayout = ({ children }: { children:  React.ReactNode}) => {
             {children}
         </div>
     </div>
-    <Footer />
+    {/* <Footer /> */}
     </>
   )
 }
