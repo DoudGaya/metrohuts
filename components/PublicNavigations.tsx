@@ -90,7 +90,10 @@ export const PublicNavigations = () => {
               </Button>
             </SheetTrigger>
             <SheetContent side="left">
-            <div className="flex lg:flex-row space-y-4 md:space-y-0 items-start flex-col lg:space-x-6 h-full font-poppins lg:items-center">
+            <div className="flex space-y-4 md:space-y-0 items-start flex-col lg:space-x-6 h-full font-poppins lg:items-center">
+                <div className="">
+                <Image src={logo} className='h-10 w-full object-contain object-start ' alt='' />
+                </div>
                     {menuItems.map((item) => (
                         <SheetTrigger key={item.id}>
                             <motion.a
@@ -107,6 +110,7 @@ export const PublicNavigations = () => {
             </SheetContent>
           </Sheet>
           <nav className="hidden md:flex items-center space-x-8">
+
           {menuItems.map((item) => (
                     <motion.a
                         href={item.url}
