@@ -28,7 +28,7 @@ export const TopNav = () => {
     const user = session.data?.user.name
   return (
     <div className="hidden lg:flex justify-between bg-white dark:bg-black border-b dark:border-gray-700  dark:text-gray-300 drop-shadow-sm px-12 py-6 w-full">
-    <div className="">Welcome to <span>Stablebricks</span> </div>
+    <div className="">Welcome to <span>Metrohuts</span> </div>
     <div className="">
       
       <Popover>

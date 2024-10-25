@@ -3,9 +3,9 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '@/public/stablebricks.png'
+import logo from '@/public/metrohuts-logo.png'
 import { usePathname } from 'next/navigation'
-import logoWhite from '@/public/img/stable-bricks-white.png'
+// import logoWhite from '@/public/metrohuts-logo-white.png'
 
 
 
@@ -123,8 +123,8 @@ export const UserDashboardSideBar = ( ) => {
 <>
     <div className=' w-full hidden md:flex flex-col border-r dark:border-gray-600 md:w-[16rem] py-6 drop-shadow-sm px-4 dark:text-white bg-white dark:bg-black'>
     <div className=" pb-2">
-        <Image src={logo} alt='Stablebricks logo' className=' h-10 dark:hidden block object-contain' />
-        <Image src={logoWhite} alt='Stablebricks logo' className=' h-10 hidden dark:block object-contain' />
+        <Image src={logo} alt='Metrohuts logo' className=' h-10 dark:hidden block object-contain' />
+        {/* <Image src={logoWhite} alt='Metrohuts logo' className=' h-10 hidden dark:block object-contain' /> */}
     </div>
     <div className=" flex flex-col py-4 px-2 space-y-3">
         {

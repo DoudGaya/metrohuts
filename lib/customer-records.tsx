@@ -2,6 +2,8 @@ import homeListing1 from '@/public/home-listing-1.jpg'
 import homeListing2 from '@/public/home-listing-2.jpg'
 import homeListing3 from '@/public/home-listing-3.jpg'
 import { FaHome, FaHotel, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa'
+import zaks from '@/public/img/ceo-zaks.jpeg'
+// import daddy from '@/public/'
 import homeListing4 from '@/public/home-listings-4.jpg'
 import habib from '@/public/habib.jpg'
 
@@ -39,9 +41,9 @@ export const homeListings = [
 
   export const testimonials = [
     { 
-        name: "Habib M. Adam", 
+        name: "Muhammad M. Zakari", 
         role: "Tech Entrepreneur", 
-        image: habib,
+        image: zaks,
         quote: "Metrohuts's attention to detail is unparalleled. They found me a Tuscan villa that exceeds all expectations – a true masterpiece." },
     { 
         name: "Abdulrahman G. Dauda", 
@@ -49,7 +51,7 @@ export const homeListings = [
         image: habib,
         quote: "The Metrohuts team understood my vision perfectly. My New Hototo penthouse is not just a home, it's a canvas for my collection." },
     { 
-        name: "Muhammad M. Zakari", 
+        name: "Habib A. Adam", 
         role: "Finance Executive", 
         image: habib,
         quote: "I've worked with many real estate firms, but Metrohuts's investment insights and property management are in a league of their own." },

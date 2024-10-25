@@ -3,7 +3,7 @@
 import React from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
-import logo from '@/public/stablebricks.png'
+import logo from '@/public/metrohuts-logo.png'
 import { usePathname } from 'next/navigation'
 
 
@@ -120,7 +120,7 @@ export const AdminDashboardSideBar = ( ) => {
 <>
     <div className=' w-full hidden border-r dark:border-gray-700 dark:bg-black/80 dark:text-white md:flex flex-col md:w-[18rem] py-6 drop-shadow-sm px-4 bg-white'>
     <div className=" divide-y-2 pb-2 border-b border-yellow-500">
-        <Image src={logo} alt='Stablebricks logo' className=' h-10 object-contain' />
+        <Image src={logo} alt='Metrohuts logo' className=' h-10 object-contain' />
     </div>
     <div className=" flex flex-col py-4 px-2 space-y-3">
         {

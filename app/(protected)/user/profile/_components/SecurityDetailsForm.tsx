@@ -142,7 +142,7 @@ export const SecurityDetailsForm = ( {editModal, changeModal}: {editModal: strin
                     )}
                   />
                   </div>
-                  { success ?  <FormSuccess message={success} /> ? error : <FormError message={error} /> : "" }
+                  {/* { success ?  <FormSuccess message={success} /> ? error : <FormError message={error} /> : "" } */}
                   <Button type="submit" disabled={isPending} className=" bg-black hover:bg-black/80 text-primary w-full">Update Security Records</Button> 
                 </form>
               </Form>
