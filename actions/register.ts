@@ -31,8 +31,9 @@ export const regsiter = async (values: z.infer<typeof signUpSchema>) => {
         data: {
             name: fullName,
             email,
-            password: hashedPassword,
             phone,
+            password: hashedPassword,
+            role: "USER",
         }
     })
 

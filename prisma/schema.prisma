@@ -3,11 +3,18 @@ generator client {
 }
 
 
+// prisma/schema.prisma
 datasource db {
   provider  = "postgresql"
-  url       = env("DATABASE_URL")
-  directUrl = env("DIRECT_URL")
+  url  	    = env("DATABASE_URL")
+  // uncomment next line if you use Prisma <5.10
+  // directUrl = env("DATABASE_URL_UNPOOLED")
 }
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = "file:./dev.sqlite"
+// }
 
 model User {
   id                  String      @id @default(uuid())
@@ -17,7 +24,7 @@ model User {
   phone               String?
   emailVerified       DateTime? @map("email_verified")
   image               String?
-  role                UserRole @default(USER)
+  role                String @default("user")
   accounts            Account[]
   bookings            Bookings[]
   isTwoFactorEnabled Boolean @default(false)
@@ -81,15 +88,15 @@ model Account {
   @@map("account")
 }
 
-enum HouseStatus {
-  Booked
-  Available
-}
+// enum HouseStatus {
+//   Booked
+//   Available
+// }
 
-enum UserRole {
-  ADMIN
-  USER
-}
+// enum UserRole {
+//   ADMIN
+//   USER
+// }
 
 model VerificationToken {
   id        Int      @id @default(autoincrement())

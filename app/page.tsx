@@ -227,8 +227,6 @@ export default function LandingPage() {
         </motion.section>
       </main>
 
-      {/* Footer */}
-     <Footer />
     </div>
   )
 }

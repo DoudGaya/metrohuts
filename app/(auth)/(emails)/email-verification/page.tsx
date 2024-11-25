@@ -54,7 +54,7 @@ const EmailVerification = () => {
               ) : (
                 <>
                   <FormSuccess message={success}/>
-                    <Link href={'/login'} className=' bg-primary px-6 py-2 rounded-md'>
+                    <Link href={'/login'} className=' bg-[#ffbb1c] px-6 py-2 rounded-md'>
                         Back to Log In
                     </Link>
              </>
