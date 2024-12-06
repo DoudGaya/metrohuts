@@ -73,10 +73,10 @@ export default function AboutUs() {
       {/* Team Section */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">Meet Our Team</h2>
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12"></h2>
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
             {[
-              { name: "Jane Doe", role: "Founder & CEO", image: "/placeholder.svg?height=400&width=400" },
+              { name: "", role: "Managing Director, (CEO)", image: "/placeholder.svg?height=400&width=400" },
               { name: "John Smith", role: "Senior Real Estate Agent", image: "/placeholder.svg?height=400&width=400" },
               { name: "Emily Brown", role: "Property Manager", image: "/placeholder.svg?height=400&width=400" },
             ].map((member, index) => (
