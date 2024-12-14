@@ -3,7 +3,8 @@ import React from 'react'
 import { useSession } from 'next-auth/react'
 import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
-import logo from '@/public/metrohuts-logo.svg'
+// import logo from '@/public/metrohuts-logo.svg'
+import logo from '@/assets/metrohuts-logo.png'
 
 
 
@@ -16,41 +17,7 @@ import Image from 'next/image'
 import Link from 'next/link'
 import { Separator } from '@radix-ui/react-separator'
 
-//   const navLinks = [
-//     {
-//         id: 1,
-//         name: 'HOME',
-//         url: "/",
-//         icon: ""
-//     },
-//     {
-//         id: 1,
-//         name: 'ABOUT',
-//         url: "/about",
-//         icon: ""
-//     },
-//     {
-//         id: 1,
-//         name: 'CONTACT',
-//         url: "/contact",
-//         icon: ""
-//     },
-//   ]
 
-//   const auth = [
-//     {
-//         id: 1,
-//         name: 'Log In',
-//         url: "/login",
-//         icon: ""
-//     },
-//     {
-//         id: 2,
-//         name: 'Sign Up',
-//         url: "/register",
-//         icon: ""
-//     },
-//   ]
 
 export const PublicNavigations = () => {
     const session = useSession()
@@ -74,7 +41,7 @@ export const PublicNavigations = () => {
 
   return (
 <>
-<header className=" bg-white h-16 text-black shadow-md items-center fixed top-0 left-0 right-0 z-50">
+<header className=" bg-white h-16 text-primary shadow-md items-center fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-4 h-full flex justify-between items-center">
           <motion.div initial="hidden" animate="visible" className=' justify-start' variants={fadeIn}>
             <div className=" flex items-start w-full justify-start">
@@ -98,7 +65,7 @@ export const PublicNavigations = () => {
                         <SheetTrigger key={item.id}>
                             <motion.a
                                 href={item.url}
-                                className="text-gray-800 hover:text-yellow-500 transition duration-300"
+                                className="text-gray-800 hover:text-primary transition duration-300"
                                 whileHover={{ scale: 1.05 }}
                                 whileTap={{ scale: 0.95 }}
                                 >
@@ -114,18 +81,19 @@ export const PublicNavigations = () => {
           {menuItems.map((item) => (
                     <motion.a
                         href={item.url}
-                        className="text-gray-800 hover:text-yellow-500 transition duration-300"
+                        key={item.id}
+                        className="text-gray-800 hover:text-primary transition duration-300"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         >
                         {item.name}
                     </motion.a>
                 ))}
-                <Separator orientation="vertical" className="h-6 border border-yellow-400" />
+                <Separator orientation="vertical" className="h-6 border border-primary" />
                 <div className=" flex flex-row items-start  space-x-4">
                     <motion.a
                         href={'/login'}
-                        className="rounded-full font-poppins px-2 py-2 text-yellow-500"
+                        className="rounded-full font-poppins px-2 py-2 text-primary"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         >
@@ -133,7 +101,7 @@ export const PublicNavigations = () => {
                     </motion.a>
                     <motion.a
                         href={'/register'}
-                        className="rounded-full bg-yellow-500 font-poppins px-6 py-2 text-white"
+                        className="rounded-full bg-primary font-poppins px-6 py-2 text-white"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.95 }}
                         >

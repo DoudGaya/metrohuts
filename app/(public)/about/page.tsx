@@ -1,22 +1,23 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import { teamMembers } from "@/lib/team"
 import { Home, Key, DollarSign, Users, Star, PhoneCall } from "lucide-react"
 
 export default function AboutUs() {
   return (
     <div className="bg-white mt-10">
       {/* Hero Section */}
-      <section className="relative bg-yellow-400 h-[70vh] py-36 px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-black text-tert h-[70vh] py-36 px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            Welcome to <span className="text-yellow-600">MetroHuts</span>
+          <h1 className="text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            Welcome to <span className="text-primary">MetroHuts</span>
           </h1>
-          <p className="mt-6 max-w-3xl text-xl text-gray-800">
+          <p className="mt-6 max-w-3xl text-xl">
             Your trusted partner in finding the perfect home. With years of experience and a passion for real estate,
             we're here to make your property dreams a reality.
           </p>
           <div className="mt-10">
-            <Button className="bg-gray-900 text-white hover:bg-gray-800">Explore Our Listings</Button>
+            <Button className="bg-primary text-white hover:bg-gray-800">Explore Our Listings</Button>
           </div>
         </div>
       </section>
@@ -33,7 +34,7 @@ export default function AboutUs() {
             ].map((service, index) => (
               <Card key={index} className="bg-white shadow-lg hover:shadow-xl transition-shadow duration-300">
                 <CardContent className="p-6">
-                  <service.icon className="h-12 w-12 text-yellow-500 mb-4" />
+                  <service.icon className="h-12 w-12 text-primary mb-4" />
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
                   <p className="text-gray-600">{service.description}</p>
                 </CardContent>
@@ -58,7 +59,7 @@ export default function AboutUs() {
             ].map((reason, index) => (
               <div key={index} className="flex items-start">
                 <div className="flex-shrink-0">
-                  <Star className="h-6 w-6 text-yellow-500" />
+                  <Star className="h-6 w-6 text-primary" />
                 </div>
                 <div className="ml-3">
                   <h3 className="text-lg font-medium text-gray-900">{reason.title}</h3>
@@ -75,15 +76,11 @@ export default function AboutUs() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12"></h2>
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              { name: "", role: "Managing Director, (CEO)", image: "/placeholder.svg?height=400&width=400" },
-              { name: "John Smith", role: "Senior Real Estate Agent", image: "/placeholder.svg?height=400&width=400" },
-              { name: "Emily Brown", role: "Property Manager", image: "/placeholder.svg?height=400&width=400" },
-            ].map((member, index) => (
+            {teamMembers.map((member, index) => (
               <div key={index} className="text-center">
                 <img
-                  className="mx-auto h-40 w-40 rounded-full xl:h-56 xl:w-56"
-                  src={member.image}
+                  className="mx-auto h-40 w-40 object-cover object-center rounded-full xl:h-56 xl:w-56"
+                  src={member.image.src}
                   alt={member.name}
                 />
                 <div className="mt-6">
@@ -118,7 +115,7 @@ export default function AboutUs() {
       </section>
 
       {/* Contact/CTA Section */}
-      <section className="bg-yellow-400 py-20">
+      <section className="bg-primary py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Ready to Find Your Golden Opportunity?</h2>
           <p className="text-xl text-gray-800 mb-8">Contact us today and let's start your journey to the perfect property.</p>

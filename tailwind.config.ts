@@ -20,12 +20,9 @@ export default withUt({
   	},
   	extend: {
   		colors: {
-  			primary: '#ffbb1c',
-  			jgreen: '#005344',
-  			jred: '#DB251C',
-  			jblack: '#1E1815',
-  			jyellow: '#EDAE1B',
-  			jpink: '#E30558',
+  			primary: '#2D89EF',
+  			sec: '#FFD700',
+  			tert: '#7D7D7D',
   			border: 'hsl(var(--border))',
   			input: 'hsl(var(--input))',
   			ring: 'hsl(var(--ring))',

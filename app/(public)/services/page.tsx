@@ -8,17 +8,17 @@ export default function Services() {
   return (
     <div className="bg-white mt-10">
       {/* Hero Section */}
-      <section className="relative bg-yellow-400 py-36 h-[70vh] px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-black/90 py-36 h-[70vh] px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
-          <h1 className="text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl">
-            Our <span className="text-yellow-600">Services</span> & Properties
+          <h1 className="text-4xl text-tert font-extrabold tracking-tight sm:text-5xl md:text-6xl">
+            Our <span className="text-primary">Services</span> & Properties
           </h1>
-          <p className="mt-6 max-w-3xl text-xl text-gray-800">
+          <p className="mt-6 max-w-3xl text-tert text-xl">
             Discover our wide range of real estate services and explore our curated selection of properties.
             Whether you're buying, selling, or renting, we've got you covered.
           </p>
           <div className="mt-10">
-            <Button className="bg-gray-900 text-white hover:bg-gray-800">Explore Services</Button>
+            <Button className="bg-primary text-white hover:bg-gray-800">Explore Services</Button>
           </div>
         </div>
       </section>
@@ -70,13 +70,13 @@ export default function Services() {
                   </div>
                 </CardContent>
                 <CardFooter>
-                  <Button className="w-full bg-yellow-400 text-gray-900 hover:bg-yellow-500">View Details</Button>
+                  <Button className="w-full bg-primary text-gray-900 hover:bg-primary">View Details</Button>
                 </CardFooter>
               </Card>
             ))}
           </div>
           <div className="text-center mt-12">
-            <Button variant="outline" className="border-yellow-400 text-yellow-600 hover:bg-yellow-50">
+            <Button variant="outline" className="border-primary text-yellow-600 hover:bg-yellow-50">
               View All Properties
             </Button>
           </div>
@@ -128,7 +128,7 @@ export default function Services() {
             ].map((service, index) => (
               <Card key={index} className="flex flex-col">
                 <CardContent className="p-6 flex-grow">
-                  <service.icon className="h-12 w-12 text-yellow-500 mb-4" />
+                  <service.icon className="h-12 w-12 text-primary mb-4" />
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">{service.title}</h3>
                   <p className="text-gray-600 mb-4">{service.description}</p>
                   <ul className="list-disc list-inside text-gray-600">
@@ -138,7 +138,7 @@ export default function Services() {
                   </ul>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Button className="w-full bg-yellow-400 text-gray-900 hover:bg-yellow-500">Learn More</Button>
+                  <Button className="w-full bg-primary text-gray-900 hover:bg-primary">Learn More</Button>
                 </CardFooter>
               </Card>
             ))}
@@ -149,7 +149,7 @@ export default function Services() {
       <Listing />
 
       {/* Call-to-Action Section */}
-      <section className="bg-yellow-400 py-20">
+      <section className="bg-primary py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-extrabold text-gray-900 mb-4">Ready to Get Started?</h2>
           <p className="text-xl text-gray-800 mb-8">

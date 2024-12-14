@@ -34,7 +34,7 @@ export default function LandingPage() {
         <motion.a
           key={item}
           href="#"
-          className="text-gray-600 hover:text-yellow-500 transition duration-300"
+          className="text-gray-600 hover:text-primary transition duration-300"
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
@@ -45,7 +45,7 @@ export default function LandingPage() {
   )
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-blend-overlay">
       {/* Header */}
       <PublicNavigations />
       {/* Main Content */}
@@ -65,7 +65,7 @@ export default function LandingPage() {
             className="absolute inset-0"
             priority
           />
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-stone-900 opacity-70"></div>
           <div className="relative z-10 max-w-3xl mx-auto px-4">
             <motion.h2
               variants={slideIn}
@@ -82,7 +82,7 @@ export default function LandingPage() {
             >
               <Button
                 size="lg"
-                className="bg-yellow-500 text-white hover:bg-yellow-600"
+                className="bg-primary text-white hover:bg-primary"
               >
                 Explore Exclusive Listings
               </Button>
@@ -113,9 +113,9 @@ export default function LandingPage() {
             <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { icon: <FaHome className="text-4xl mb-4 text-yellow-500" />, title: 'Property Acquisition', description: 'Our expert team navigates the luxury real estate market to find your perfect property, handling negotiations and due diligence with discretion.' },
-                { icon: <FaHotel className="text-4xl mb-4 text-yellow-500" />, title: 'Lifestyle Management', description: 'From private chefs to yacht charters, we curate experiences that complement your lifestyle in your new home.' },
-                { icon: <FaSearch className="text-4xl mb-4 text-yellow-500" />, title: 'Investment Advisory', description: 'Maximize your real estate portfolio with our market insights and tailored investment strategies.' },
+                { icon: <FaHome className="text-4xl mb-4 text-primary" />, title: 'Property Acquisition', description: 'Our expert team navigates the luxury real estate market to find your perfect property, handling negotiations and due diligence with discretion.' },
+                { icon: <FaHotel className="text-4xl mb-4 text-primary" />, title: 'Lifestyle Management', description: 'From private chefs to yacht charters, we curate experiences that complement your lifestyle in your new home.' },
+                { icon: <FaSearch className="text-4xl mb-4 text-primary" />, title: 'Investment Advisory', description: 'Maximize your real estate portfolio with our market insights and tailored investment strategies.' },
               ].map((service, index) => (
                 <motion.div
                   key={index}
@@ -195,7 +195,7 @@ export default function LandingPage() {
                   onChange={(e) => setEmail(e.target.value)}
                   className="bg-white text-gray-800"
                 />
-                <Button className="bg-yellow-500 text-white hover:bg-yellow-600">
+                <Button className="bg-primary text-white hover:bg-primary">
                   Get VIP Access
                 </Button>
               </div>
