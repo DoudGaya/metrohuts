@@ -20,12 +20,36 @@ interface User {
     image: string 
 }
 
-interface Investment {
-    id: string
-    projectId: Project
-    userId: User
-    amount: number 
-    investmentDate: string 
-    payDay: string
+interface ApartmentType {
+    id: number;
+    title: string;
+    state: string;
+    lga: string;
+    address: string;
+    price: string;
+    description: string;
+    heroImage: string;
+    images: string[];
+}
 
+interface Booking {
+    id: number;
+    title: string;
+    price: string;
+    date: Date;
+    userId: string;
+    apartmentId: number;
+}
+
+
+interface Homes {
+    id: number;
+    title: string;
+    state: string;
+    lga: string;
+    address: string;
+    price: string;
+    description: string;
+    heroImage: string;
+    images: string[];
 }

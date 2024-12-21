@@ -21,6 +21,7 @@ export default withUt({
   	extend: {
   		colors: {
   			primary: '#2D89EF',
+			dark: 'rgb(24,24,27)',
   			sec: '#FFD700',
   			tert: '#7D7D7D',
   			border: 'hsl(var(--border))',

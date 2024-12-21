@@ -1,5 +1,6 @@
 import React from 'react'
 import { PublicNavigations } from '@/components/PublicNavigations'
+import { Footer } from '@/components/Footer'
 
 const AuthLayout = ({ children }: { children:  React.ReactNode}) => {
   return (
@@ -16,6 +17,7 @@ const AuthLayout = ({ children }: { children:  React.ReactNode}) => {
             {/* </div> */}
         </div>
     </div>
+    <Footer />
     </>
   )
 }

@@ -1,29 +1,29 @@
 import { auth } from '@/auth'
 import { SessionProvider } from "next-auth/react";
 import { redirect } from "next/navigation";
-import { TopNav } from "../_components/TopNav";
-import { AdminDashboardSideBar } from "./_components/AdminSideBar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar"
+import { AppSidebar } from '@/components/app-sidebar';
+import { Toaster } from "@/components/ui/toaster"
 
 export default async function AdmninLayout({ children }: { children: React.ReactNode }) {
 
 
   const session = await auth()
   const user = session?.user.name
-  if (session?.user.role === "ADMIN") {
+  if (session?.user.role === "USER") {
+    return redirect('/user/home')
+  } else {
     return (
       <SessionProvider session={session}>
-        <div className="flex h-screen bg-slate-50 dark:bg-black md:flex-row md:overflow-hidden">
-          <AdminDashboardSideBar/>
-          <div className="flex flex-col w-full md:overflow-y-auto ">
-            <TopNav />
-          <div className=" mt-20 md:mt-0 w-full h-full">
-          {children}
-          </div>
-          </div>
-        </div>
+           <SidebarProvider>
+              <AppSidebar />
+              <main className=' w-full bg-white text-gray-900 dark:text-gray-100 dark:bg-black'>
+                <SidebarTrigger />
+                   {children}
+                   <Toaster />
+              </main>
+          </SidebarProvider>
       </SessionProvider>
-    );
-  } else {
-    return redirect('/user/dashboard')
+    ); 
 }
 }

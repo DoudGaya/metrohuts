@@ -83,7 +83,7 @@ export function SignUpForm() {
 
 
   return (
-    <div className=" mt-20 flex flex-col bg-white px-12 py-12 border border-yellow-500 shadow-lg rounded-lg  w-full">
+    <div className=" mt-20 flex flex-col bg-white px-12 py-12 border border-primary shadow-lg rounded-lg  w-full">
        <div className=" w-full items-center justify-center py-2 ">
         <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
       </div>
@@ -96,7 +96,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Full Name </FormLabel>
               <FormControl>
-                <Input disabled={isPending} className=" outline-yellow-500" placeholder="Full Name" {...field} />
+                <Input disabled={isPending} className=" outline-primary" placeholder="Full Name" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -110,7 +110,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input disabled={isPending} className=" outline-yellow-500" placeholder="Email Address" {...field} />
+                <Input disabled={isPending} className=" outline-primary" placeholder="Email Address" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -123,7 +123,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Phone Number</FormLabel>
               <FormControl>
-                <Input disabled={isPending} className=" outline-yellow-500" placeholder="(234) 000 000 000" {...field} />
+                <Input disabled={isPending} className=" outline-primary" placeholder="(234) 000 000 000" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -139,7 +139,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Password</FormLabel>
               <FormControl>
-                <Input type="password" disabled={isPending} className=" outline-yellow-500" placeholder="Passsord" {...field} />
+                <Input type="password" disabled={isPending} className=" outline-primary" placeholder="Passsord" {...field} />
               </FormControl>
 
               <FormMessage />
@@ -153,7 +153,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Password Confirmation</FormLabel>
               <FormControl>
-                <Input type="password"disabled={isPending} className=" outline-yellow-500" placeholder="Confirm Password" {...field} />
+                <Input type="password"disabled={isPending} className=" outline-primary" placeholder="Confirm Password" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>
@@ -164,7 +164,7 @@ export function SignUpForm() {
     </div>
           <FormSuccess message={success} />
           <FormError message={error} />
-       <Button type="submit" disabled={isPending} className=" bg-yellow-500 hover:bg-black/80 text-white w-full">Create an Account</Button>
+       <Button type="submit" disabled={isPending} className=" bg-primary hover:bg-black/80 text-white w-full">Create an Account</Button>
       </form>
     </Form>
    <div className=" flex flex-col space-y-4 pt-6">

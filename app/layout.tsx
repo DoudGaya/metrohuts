@@ -1,12 +1,10 @@
+import React from 'react'
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import "./globals.css";
 import { ThemeProvider } from "@/components/theme-provider"
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
-import "./globals.css";
-import { Footer } from "@/components/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Metrohuts Homes",
@@ -42,29 +40,39 @@ export const metadata: Metadata = {
   },
 }
 
+const RootLayout = async ({ children }: { children:  React.ReactNode}) => {
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+    const session = await auth()
 
-  const session = await auth()
-  return (
-    <html lang="en">
-     <SessionProvider session={session}>
-     <body className={`${inter.className} text-gray-950 bg-gray-50`}>
-      <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-        {children}
-        <Footer />
-      </ThemeProvider>
-      </body>
-     </SessionProvider>
-    </html>
-  );
+    return (
+      <html lang="en">
+       <SessionProvider session={session}>
+       <body className={`text-gray-950 bg-gray-50`}>
+        <ThemeProvider
+              attribute="class"
+              defaultTheme="system"
+              enableSystem
+              disableTransitionOnChange
+            >
+          {children}
+
+        </ThemeProvider>
+        </body>
+       </SessionProvider>
+      </html>
+    );
+  // return (
+    
+  //   <>
+  //   <PublicNavigations />
+  //   <div className=''>
+  //       <div className="">
+  //           {children}
+  //       </div>
+  //   </div>
+  //   </>
+  // )
 }
+
+export default RootLayout
+

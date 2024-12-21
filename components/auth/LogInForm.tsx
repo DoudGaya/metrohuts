@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form"
 import { useState, useTransition } from "react"
 import { z } from "zod"
 import { FcGoogle } from "react-icons/fc";
-import logo from '@/public/img/logo-icon.png'
+import logo from '@/assets/icon.png'
 import Link from "next/link";
 import { loginSchema } from "@/lib/schema"
 import { REGEXP_ONLY_DIGITS_AND_CHARS } from "input-otp"
@@ -90,7 +90,7 @@ export function LoginForm() {
   }
 
   return (
-    <div className=" flex flex-col bg-white px-12 py-12 border border-yellow-500 shadow-lg rounded-lg  w-full">
+    <div className=" flex flex-col bg-white px-12 py-12 border border-primary shadow-lg rounded-lg  w-full">
       <div className=" w-full items-center justify-center py-2 ">
         <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
       </div>
@@ -134,7 +134,7 @@ export function LoginForm() {
              <FormItem>
                <FormLabel>Email Address</FormLabel>
                <FormControl>
-                 <Input type="email" disabled={isPending} className=" outline-yellow-500" placeholder="Email Address" {...field} />
+                 <Input type="email" disabled={isPending} className=" outline-primary" placeholder="Email Address" {...field} />
                </FormControl>
                <FormMessage />
              </FormItem>
@@ -147,7 +147,7 @@ export function LoginForm() {
              <FormItem>
                <FormLabel>Password</FormLabel>
                <FormControl>
-                 <Input type="password" disabled={isPending} className=" outline-yellow-500" placeholder="Password" {...field} />
+                 <Input type="password" disabled={isPending} className=" outline-primary" placeholder="Password" {...field} />
                </FormControl>
                <FormMessage />
              </FormItem>
@@ -160,7 +160,7 @@ export function LoginForm() {
         }
         <FormError message={error ||  urlError} />
         <FormSuccess message={success} />
-       <Button type="submit" disabled={isPending} className=" bg-yellow-500 text-white hover:bg-black/90 w-full"> {showTwoFactor ? "Confirm OTP" : "Log In"} </Button>
+       <Button type="submit" disabled={isPending} className=" bg-primary text-white hover:bg-black/90 w-full"> {showTwoFactor ? "Confirm OTP" : "Log In"} </Button>
       </form>
     </Form>
     <div className=" py-6">

@@ -1,11 +1,11 @@
 "use server"
 import { db } from '@/lib/db'
-import { apartmentSchema } from '@/lib/schema'
+import { homeSchema } from '@/lib/schema'
 import * as z from 'zod'
 
 
-export const createApartmentAction = async (values: z.infer<typeof apartmentSchema >) => {
-    const fieldValidation = apartmentSchema.safeParse(values);
+export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
+    const fieldValidation = homeSchema.safeParse(values);
     if (!fieldValidation.success) {
          return { error: "field Validation failed " }
     }
@@ -20,7 +20,7 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
         title,
      } = fieldValidation.data
 
-     const apartment = await db.apartment.create({
+     const home = await db.homes.create({
         data: {
             address,
             description,
@@ -34,38 +34,38 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
      })
 
 
-     return { success: "Apartment has been created successfully", apartment: apartment}
+     return { success: "home has been created successfully", home: home}
 
 }
 
-export const getAllApartments = async () => {
-    const apartment =  await db.apartment.findMany()
-    return apartment
+export const getAllhomes = async () => {
+    const home =  await db.homes.findMany()
+    return home
 }
 
 
-export const etApartmentById = async (id: number) => {
-    const apartment = await db.apartment.findUnique({
+export const ethomeById = async (id: number) => {
+    const home = await db.homes.findUnique({
         where: {
             id
         },
     })
-    return apartment
+    return home
 }
 
 
-export const deleteApartment = async (id: number) => {
-    const apartment = await db.apartment.delete({
+export const deletehome = async (id: number) => {
+    const home = await db.homes.delete({
         where: {
             id
         }
     })
-    return {success: "Apartment has been deleted successfully"}
+    return {success: "home has been deleted successfully"}
 }
 
 
-export const updateApartment = async (id: number, values: z.infer<typeof apartmentSchema>) => {
-    const fieldValidation = apartmentSchema.safeParse(values);
+export const updatehome = async (id: number, values: z.infer<typeof homeSchema>) => {
+    const fieldValidation = homeSchema.safeParse(values);
     if (!fieldValidation.success) {
          return { error: "field Validation failed " }
     }
@@ -80,7 +80,7 @@ export const updateApartment = async (id: number, values: z.infer<typeof apartme
        title,
      } = fieldValidation.data
 
-    const apartment = await db.apartment.update({
+    const home = await db.homes.update({
         where: {
             id
         },
@@ -96,5 +96,5 @@ export const updateApartment = async (id: number, values: z.infer<typeof apartme
         }
     })
 
-    return { success: "Apartment has been updated successfully", apartment : apartment}
+    return { success: "home has been updated successfully", home : home}
 }

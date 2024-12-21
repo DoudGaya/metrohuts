@@ -1,25 +1,29 @@
+'use client'
 import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import logo from '@/assets/metrohuts-logo.png'
+import Image from "next/image"
+import { DarkButton } from "./DarkButton"
+// import { LogOutButton } from "./auth/LogOutButton"
+import LogoutButton from "./auth/LogOutButton"
+import { RoleGate } from "./auth/RoleGate"
+import { useCurrentRole } from "@/hooks/use-current-role"
+import { useCurrentUser } from "@/hooks/use-current-user"
 
-const homes = [
+const adminNavs = [
     {
-      title: "Rental Homes",
-      url: "#",
+      title: "Home",
+      url: "/admin/home",
       icon: Home,
     },
     {
-      title: "Homes",
-      url: "#",
+      title: "Home Listings",
+      url: "/admin/listings",
       icon: Inbox,
     },
     {
-      title: "On Sale",
-      url: "#",
+      title: "Apartments",
+      url: "/admin/apartments",
       icon: Calendar,
-    },
-    {
-      title: "Booked",
-      url: "#",
-      icon: Search,
     },
     {
       title: "Settings",
@@ -28,6 +32,29 @@ const homes = [
     },
   ]
 
+
+  const userNavs = [
+    {
+      title: "Home",
+      url: "/user/home",
+      icon: Home,
+    },
+    {
+      title: "My Bookings",
+      url: "/user/listings",
+      icon: Inbox,
+    },
+    {
+      title: "On Sale",
+      url: "/user/on-sale",
+      icon: Calendar,
+    },
+    {
+      title: "Settings",
+      url: "#",
+      icon: Settings,
+    },
+  ]
 
 import {
     Sidebar,
@@ -41,17 +68,27 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
   } from "@/components/ui/sidebar"
+import { UserRole } from "@prisma/client"
   
   export function AppSidebar() {
+
+    const role = useCurrentRole()
     return (
-     <Sidebar>
+     <Sidebar className=" w-64 h-full bg-white dark:bg-black border-r dark:border-stone-800">
+       <SidebarHeader className=" w-full dark:border-stone-800 flex px-4 border-b justify-start ">
+        <div className=" text-lg font-semibold font-poppins">
+          <Image alt="" src={logo} className=" h-10 object-contain object-left" />
+        </div>
+      </SidebarHeader>
         <SidebarContent>
             <SidebarGroup>
-                <SidebarGroupLabel>Ministry </SidebarGroupLabel>
+                <SidebarGroupLabel> 
+                  {role == UserRole.ADMIN ? UserRole.ADMIN : UserRole.USER}
+                  {' DASHBOARD'}
+                </SidebarGroupLabel>
                 <SidebarGroupContent>
                     <SidebarMenu>
-                        {
-                            homes.map(item => (
+                        { role == UserRole.ADMIN.toString() &&  adminNavs.map(item => (
                                 <SidebarMenuItem key={item.title}>
                                     <SidebarMenuButton asChild>
                                         <a href={item.url}>
@@ -60,12 +97,30 @@ import {
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
-                            ))
-                        }
+                            )) 
+                            }
+                            {
+                                role == UserRole.USER.toString() && userNavs.map(item => (
+                                    <SidebarMenuItem key={item.title}>
+                                        <SidebarMenuButton asChild>
+                                            <a href={item.url}>
+                                                <item.icon />
+                                                <span> {item.title} </span>
+                                            </a>
+                                        </SidebarMenuButton>
+                                    </SidebarMenuItem>
+                                ))
+                            }
                     </SidebarMenu>
                 </SidebarGroupContent>
             </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter className="">
+         <div className=" dark:bg-gray-600/50 bg items-center flex justify-between py-2 bg-white dark:bg-stone-950 px-3 rounded-xl w-full h-full">
+                <DarkButton />
+                <LogoutButton />
+         </div>
+        </SidebarFooter>
      </Sidebar>
     )
   }
