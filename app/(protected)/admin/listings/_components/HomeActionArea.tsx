@@ -22,6 +22,8 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AddHomeForm } from './AddHomeForm'
+import { deletehome } from '@/actions/homes'
+import { useToast } from "@/hooks/use-toast"
 const logout = () => {
   signOut()
 }
@@ -34,6 +36,8 @@ export function HomeActionArea({
   const [homesItems, setHomeItems] = useState<(Homes)[]>([...homes])
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState('')
+  const [isDialogOpen, setIsDialogOpen] = useState(false)
+  const { toast } = useToast()
 
   const itemsPerPage = 20
 
@@ -46,6 +50,34 @@ export function HomeActionArea({
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const currentHomes = filteredHomes.slice(startIndex, endIndex)
+
+    const handleHomeDelete = async (apartmentId: number) => {
+      try {
+        await deletehome(apartmentId)
+        setHomeItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
+        toast({
+          title: "Home Listing Deleted",
+          description: "Home has been deleted successfully",
+          variant: "default",
+        })
+      } catch (error) {
+        console.error("Error deleting gallery:", error)
+        toast({
+          title: "Error",
+          description: "Failed to delete gallery. Please try again.",
+          variant: "destructive",
+        })
+      }
+    }
+  
+    const handleAddApartment = (newApartment: ApartmentType) => {
+      setHomeItems(prevItems => [...prevItems, newApartment])
+      setIsDialogOpen(false)
+      toast({
+        title: "Gallery Added",
+        description: "New gallery has been added successfully",
+      })
+    }
   
 
   return (
@@ -66,7 +98,8 @@ export function HomeActionArea({
                         <p className='flex items-start text-center font-poppins text-green-900'>Add Home</p>
                       </DialogTitle>
                     </DialogHeader>
-                    <AddHomeForm formSubmit={(data) => setHomeItems([...homes, data])} />
+                    <AddHomeForm onSubmit={handleAddApartment} onClose={() => setIsDialogOpen(false)} />
+                    {/* <AddHomeForm formSubmit={(data) => setHomeItems([...homes, data])} /> */}
                   </DialogContent>
                 </Dialog>
               </div>
@@ -94,7 +127,7 @@ export function HomeActionArea({
         <div className="p-4">
           <div className="grid grid-cols-1 h-full md:grid-cols-2 lg:grid-cols-4 gap-4">
             {currentHomes.map((home) => (
-              <HomeItem home={home} key={home.id} />
+              <HomeItem home={home} key={home.id} onDelete={handleHomeDelete}  />
             ))}
           </div>
         </div>

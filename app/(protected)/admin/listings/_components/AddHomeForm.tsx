@@ -22,12 +22,18 @@ import {
 import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { useToast } from '@/hooks/use-toast'
 import { createHomeAction } from '@/actions/homes'
+import { HomeStatus } from '@prisma/client'
 
 
 
 
+interface AddHomeFormProps {
+  onSubmit: (data: Homes) => void
+  onClose: () => void
+}
 
-export function AddHomeForm({formSubmit }: { formSubmit: (data: Homes) => void }) {
+
+export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
   
   const [isPending, setIsPending] = useState(false)
   // const [isPending, startTransition] = useTransition()
@@ -54,48 +60,45 @@ export function AddHomeForm({formSubmit }: { formSubmit: (data: Homes) => void }
     },
   })
 
-
-  async function onSubmit(data: z.infer<typeof homeSchema>) {
+  async function handleSubmit(values: z.infer<typeof homeSchema>) {
     setIsPending(true)
     try {
-      let formDataToSubmit: any = { ...data };
+      let formDataToSubmit: any = { ...values };
 
-
-      console.log(formDataToSubmit)
-
-      // Handle file uploads
-      if (data.heroImage instanceof File) {
-        formDataToSubmit.heroImage = await uploadFileToS3(data.heroImage, 'jigawa-state');
+      if (values.heroImage) {
+        formDataToSubmit.heroImage = await uploadFileToS3(values.heroImage, 'jigawa-state');
       }
 
 
-      if (data.images instanceof FileList) {
-        formDataToSubmit.images = await uploadMultipleFilesToS3(data.images, 'jigawa-state');
+      if (values.images) { 
+        const images = await uploadMultipleFilesToS3(values.images, 'jigawa-state');
+        formDataToSubmit.images = images;
       }
-
-      setError('')
-      setSuccess('')
-
-
-      const records = await createHomeAction(formDataToSubmit)
-      await new Promise(resolve => setTimeout(resolve, 1000))
-      formSubmit(records.home as Homes)
+      const data = await createHomeAction(formDataToSubmit)
+      onSubmit(data.home as Homes)
       form.reset()
+      onClose()
       toast({
-        title: "Home Created",
-        description: "You've Added a new Home",
+        title: "Home Added",
+        description: "New Home has been added successfully",
       })
-
-
     } catch (error) {
-      console.error('Error processing form submission:', error);
-     
+      console.error('Error submitting form:', error)
+      toast({
+        title: "Error",
+        description: "Failed to add Home. Please try again.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsPending(false)
+      router.refresh()
     }
-}
+  }
+
+  
   return (
     <Form {...form}>
-      {/* <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8"> */}
-      <form onSubmit={form.handleSubmit((data) => onSubmit(data))} className="space-y-8">
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
         <div className="grid grid-cols-1 gap-4">
           <FormField
             control={form.control}
@@ -169,23 +172,22 @@ export function AddHomeForm({formSubmit }: { formSubmit: (data: Homes) => void }
           </div>
 
 
-<div className=" grid grid-cols-2 gap-4">
+  <div className=" grid grid-cols-2 gap-4">
       <FormField
             control={form.control}
-            name=""
+            name="status"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Author</FormLabel>
+                <FormLabel>Status</FormLabel>
                 <FormControl>
                   <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
                       <SelectTrigger>
-                        <SelectValue placeholder="Select Author" />
+                        <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
-
-                        
-                            <SelectItem key={author.id} value={author.id}>{author.name}</SelectItem>
-                      
+                            <SelectItem value={HomeStatus.ComingSoon}>Coming Soon</SelectItem>
+                            <SelectItem value={HomeStatus.Selling}>Selling</SelectItem>
+                            <SelectItem value={HomeStatus.Sold}>Sold</SelectItem>
                       </SelectContent>
                     </Select>
                 </FormControl>
@@ -201,7 +203,7 @@ export function AddHomeForm({formSubmit }: { formSubmit: (data: Homes) => void }
               <FormItem>
                 <FormLabel className=' dark:text-yellow-200'>Booking Price</FormLabel>
                 <FormControl>
-                  <Input
+                  <Input className=' border-green-400 before:content-[NGN] '
                     disabled={isPending}
                     { ...field }
                     onChange={(e) => {
