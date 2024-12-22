@@ -18,15 +18,16 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { ApartmentType } from "@/typings"
 
 interface GalleryItemProps {
-  gallery: ApartmentType
-  onDelete: (galleryId: number) => void
+  apartment: ApartmentType
+  onDelete: (apartmentId: number) => void
 }
 
-export function ApartmentItem({ gallery, onDelete }: GalleryItemProps) {
+export function ApartmentItem({ apartment, onDelete }: GalleryItemProps) {
   const handleDelete = () => {
-    onDelete(gallery.id)
+    onDelete(apartment.id)
   }
 
   return (
@@ -34,16 +35,16 @@ export function ApartmentItem({ gallery, onDelete }: GalleryItemProps) {
       <CardHeader className="p-0">
         <div className="relative h-48 w-full">
           <Image
-            src={gallery.heroImage}
-            alt={gallery.title}
+            src={apartment.heroImage}
+            alt={apartment.title}
             layout="fill"
             objectFit="cover"
           />
         </div>
       </CardHeader>
       <CardContent className="p-4">
-        <CardTitle className="text-lg font-semibold mb-2">{gallery.title}</CardTitle>
-        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{gallery.description}</p>
+        <CardTitle className="text-lg font-semibold mb-2">{apartment.title}</CardTitle>
+        <p className="text-sm text-gray-600 dark:text-gray-300 mb-4">{apartment.description}</p>
         <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="destructive" size="sm">Delete</Button>
@@ -53,7 +54,7 @@ export function ApartmentItem({ gallery, onDelete }: GalleryItemProps) {
               <AlertDialogTitle>Are you sure you want to delete this gallery item?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete the gallery item
-                "{gallery.title}" and remove its data from our servers.
+                "{apartment.title}" and remove its data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

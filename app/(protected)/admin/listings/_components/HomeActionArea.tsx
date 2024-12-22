@@ -24,9 +24,7 @@ import {
 import { AddHomeForm } from './AddHomeForm'
 import { deletehome } from '@/actions/homes'
 import { useToast } from "@/hooks/use-toast"
-const logout = () => {
-  signOut()
-}
+import { Homes } from '@/typings'
 
 export function HomeActionArea({
   homes
@@ -61,21 +59,21 @@ export function HomeActionArea({
           variant: "default",
         })
       } catch (error) {
-        console.error("Error deleting gallery:", error)
+        console.error("Error deleting Home:", error)
         toast({
           title: "Error",
-          description: "Failed to delete gallery. Please try again.",
+          description: "Failed to delete Home. Please try again.",
           variant: "destructive",
         })
       }
     }
   
-    const handleAddApartment = (newApartment: ApartmentType) => {
-      setHomeItems(prevItems => [...prevItems, newApartment])
+    const HandleHomeAdd = (newHome: Homes) => {
+      setHomeItems(prevItems => [...prevItems, newHome])
       setIsDialogOpen(false)
       toast({
-        title: "Gallery Added",
-        description: "New gallery has been added successfully",
+        title: "Home Added",
+        description: "New Home has been added successfully",
       })
     }
   
@@ -98,7 +96,7 @@ export function HomeActionArea({
                         <p className='flex items-start text-center font-poppins text-green-900'>Add Home</p>
                       </DialogTitle>
                     </DialogHeader>
-                    <AddHomeForm onSubmit={handleAddApartment} onClose={() => setIsDialogOpen(false)} />
+                    <AddHomeForm onSubmit={HandleHomeAdd} onClose={() => setIsDialogOpen(false)} />
                     {/* <AddHomeForm formSubmit={(data) => setHomeItems([...homes, data])} /> */}
                   </DialogContent>
                 </Dialog>

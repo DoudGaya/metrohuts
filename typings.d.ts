@@ -1,3 +1,5 @@
+import { ApartmentStatus, HomeStatus } from "@prisma/client"
+
 interface Project {
     id: string 
     title: string
@@ -30,6 +32,17 @@ interface ApartmentType {
     description: string;
     heroImage: string;
     images: string[];
+    status: ApartmentStatus ;
+
+    // id: number;
+    // title: string;
+    // state: string;
+    // lga: string;
+    // address: string;
+    // price: string;
+    // description: string;
+    // heroImage: string;
+    // images: string[];
 }
 
 interface Booking {
@@ -51,5 +64,16 @@ interface Homes {
     price: string;
     description: string;
     heroImage: string;
+    homeStatus: HomeStatus;
     images: string[];
+
+    // id: number;
+    // title: string;
+    // state: string;
+    // lga: string;
+    // address: string;
+    // price: string;
+    // description: string;
+    // heroImage: string;
+    // images: string[];
 }

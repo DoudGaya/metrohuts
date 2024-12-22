@@ -1,14 +1,20 @@
-import Listing from "@/components/home/Listing"
+import { getAllhomes } from "@/actions/homes"
+import HomeListing from "@/components/home/HomeListing"
+import Listing from "@/components/home/HomeListing"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardFooter } from "@/components/ui/card"
+import { Homes } from "@/typings"
 // import { Badge } from "@/components/ui/badge"
 import { Home, Key, DollarSign, Search, Briefcase, ClipboardList } from "lucide-react"
 
-export default function Services() {
+export default async function Services() {
+
+
+  const listing = await getAllhomes() as Homes[]
   return (
-    <div className="bg-white mt-10">
+    <div className="bg-white">
       {/* Hero Section */}
-      <section className="relative bg-black/90 py-36 h-[70vh] px-4 sm:px-6 lg:px-8">
+      <section className="relative bg-black py-36 h-[70vh] px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
           <h1 className="text-4xl text-tert font-extrabold tracking-tight sm:text-5xl md:text-6xl">
             Our <span className="text-primary">Services</span> & Properties
@@ -23,67 +29,6 @@ export default function Services() {
         </div>
       </section>
 
-      {/* Featured Properties Section */}
-
-      {/* <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">Featured Properties</h2>
-          <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {[
-              {
-                title: "Modern Downtown Apartment",
-                type: "For Sale",
-                price: "$450,000",
-                beds: 2,
-                baths: 2,
-                sqft: 1200,
-                image: "/placeholder.svg?height=400&width=600"
-              },
-              {
-                title: "Spacious Suburban Home",
-                type: "For Rent",
-                price: "$2,500/mo",
-                beds: 4,
-                baths: 3,
-                sqft: 2500,
-                image: "/placeholder.svg?height=400&width=600"
-              },
-              {
-                title: "Luxury Beachfront Villa",
-                type: "For Sale",
-                price: "$1,200,000",
-                beds: 5,
-                baths: 4,
-                sqft: 3500,
-                image: "/placeholder.svg?height=400&width=600"
-              },
-            ].map((property, index) => (
-              <Card key={index} className="overflow-hidden">
-                <img src={property.image} alt={property.title} className="w-full h-48 object-cover" />
-                <CardContent className="p-4">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{property.title}</h3>
-                  <p className="text-2xl font-bold text-yellow-600 mb-4">{property.price}</p>
-                  <div className="flex justify-between text-gray-600">
-                    <span>{property.beds} beds</span>
-                    <span>{property.baths} baths</span>
-                    <span>{property.sqft} sqft</span>
-                  </div>
-                </CardContent>
-                <CardFooter>
-                  <Button className="w-full bg-primary text-gray-900 hover:bg-primary">View Details</Button>
-                </CardFooter>
-              </Card>
-            ))}
-          </div>
-          <div className="text-center mt-12">
-            <Button variant="outline" className="border-primary text-yellow-600 hover:bg-yellow-50">
-              View All Properties
-            </Button>
-          </div>
-        </div>
-      </section> */}
-
-      {/* Detailed Services Section */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">Our Comprehensive Services</h2>
@@ -146,7 +91,8 @@ export default function Services() {
         </div>
       </section>
 
-      <Listing />
+      {/* <Listing  /> */}
+      <HomeListing homeListings={listing} />
 
       {/* Call-to-Action Section */}
       <section className="bg-primary py-20">

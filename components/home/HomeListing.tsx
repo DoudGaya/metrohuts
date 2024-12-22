@@ -11,10 +11,12 @@ import bannerImage from '@/public/img/banner-image.jpg'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { PublicNavigations } from '@/components/PublicNavigations'
-import { homeListings, marketingTextMore, testimonials } from '@/lib/customer-records'
+import { Homes } from '@/typings'
 
 
-const Listing = () => {
+const HomeListing = ( {homeListings}: {
+  homeListings: Homes[]
+} ) => {
 
     const fadeIn = {
         hidden: { opacity: 0 },
@@ -38,31 +40,32 @@ const Listing = () => {
     <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold text-center mb-12">Current Listings</h2>
       <div className="grid grid-cols-1 h-full md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {homeListings.map((property, i) => (
-          <motion.div key={i} whileHover={{ y: -10 }} className=' h-full'>
+        {homeListings.map((home) => (
+          <motion.div key={home.id} whileHover={{ y: -10 }} className=' h-full'>
             <Card className=' h-full flex flex-col'>
               <Image
-                src={property.image}
-                alt={property.name}
+                src={home.heroImage}
+                alt={home.title}
                 width={400}
                 height={300}
-                className="w-full h-48 object-cover rounded-t-lg"
+                className="w-full h-[250px] object-cover rounded-t-lg"
               />
 
-              <CardHeader>
-                <CardTitle className=' text-xl'>{property.name}</CardTitle>
-                <p className="text-sm text-gray-500">{property.location}</p>
+              <CardHeader className=' flex flex-col'>
+                <CardTitle className=' text-xl'>{home.title}</CardTitle>
+                <p className="text-sm text-gray-500">{home.state} {home.lga} </p>
+                <span className=' text-sm italic font-poppins'> {home.address} </span>
               </CardHeader>
 
 
-              <CardContent className=' h-full flex flex-col justify-between'>
-                <p className="text-gray-600 text-sm mb-4">
-                  {property.description}
+              <CardContent className=' flex flex-col justify-between'>
+                <p className="text-gray-600 text-justify h-[100px] overflow-hidden text-sm mb-4">
+                  {home.description} ...
                 </p>
                 <div className="flex justify-between items-center">
-                  <span className="text-gray-800 text-sm font-bold">{property.price}</span>
+                  <span className="text-gray-800 text-sm font-bold">{home.price}</span>
                   <Button variant={'link'} className=" text-yellow-500 bg-transparent font-semibold font-poppins">
-                    Request Details
+                    Details
                   </Button>
                 </div>
               </CardContent>
@@ -75,4 +78,4 @@ const Listing = () => {
   )
 }
 
-export default Listing
+export default HomeListing

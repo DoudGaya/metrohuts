@@ -23,6 +23,7 @@ import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { useToast } from '@/hooks/use-toast'
 import { createHomeAction } from '@/actions/homes'
 import { HomeStatus } from '@prisma/client'
+import { Homes } from '@/typings'
 
 
 

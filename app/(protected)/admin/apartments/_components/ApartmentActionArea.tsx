@@ -19,7 +19,8 @@ import { AddApartmentForm } from './AddApartmentForm'
 // import { Apartment } from '@/typings'
 import { useToast } from "@/hooks/use-toast"
 import { deleteApartment } from '@/actions/apartments'
-// import { deleteGallery } from '@/actions/galleries'
+import { ApartmentType } from '@/typings'
+// import { deleteApartment } from '@/actions/galleries'
 
 const logout = () => {
   signOut()
@@ -38,29 +39,29 @@ export function ApartmentActionArea({
 
   const itemsPerPage = 20
 
-  const filteredGalleries = apartmentItems.filter(item =>
+  const filteredApartments = apartmentItems.filter(item =>
     item?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
     item?.description?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const totalPages = Math.ceil(filteredGalleries.length / itemsPerPage)
+  const totalPages = Math.ceil(filteredApartments.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const currentGalleries = filteredGalleries.slice(startIndex, endIndex)
+  const currentApartment = filteredApartments.slice(startIndex, endIndex)
 
   const handleApartmentDelete = async (apartmentId: number) => {
     try {
       await deleteApartment(apartmentId)
       setApartmentItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
       toast({
-        title: "Gallery Deleted",
-        description: "Gallery has been deleted successfully",
+        title: "Apartment Deleted",
+        description: "Apartment has been deleted successfully",
       })
     } catch (error) {
-      console.error("Error deleting gallery:", error)
+      console.error("Error deleting Apartment:", error)
       toast({
         title: "Error",
-        description: "Failed to delete gallery. Please try again.",
+        description: "Failed to delete Apartment. Please try again.",
         variant: "destructive",
       })
     }
@@ -70,8 +71,8 @@ export function ApartmentActionArea({
     setApartmentItems(prevItems => [...prevItems, newApartment])
     setIsDialogOpen(false)
     toast({
-      title: "Gallery Added",
-      description: "New gallery has been added successfully",
+      title: "Apartment Added",
+      description: "New Apartment has been added successfully",
     })
   }
 
@@ -81,16 +82,16 @@ export function ApartmentActionArea({
         <div className="w-full items-center flex px-6 justify-between py-4 rounded-lg">
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row w-full md:justify-between md:items-center">
             <div className="flex space-y-2 flex-col">
-              <p className='text-lg font-poppins font-semibold'>Gallery Management</p>
+              <p className='text-lg font-poppins font-semibold'>Apartment Management</p>
               <div className="flex space-x-2">
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button className='font-poppins text-white dark:bg-green-500'>Add Gallery</Button>
+                    <Button className='font-poppins text-white dark:bg-green-500'>Add Apartment</Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[700px] max-h-[80%] md:max-w-xl overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className='py-5 flex text-center bg-green-200 dark:bg-green-800/30 rounded-lg justify-center'>
-                        <p className='flex items-start text-center font-poppins dark:text-green-200 text-green-800'>Add Gallery</p>
+                        <p className='flex items-start text-center font-poppins dark:text-green-200 text-green-800'>Add Apartment </p>
                       </DialogTitle>
                     </DialogHeader>
                     <AddApartmentForm onSubmit={handleAddApartment} onClose={() => setIsDialogOpen(false)} />
@@ -100,7 +101,7 @@ export function ApartmentActionArea({
             </div>
             <div className="flex flex-col">
               <div className="mb-4 flex flex-col space-y-2">
-                <Label htmlFor="search" className='text-base font-poppins font-semibold'>Search Gallery</Label>
+                <Label htmlFor="search" className='text-base font-poppins font-semibold'>Search Apartment </Label>
                 <Input
                   id="search"
                   type="text"
@@ -120,8 +121,8 @@ export function ApartmentActionArea({
       <ScrollArea className="flex-grow ">
         <div className="p-4">
           <div className="grid max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {currentGalleries.map((gallery) => (
-              <ApartmentItem gallery={gallery} key={gallery.id} onDelete={handleApartmentDelete} />
+            {currentApartment.map((apartment) => (
+              <ApartmentItem apartment={apartment} key={apartment.id} onDelete={handleApartmentDelete} />
             ))}
           </div>
         </div>

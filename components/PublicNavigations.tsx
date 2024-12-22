@@ -41,7 +41,7 @@ export const PublicNavigations = () => {
 
   return (
 <>
-<header className=" bg-white h-16 text-primary shadow-md items-center fixed top-0 left-0 right-0 z-50">
+<header className=" bg-white/80 h-16 text-primary shadow-md items-center fixed top-0 left-0 right-0 z-50">
         <div className="container mx-auto px-4 py-4 h-full flex justify-between items-center">
           <motion.div initial="hidden" animate="visible" className=' justify-start' variants={fadeIn}>
             <div className=" flex items-start w-full justify-start">

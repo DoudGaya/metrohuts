@@ -21,6 +21,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+import { Homes } from '@/typings'
 
 
 
@@ -75,27 +76,25 @@ className=" px-0"
 
           <CardHeader>
             <CardTitle className=' text-lg line-clamp-2'>{home?.title}</CardTitle>
-           <div className=" flex flex-col">
-           <div className="">
-            <div className="text-sm flex space-x-3 text-gray-500">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                </svg>
-              <p>{home.state + ' '+ home.lga }</p>
-            </div>
-            <small> {home.address} </small>
-           </div>
+           <div className=" flex flex-col space-y-3 ">
+              <div className="text-sm flex items-center bg-gray-100/90 rounded-full px-3 py-0.5 space-x-3 text-gray-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 flex-none">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                      <p className=' truncate'> {home.address} </p>
+                    {/* <p>{home.state + ' '+ home.lga }</p> */}
+              </div>
            </div>
           </CardHeader>
 
 
           <CardContent className=' h-full flex flex-col justify-between'>
-            <p className="text-gray-600 line-clamp-2 text-sm h-[100px] mb-4">
+            <p className="text-gray-600 overflow-hidden text-justify text-sm h-[100px] mb-4">
               {home.description}
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-gray-800 text-sm font-bold">{home.price}</span>
+              <span className="text-gray-800 text-sm font-bold"> <span className=' text-xs'>NGN</span> {home.price}</span>
               <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="link" className=' text-red-500' size="sm">Delete</Button>
@@ -105,7 +104,8 @@ className=" px-0"
               <AlertDialogTitle>Are you sure you want to delete this Home item?</AlertDialogTitle>
               <AlertDialogDescription>
                 This action cannot be undone. This will permanently delete the Home item
-                "{home.title}" and remove its data from our servers.
+                <span className=' font-semibold text-gray-800'> {home.title}
+                  </span> and remove its data from our servers.
               </AlertDialogDescription>
             </AlertDialogHeader>
             <AlertDialogFooter>

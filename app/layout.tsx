@@ -61,17 +61,7 @@ const RootLayout = async ({ children }: { children:  React.ReactNode}) => {
        </SessionProvider>
       </html>
     );
-  // return (
-    
-  //   <>
-  //   <PublicNavigations />
-  //   <div className=''>
-  //       <div className="">
-  //           {children}
-  //       </div>
-  //   </div>
-  //   </>
-  // )
+
 }
 
 export default RootLayout

@@ -5,7 +5,7 @@ import { Home, Key, DollarSign, Users, Star, PhoneCall } from "lucide-react"
 
 export default function AboutUs() {
   return (
-    <div className="bg-white mt-10">
+    <div className="bg-white">
       {/* Hero Section */}
       <section className="relative bg-black text-tert h-[70vh] py-36 px-4 sm:px-6 lg:px-8">
         <div className="relative max-w-7xl mx-auto">
@@ -72,7 +72,7 @@ export default function AboutUs() {
       </section>
 
       {/* Team Section */}
-      <section className="py-20 bg-gray-50">
+      <section className=" bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12"></h2>
           <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
