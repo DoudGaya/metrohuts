@@ -17,8 +17,8 @@ import HomeHeroSection from '@/components/HomeHeroSection'
 
 export default async function LandingPage() {
   
-  const homeListings = await getAllhomes() as Homes[]
-  const apartmentListing = await getAllApartments() as ApartmentType[]
+  // const homeListings = await getAllhomes() as Homes[]
+  // const apartmentListing = await getAllApartments() as ApartmentType[]
 
 
   return (
@@ -26,7 +26,7 @@ export default async function LandingPage() {
       <PublicNavigations />
       <main className="">
         <HomeHeroSection />
-        {
+        {/* {
           homeListings.length > 0 ? (
             <HomeListing homeListings={homeListings} />
           ) : (
@@ -37,7 +37,7 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        }
+        } */}
         <section
           style={{
             backgroundImage: `url(${servicesBanner.src})`,
@@ -75,7 +75,7 @@ export default async function LandingPage() {
             </div>
           </div>
         </section>
-        {
+        {/* {
           homeListings.length > 0 ? (
             <ApaprtmentListing apartments={apartmentListing} />
           ) : (
@@ -86,7 +86,7 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        }
+        } */}
         <CallToAction />
         <section
           className="py-16 bg-white"
