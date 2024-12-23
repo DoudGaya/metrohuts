@@ -1,3 +1,4 @@
+import { HomeStatus } from '@prisma/client';
 import * as z from 'zod'
 
 const isBrowser = typeof window !== 'undefined';
@@ -132,7 +133,7 @@ export const loginSchema = z.object({
     price: z.string().min(1, {
       message: "Please add the price of the home",
     }),
-    status: z.enum(['Sold', 'ComingSoon', 'Onsale']).optional(),
+    homeStatus: z.enum([HomeStatus.ComingSoon, HomeStatus.Selling, HomeStatus.Sold]).optional(),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),

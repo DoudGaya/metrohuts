@@ -30,19 +30,10 @@ interface ApartmentType {
     address: string;
     price: string;
     description: string;
+    slug: string;
     heroImage: string;
     images: string[];
-    status: ApartmentStatus ;
-
-    // id: number;
-    // title: string;
-    // state: string;
-    // lga: string;
-    // address: string;
-    // price: string;
-    // description: string;
-    // heroImage: string;
-    // images: string[];
+    status: ApartmentStatus 
 }
 
 interface Booking {
@@ -62,18 +53,10 @@ interface Homes {
     lga: string;
     address: string;
     price: string;
+    slug: string;
     description: string;
     heroImage: string;
     homeStatus: HomeStatus;
     images: string[];
 
-    // id: number;
-    // title: string;
-    // state: string;
-    // lga: string;
-    // address: string;
-    // price: string;
-    // description: string;
-    // heroImage: string;
-    // images: string[];
 }

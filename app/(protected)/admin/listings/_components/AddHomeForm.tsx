@@ -53,6 +53,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
         address: "",
         description: "",
         lga: "",
+        homeStatus: undefined,
         price: "",
         state: "",
         heroImage: undefined,
@@ -176,7 +177,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
   <div className=" grid grid-cols-2 gap-4">
       <FormField
             control={form.control}
-            name="status"
+            name="homeStatus"
             render={({ field }) => (
               <FormItem>
                 <FormLabel>Status</FormLabel>

@@ -1,6 +1,8 @@
 "use server"
 import { db } from '@/lib/db'
 import { apartmentSchema } from '@/lib/schema'
+import { slugify } from '@/lib/utils'
+import { ApartmentStatus } from '@prisma/client'
 import * as z from 'zod'
 
 
@@ -17,6 +19,7 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
         state,
         heroImage,
         images,
+        status,
         title,
      } = fieldValidation.data
 
@@ -25,6 +28,8 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
             address,
             description,
             lga,
+            slug: slugify(title),
+            status,
             price,
             state,
             heroImage,
@@ -32,8 +37,6 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
             title,
         }
      })
-
-
      return { success: "Apartment has been created successfully", apartment: apartment}
 
 }
@@ -76,6 +79,7 @@ export const updateApartment = async (id: number, values: z.infer<typeof apartme
        price,
        state,
        heroImage,
+       status,
        images,
        title,
      } = fieldValidation.data
@@ -89,6 +93,8 @@ export const updateApartment = async (id: number, values: z.infer<typeof apartme
             description,
             lga,
             price,
+            slug: slugify(title),
+            status,
             state,
             heroImage,
             images,

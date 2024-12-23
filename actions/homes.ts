@@ -1,6 +1,7 @@
 "use server"
 import { db } from '@/lib/db'
 import { homeSchema } from '@/lib/schema'
+import { slugify } from '@/lib/utils'
 import * as z from 'zod'
 
 
@@ -15,6 +16,7 @@ export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
         lga,
         price,
         state,
+        homeStatus,
         heroImage,
         images,
         title,
@@ -27,6 +29,8 @@ export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
             lga,
             price,
             state,
+            slug: slugify(title),
+            homeStatus,
             heroImage,
             images,
             title,
@@ -74,6 +78,7 @@ export const updatehome = async (id: number, values: z.infer<typeof homeSchema>)
        description,
        lga,
        price,
+       homeStatus,
        state,
        heroImage,
        images,
@@ -89,6 +94,8 @@ export const updatehome = async (id: number, values: z.infer<typeof homeSchema>)
             description,
             lga,
             price,
+            homeStatus,
+            slug: slugify(title),
             state,
             heroImage,
             images,

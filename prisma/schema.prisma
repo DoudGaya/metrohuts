@@ -35,6 +35,7 @@ model Apartment {
   lga              String    
   address          String    
   price            String     
+  slug             String
   description      String     
   heroImage        String     
   images           String[]
@@ -49,9 +50,10 @@ model Homes {
   lga              String     
   address          String     
   price            String     
+  slug             String
   description      String     
   heroImage        String     
-  homeStatus       HomeStatus @default(ComingSoon)
+  homeStatus       HomeStatus
   images           String[]
 }
 
