@@ -1,6 +1,7 @@
 import React from 'react'
 import { getAllhomes } from '@/actions/homes'
 import { HomeActionArea } from './_components/HomeActionArea'
+import { Homes } from '@/typings'
 
 
 const AdminCasePage = async () => {
