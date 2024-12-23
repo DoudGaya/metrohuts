@@ -14,17 +14,10 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
-// import {  } from './AddApartmentForm'
 import { AddApartmentForm } from './AddApartmentForm'
-// import { Apartment } from '@/typings'
 import { useToast } from "@/hooks/use-toast"
 import { deleteApartment } from '@/actions/apartments'
 import { ApartmentType } from '@/typings'
-// import { deleteApartment } from '@/actions/galleries'
-
-const logout = () => {
-  signOut()
-}
 
 export function ApartmentActionArea({
   apartments

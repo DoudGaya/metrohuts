@@ -24,6 +24,7 @@ import { useToast } from '@/hooks/use-toast'
 import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { apartmentSchema } from '@/lib/schema'
 import { createApartmentAction } from '@/actions/apartments'
+import { ApartmentType } from '@/typings'
 
 interface AddApartmentProps {
   onSubmit: (data: ApartmentType) => void
