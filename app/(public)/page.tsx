@@ -35,7 +35,7 @@ export default async function LandingPage() {
       
         {/* Listings */}
 
-        {
+        {/* {
           homeListings.length > 0 ? (
             <HomeListing homeListings={homeListings} />
           ) : (
@@ -46,7 +46,7 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        }
+        } */}
      
         {/* Services */}
         <section
@@ -92,7 +92,7 @@ export default async function LandingPage() {
 
         {/* <ApaprtmentListing /> */}
 
-        {
+        {/* {
           homeListings.length > 0 ? (
             <ApaprtmentListing apartments={apartmentListing} />
           ) : (
@@ -103,7 +103,7 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        }
+        } */}
 
         {/* Call to Action */}
         <CallToAction />
