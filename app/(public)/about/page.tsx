@@ -53,7 +53,7 @@ export default function AboutUs() {
               { title: "Expert Knowledge", description: "Our team has in-depth local market knowledge." },
               { title: "Personalized Service", description: "We tailor our approach to your unique needs." },
               { title: "Proven Track Record", description: "Years of success in the real estate industry." },
-              { title: "Cutting-edge Technology", description: "We leverage the latest tech for optimal results." },
+              { title: "Cutting-edge Technology", description: "We leverage the latest tec h for optimal results." },
               { title: "Transparency", description: "Clear communication and honest dealings, always." },
               { title: "After-sales Support", description: "Our relationship continues beyond the transaction." },
             ].map((reason, index) => (
