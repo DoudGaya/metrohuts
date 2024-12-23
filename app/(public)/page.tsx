@@ -105,11 +105,6 @@ export default async function LandingPage() {
           )
         }
 
-        {/* Testimonials */}
-    
-
-       
-
         {/* Call to Action */}
         <CallToAction />
      

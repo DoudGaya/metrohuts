@@ -41,6 +41,7 @@ model Apartment {
   images           String[]
   booking          Bookings?
   status           ApartmentStatus @default(Available)  
+  @@map("apartments")
 }
 
 model Homes {
@@ -55,6 +56,7 @@ model Homes {
   heroImage        String     
   homeStatus       HomeStatus
   images           String[]
+  @@map("homes")
 }
 
 
@@ -69,6 +71,7 @@ model Bookings {
   userId      String
   apartment   Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
   apartmentId Int @unique
+  @@map("bookings")
 }
 
 

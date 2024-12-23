@@ -1,16 +1,9 @@
 "use client"
-
-
-
-import { useState } from 'react'
 import Image from 'next/image'
 import { motion } from 'framer-motion'
-import { FaHome, FaHotel, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa'
 import { Button } from "@/components/ui/button"
-import bannerImage from '@/public/img/banner-image.jpg'
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { PublicNavigations } from '@/components/PublicNavigations'
+
 import { Homes } from '@/typings'
 
 
