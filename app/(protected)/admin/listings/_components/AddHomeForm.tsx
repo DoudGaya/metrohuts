@@ -1,6 +1,6 @@
 'use client'
 
-import { startTransition, useState } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
@@ -11,7 +11,6 @@ import { Input } from "@/components/ui/input"
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form"
 import { useRouter } from 'next/navigation'
 import { homeSchema } from '@/lib/schema'
-import { useTransition } from 'react'
 import {
   Select,
   SelectContent,
@@ -26,8 +25,6 @@ import { HomeStatus } from '@prisma/client'
 import { Homes } from '@/typings'
 
 
-
-
 interface AddHomeFormProps {
   onSubmit: (data: Homes) => void
   onClose: () => void
@@ -37,9 +34,6 @@ interface AddHomeFormProps {
 export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
   
   const [isPending, setIsPending] = useState(false)
-  // const [isPending, startTransition] = useTransition()
-  const [error, setError] = useState<string | undefined>('')
-  const [success, setSuccess] = useState<string | undefined>('')
   const router = useRouter()
   const { toast } = useToast()
 
