@@ -16,26 +16,17 @@ import { ApartmentType, Homes } from '@/typings'
 import HomeHeroSection from '@/components/HomeHeroSection'
 
 export default async function LandingPage() {
-
-
-
+  
   const homeListings = await getAllhomes() as Homes[]
   const apartmentListing = await getAllApartments() as ApartmentType[]
 
 
   return (
     <div className="min-h-screen bg-blend-overlay">
-      {/* Header */}
       <PublicNavigations />
-      {/* Main Content */}
       <main className="">
-        {/* Hero Section */}
-
         <HomeHeroSection />
-      
-        {/* Listings */}
-
-        {/* {
+        {
           homeListings.length > 0 ? (
             <HomeListing homeListings={homeListings} />
           ) : (
@@ -46,9 +37,7 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        } */}
-     
-        {/* Services */}
+        }
         <section
           style={{
             backgroundImage: `url(${servicesBanner.src})`,
@@ -71,9 +60,7 @@ export default async function LandingPage() {
                   title: 'Investment Advisory', 
                   description: 'Maximize your real estate portfolio with our market insights and tailored investment strategies.' },
               ].map((service) => (
-                <div
-                
-                >
+                <div key={service.title} >
                   <Card className="text-center h-full">
                     <CardContent className="pt-6 flex flex-col space-y-4 justify-center w-full items-center h-full">
                       {service.icon}
@@ -88,11 +75,7 @@ export default async function LandingPage() {
             </div>
           </div>
         </section>
-
-
-        {/* <ApaprtmentListing /> */}
-
-        {/* {
+        {
           homeListings.length > 0 ? (
             <ApaprtmentListing apartments={apartmentListing} />
           ) : (
@@ -103,13 +86,8 @@ export default async function LandingPage() {
               </p>
             </div>
           )
-        } */}
-
-        {/* Call to Action */}
+        }
         <CallToAction />
-     
-
-        {/* Trust Indicators */}
         <section
           className="py-16 bg-white"
         >
@@ -127,7 +105,6 @@ export default async function LandingPage() {
           </div>
         </section>
       </main>
-
     </div>
   )
 }

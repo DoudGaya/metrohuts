@@ -48,7 +48,7 @@ export const getAllhomes = async () => {
 }
 
 
-export const ethomeById = async (id: number) => {
+export const getHomeById = async (id: number) => {
     const home = await db.homes.findUnique({
         where: {
             id
