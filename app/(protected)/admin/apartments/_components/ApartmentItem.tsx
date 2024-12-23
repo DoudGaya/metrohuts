@@ -4,7 +4,6 @@ import {
   CardHeader, 
   CardTitle 
 } from "@/components/ui/card"
-// import { GalleryType } from "@/typings"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 import {

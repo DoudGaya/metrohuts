@@ -1,16 +1,9 @@
-// // 
-// import { getAllAuthors } from '@/actions/author'
-// import { getAllNews } from '@/actions/news'
-import React from 'react'
-// import { GalleryActionArea } from './_components/GalleryActionArea'
 import { ApartmentActionArea } from './_components/ApartmentActionArea'
-// import { getAllGalleries } from '@/actions/galleries'
-// import { GalleryType } from '@/typings'
 import { getAllApartments } from '@/actions/apartments'
+import { ApartmentType } from '@/typings'
 
 const AdminCasePage = async () => {
 
-  // const galleries = await getAllGalleries() as GalleryType[]
 const apartments = await getAllApartments() as ApartmentType[]
 
   return (

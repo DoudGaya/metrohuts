@@ -17,9 +17,7 @@ import {
 } from "@/components/ui/form"
 
 import { useRouter } from 'next/navigation'
-// import { createGallerySchema } from '@/lib/schema'
-// import { GalleryType } from '@/typings'
-// import { createGallery } from '@/actions/galleries'
+
 import { useToast } from '@/hooks/use-toast'
 import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { apartmentSchema } from '@/lib/schema'
