@@ -1,9 +1,25 @@
-import React from 'react'
+import { ApartmentActionArea } from './_components/EnquiryActionArea'
+import { userEnquiries } from '@/data/user'
+import { EnquiryType } from '@/typings'
+import { auth } from '@/auth'
 
-const page = () => {
+const userEnquiriesPage = async () => {
+
+  const session = await auth()
+
+  const userId = session?.user.id as string
+
+
+// const apartments = await getAllApartments() as ApartmentType[]
+
+const enquiries = await userEnquiries(userId)  as unknown as EnquiryType[]
+
+
   return (
-    <div>Enquiries</div>
-  )
+    <div className='flex bg-white dark:bg-dark-bg'>
+        <ApartmentActionArea enquiries={enquiries} />
+    </div>
+    )
 }
 
-export default page
+export default userEnquiriesPage

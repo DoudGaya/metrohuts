@@ -50,7 +50,7 @@ export function UserHomeActionArea({
                     setSearchTerm(e.target.value)
                     setCurrentPage(1)
                   }}
-                  className="max-w-sm outline-green-500 border-green-500 placeholder:text-green-700 w-[350px]"
+                  className="max-w-sm outline-primary border-primary placeholder:text-primary w-[350px]"
                 />
               </div>
             </div>
@@ -69,7 +69,7 @@ export function UserHomeActionArea({
                   />
                 ))
               ) : (
-                <div className="text-center w-full items-center flex flex-col justify-center col-span-3 bg-green-400 py-16">
+                <div className="text-center w-full items-center flex flex-col justify-center col-span-3 text-primary py-16">
                   <h2 className="text-3xl font-bold mb-4">No Home Available</h2>
                   <p className="text-lg text-gray-600">
                     There are currently no listings available. Please check back later.
@@ -94,7 +94,7 @@ export function UserHomeActionArea({
         <Button
           onClick={() => setCurrentPage(prev => Math.min(prev + 1, totalPages))}
           disabled={currentPage === totalPages}
-          className='bg-black dark:bg-gray-600'
+          className='bg-primary dark:bg-gray-600'
         >
           Next
         </Button>

@@ -83,7 +83,7 @@ export function SignUpForm() {
 
 
   return (
-    <div className=" mt-20 flex flex-col bg-white px-12 py-12 border border-primary shadow-lg rounded-lg  w-full">
+    <div className=" mt-20 flex flex-col bg-white px-12 py-12 border shadow-lg rounded-lg  w-full">
        <div className=" w-full items-center justify-center py-2 ">
         <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
       </div>
@@ -172,15 +172,6 @@ export function SignUpForm() {
         <p className=""> Already have an account ? </p>
         <span className=" font-semibold">Log In</span>
     </Link>
-   {/* <fieldset className=" border-t-2 flex flex-col text-center items-center align-middle justify-center">
-      <legend className=" self-center flex px-2 text-sm text-gray-600" >or log in with</legend>
-      <div className=" pt-4 w-full ">
-        <button onClick={() => googleSignIn("google")} className=" rounded-md hover:bg-gray-100 transition-all ease-in-out flex space-x-3 items-center justify-center bg-white py-2 border-2  border-gray-300 w-full ">
-         <p className=" text-md"> Sign Up with Google</p>
-         <FcGoogle size={23} />
-        </button>
-      </div>
-    </fieldset> */}
    </div>
     </div>
   )

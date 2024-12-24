@@ -3,7 +3,17 @@ import { Resend } from 'resend';
 import { createEmailTemplate } from './email-template';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
-const baseUrl = process.env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+
+const env = process.env.NODE_ENV
+let baseUrl;
+
+
+if (env === 'production') {
+    baseUrl = 'https://metrohuts.com'
+} else {
+    baseUrl = 'http://localhost:3000'
+}
+
 
 export const sendTwoFactorEmail = async (email: string, token: string) => {
   const content = `

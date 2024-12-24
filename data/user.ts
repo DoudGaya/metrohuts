@@ -15,6 +15,11 @@ export const getUserByEmail = async (email: string) => {
 }
 
 export const getUserById = async (id: string) => {
+
+
+    if (!id) {
+        return null
+    }
     try {
         const user = await db.user.findUnique({
             where: {
@@ -38,6 +43,21 @@ export const getUserWithRecords = async (id: string) => {
             include: {
                 bookings: true,
                 enquiries: true
+            }
+        })
+        return user
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+const checkDBUser = async (email: string) => {
+    try {
+        const user = await db.user.findUnique({
+            where: {
+                email
             }
         })
         return user

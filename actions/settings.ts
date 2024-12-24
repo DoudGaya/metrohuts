@@ -17,8 +17,6 @@ export const profileRecordsUpdate = async (values: z.infer<typeof SettingsSchema
         return {error: "Unauthorized"}
     }
 
-    console.log(user)
-
     if ( user.isOAuth ) {
         values.email = undefined 
     }

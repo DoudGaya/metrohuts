@@ -79,6 +79,8 @@ model Bookings {
 }
 
 
+
+
 model Enquiries {
   id                Int @id     @default(autoincrement())
   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)

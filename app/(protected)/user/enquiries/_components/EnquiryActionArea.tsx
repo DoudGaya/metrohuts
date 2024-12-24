@@ -5,17 +5,25 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { ApartmentItem } from './ApartmentItem'
+import { EnquiriesItem } from './EnquiryItem'
+
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
 import { useToast } from "@/hooks/use-toast"
 import { deleteApartment } from '@/actions/apartments'
-import { ApartmentType } from '@/typings'
+import { ApartmentType, EnquiryType } from '@/typings'
 
 export function ApartmentActionArea({
-  apartments
+  enquiries
 }: {
-  apartments: ApartmentType[]
+  enquiries: EnquiryType[]
 }) {
-  const [apartmentItems, setApartmentItems] = useState<ApartmentType[]>([...apartments])
+  const [anquiriesItem, setEnquiriesItem] = useState<EnquiryType[]>([...enquiries])
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -23,42 +31,15 @@ export function ApartmentActionArea({
 
   const itemsPerPage = 20
 
-  const filteredApartments = apartmentItems.filter(item =>
-    item?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item?.description?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filtereEnquiries = anquiriesItem.filter(item =>
+    item?.home?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item?.home?.description?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
-  const totalPages = Math.ceil(filteredApartments.length / itemsPerPage)
+  const totalPages = Math.ceil(filtereEnquiries.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
-  const currentApartment = filteredApartments.slice(startIndex, endIndex)
-
-  const handleApartmentDelete = async (apartmentId: number) => {
-    try {
-      await deleteApartment(apartmentId)
-      setApartmentItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
-      toast({
-        title: "Apartment Deleted",
-        description: "Apartment has been deleted successfully",
-      })
-    } catch (error) {
-      console.error("Error deleting Apartment:", error)
-      toast({
-        title: "Error",
-        description: "Failed to delete Apartment. Please try again.",
-        variant: "destructive",
-      })
-    }
-  }
-
-  const handleAddApartment = (newApartment: ApartmentType) => {
-    setApartmentItems(prevItems => [...prevItems, newApartment])
-    setIsDialogOpen(false)
-    toast({
-      title: "Apartment Added",
-      description: "New Apartment has been added successfully",
-    })
-  }
+  const currentEnquiries  = filtereEnquiries.slice(startIndex, endIndex)
 
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
@@ -77,7 +58,7 @@ export function ApartmentActionArea({
                     setSearchTerm(e.target.value)
                     setCurrentPage(1)
                   }}
-                  className="max-w-sm outline-primary border-primary placeholder:text-primary w-[350px]"
+                  className="max-w-sm outline-primary border-primary placeholder:primary w-[350px]"
                 />
               </div>
             </div>
@@ -88,15 +69,15 @@ export function ApartmentActionArea({
         <div className="p-4">
           <div className="grid max-w-7xl w-full items-center justify-center mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {
-              apartmentItems.length > 0 ? (
-                currentApartment.map(apartment => (
-                  <ApartmentItem
-                    key={apartment.id}
-                    apartment={apartment}
+              anquiriesItem.length > 0 ? (
+                currentEnquiries.map( en => (
+                  <EnquiriesItem
+                    key={en.id}
+                    enquiries={en}
                   />
                 ))
               ) : (
-                <div className="text-center w-full items-center flex flex-col justify-center col-span-3 text-primary py-16">
+                <div className="text-center w-full items-center text-primary flex flex-col justify-center col-span-3 py-16">
                   <h2 className="text-3xl font-bold mb-4">No Apartment Available</h2>
                   <p className="text-lg text-gray-600">
                     There are currently no listings available. Please check back later.

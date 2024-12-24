@@ -6,6 +6,7 @@ import zaks from '@/public/img/ceo-zaks.jpeg'
 // import daddy from '@/public/'
 import homeListing4 from '@/public/home-listings-4.jpg'
 import habib from '@/public/habib.jpg'
+import daddy from '@/public/daddy.jpg'
 
 export const homeListings = [
     {
@@ -42,17 +43,17 @@ export const homeListings = [
   export const testimonials = [
     { 
         name: "Muhammad M. Zakari", 
-        role: "Tech Entrepreneur", 
+        role: "Civil Engineer", 
         image: zaks,
         quote: "Metrohuts's attention to detail is unparalleled. They found me a Tuscan villa that exceeds all expectations – a true masterpiece." },
     { 
-        name: "Abdulrahman G. Dauda", 
-        role: "Art Collector", 
-        image: habib,
+        name: "Abdulrahman Dauda Gaya", 
+        role: "DevOps Engineer", 
+        image: daddy,
         quote: "The Metrohuts team understood my vision perfectly. My New Hototo penthouse is not just a home, it's a canvas for my collection." },
     { 
         name: "Habib A. Adam", 
-        role: "Finance Executive", 
+        role: "Financial Analyst", 
         image: habib,
         quote: "I've worked with many real estate firms, but Metrohuts's investment insights and property management are in a league of their own." },
   ]

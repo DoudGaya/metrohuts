@@ -17,7 +17,7 @@ export default async function AdmninLayout({ children }: { children: React.React
       <SessionProvider session={session}>
            <SidebarProvider>
               <AppSidebar />
-              <main className=' w-full bg-white text-gray-900 dark:text-gray-100 dark:bg-black'>
+              <main className=' w-full bg-white text-gray-900 dark:bg-dark dark:text-gray-300'>
                 <SidebarTrigger />
                    {children}
                    <Toaster />

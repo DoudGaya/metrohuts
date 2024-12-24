@@ -16,7 +16,7 @@ export async function DashboardSummary({
 }) {
 //   const summary = await fetchSummary(type)
   return (
-    <Card className=' bg-white space-y-2 dark:border-stone-800 dark:bg-black/30'>
+    <Card className=' bg-white space-y-2 dark:border-stone-800 dark:bg-dark dark:text-gray-300'>
       <CardHeader>
         <CardTitle className="capitalize flex items-center justify-between">
             <p className=' text-sm'>{title}</p>
@@ -24,7 +24,7 @@ export async function DashboardSummary({
         </CardTitle>
       </CardHeader>
             <Link className='' href={`/user/${title.toLocaleLowerCase()}`}> 
-                <CardFooter className=' w-full text-sm font-poppins duration-75 font-medium transition-all ease-in-out delay-75 dark:hover:text-green-200 dark:border-stone-800 rounded-b-lg hover:bg-green-300/30 hover:text-green-800 border-t py-1' >
+                <CardFooter className=' w-full text-sm font-poppins duration-75 dark:text-gray-300 font-medium transition-all ease-in-out delay-75 dark:bg-stone-700/30 border dark:border-stone-800 rounded-b-lg py-1' >
                     visit page
                 </CardFooter>
             </Link>
