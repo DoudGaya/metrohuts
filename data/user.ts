@@ -29,3 +29,32 @@ export const getUserById = async (id: string) => {
 }
 
 
+export const userBookings = async (userId: string) => {
+    try {
+        const bookings = await db.bookings.findMany({
+            where: {
+                userId
+            }
+        })
+        return bookings
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+export const userEnquiries = async (userId: string) => {
+    try {
+        const enquiries = await db.enquiries.findMany({
+            where: {
+                userId
+            }
+        })
+        return enquiries
+    } catch (error) {
+        console.log(error)
+    }
+}
+
+
+
+

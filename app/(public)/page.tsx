@@ -73,14 +73,14 @@ export default async function LandingPage() {
                 </div>
               ))}
             </div>
-          </div>
+          </div>register
         </section>
         {
-          homeListings.length > 0 ? (
+          apartmentListing.length > 0 ? (
             <ApaprtmentListing apartments={apartmentListing} />
           ) : (
             <div className="text-center py-16">
-              <h2 className="text-3xl font-bold mb-4">No Listings Available</h2>
+              <h2 className="text-3xl font-bold mb-4">No Apartment Available</h2>
               <p className="text-lg text-gray-600">
                 There are currently no listings available. Please check back later.
               </p>

@@ -21,6 +21,7 @@ model User {
   role                UserRole @default(USER)
   accounts            Account[]
   bookings            Bookings[]
+  enquiries           Enquiries[]
   isTwoFactorEnabled Boolean @default(false)
   TwoFactorConfirmation TwoFactorConfirmation?
   @@map("user")
@@ -55,6 +56,7 @@ model Homes {
   description      String     
   heroImage        String     
   homeStatus       HomeStatus
+  Enquiries         Enquiries[]
   images           String[]
   @@map("homes")
 }
@@ -63,15 +65,27 @@ model Homes {
 
 
 model Bookings {
-  id          Int @id     @default(autoincrement())
-  title       String
-  price       String
-  date        DateTime    @default(now())
-  user        User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId      String
-  apartment   Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
-  apartmentId Int @unique
+  id                Int @id     @default(autoincrement())
+  title             String
+  price             String
+  date              DateTime    @default(now())
+  checkInDate       DateTime
+  checkOutDate      DateTime
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+  apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+  apartmentId       Int @unique
   @@map("bookings")
+}
+
+
+model Enquiries {
+  id                Int @id     @default(autoincrement())
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+  apartment         Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
+  HomeId            Int
+  @@map("enquiries")
 }
 
 

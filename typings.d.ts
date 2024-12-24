@@ -60,3 +60,15 @@ interface Homes {
     images: string[];
 
 }
+
+
+interface Booking {
+    id: number;
+    title: string;
+    price: string;
+    date: Date;
+    checkInDate: Date;
+    checkOutDate: Date;
+    userId: string;
+    apartmentId: number;
+}

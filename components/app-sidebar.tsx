@@ -35,23 +35,29 @@ const adminNavs = [
 
   const userNavs = [
     {
-      title: "Home",
-      url: "/user/home",
+      title: "Dashboard",
+      url: "/user/dashboard",
       icon: Home,
     },
     {
-      title: "My Bookings",
-      url: "/user/listings",
+      title: "Home Listings",
+      url: "/user/home-listings",
       icon: Inbox,
     },
     {
-      title: "On Sale",
-      url: "/user/on-sale",
+      title: "Apartments",
+      url: "/user/apartments",
       icon: Calendar,
     },
     {
+      title: "My Enquiries",
+      url: "/user/enquiries",
+      icon: Calendar,
+    },
+
+    {
       title: "Settings",
-      url: "#",
+      url: "/user/profile",
       icon: Settings,
     },
   ]
