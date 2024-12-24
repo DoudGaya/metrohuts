@@ -10,7 +10,7 @@ import { getTwoFactorTokenByEmail } from '@/data/two-factor-token'
 import { generateVerificationToken, 
         generateTwoFactorToken 
     } from '@/lib/tokens'
-import { sendVrificationEmail, sendTwoFactorEmail } from '@/lib/mail'
+import {sendTwoFactorEmail, sendVerificationEmail } from '@/lib/mail'
 import { getTwoFactorConfirmationByUserId } from '@/data/two-factor-confirmation'
 import { redirect } from 'next/navigation'
 
@@ -32,7 +32,7 @@ export const login = async (values: z.infer<typeof loginSchema>) => {
 
     if (!existingUser.emailVerified) {
         const verificationToken = generateVerificationToken(existingUser.email)
-        await sendVrificationEmail((await verificationToken).email, (await verificationToken).token)
+        await sendVerificationEmail((await verificationToken).email, (await verificationToken).token)
         return {success: "Check your email to verify your account!"}
     }
 
