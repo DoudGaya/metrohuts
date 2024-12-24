@@ -36,14 +36,14 @@ interface ApartmentType {
     status: ApartmentStatus 
 }
 
-interface Booking {
-    id: number;
-    title: string;
-    price: string;
-    date: Date;
-    userId: string;
-    apartmentId: number;
-}
+// interface Booking {
+//     id: number;
+//     title: string;
+//     price: string;
+//     date: Date;
+//     userId: string;
+//     apartmentId: number;
+// }
 
 
 interface Homes {
@@ -62,7 +62,15 @@ interface Homes {
 }
 
 
-interface Booking {
+interface EnquiryType {
+    id:                 number
+    user:               User
+    userId:             string
+    home:               Homes
+    HomeId:             number
+}
+
+interface BookingType {
     id: number;
     title: string;
     price: string;
@@ -71,4 +79,16 @@ interface Booking {
     checkOutDate: Date;
     userId: string;
     apartmentId: number;
+
+    // id: number;
+    // title: string;
+    // price: string;
+    // date: Date;
+    // checkInDate: Date;
+    // checkOutDate: Date;
+    // userId: string;
+    // apartment: ApartmentType;
+    // apartmentId: number;
+    // user: User;
+    // apartmentId: number;
 }

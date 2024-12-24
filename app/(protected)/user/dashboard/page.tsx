@@ -5,15 +5,24 @@ import { DashboardSummary } from './_components/dashboard-summary'
 import { CardSkeleton } from './_components/card-skeleton'
 import { getAllRecords } from '@/actions/admin'
 import { getAllhomes } from '@/actions/homes'
-import { ApartmentType, Homes } from '@/typings'
+import { ApartmentType, BookingType, EnquiryType, Homes } from '@/typings'
 import { getAllApartments } from '@/actions/apartments'
-import { userBookings } from '@/data/user'
+import { userBookings, userEnquiries } from '@/data/user'
+import { auth } from '@/auth'
 
 const HomeDashboard = async () => {
 
+  const session = await auth()
+  const user = session?.user
+
+  if (!user) {
+    return null
+  }
+
   const homes = await getAllhomes() as Homes[]
   const apartments = await getAllApartments() as ApartmentType[]
-  const bookings = await userBookings() as 
+  const bookings = await userBookings(user.id) as BookingType[]
+  const enquiries = await userEnquiries(user.id) as unknown as EnquiryType[]
 
 
 
@@ -44,8 +53,8 @@ const HomeDashboard = async () => {
     },
     {
       id: 4,
-      title: "Users",
-      count: users.length
+      title: "Enquiries",
+      count: enquiries.length
     },
   ]
 

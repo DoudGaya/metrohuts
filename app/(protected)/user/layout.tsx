@@ -12,7 +12,7 @@ export default async function UserLayout({ children }: { children: React.ReactNo
 
 
   const session = await auth()
-  const user = session?.user.name
+  const user = session?.user
   if (session?.user.role === "ADMIN") {
     return redirect('/admin/home')
 } else {

@@ -30,34 +30,34 @@ model User {
 
 
 model Apartment {
-  id               Int        @id @default(autoincrement())
-  title            String     
-  state            String     
-  lga              String    
-  address          String    
-  price            String     
-  slug             String
-  description      String     
-  heroImage        String     
-  images           String[]
-  booking          Bookings?
-  status           ApartmentStatus @default(Available)  
+  id                  Int        @id @default(autoincrement())
+  title               String     
+  state               String     
+  lga                 String    
+  address             String    
+  price               String     
+  slug                String
+  description         String     
+  heroImage           String     
+  images              String[]
+  booking             Bookings?
+  status              ApartmentStatus @default(Available)  
   @@map("apartments")
 }
 
 model Homes {
-  id               Int        @id @default(autoincrement())
-  title            String     
-  state            String     
-  lga              String     
-  address          String     
-  price            String     
-  slug             String
-  description      String     
-  heroImage        String     
-  homeStatus       HomeStatus
+  id                Int        @id @default(autoincrement())
+  title             String     
+  state             String     
+  lga               String     
+  address           String     
+  price             String     
+  slug              String
+  description       String     
+  heroImage         String     
+  homeStatus        HomeStatus
   Enquiries         Enquiries[]
-  images           String[]
+  images            String[]
   @@map("homes")
 }
 
@@ -83,7 +83,7 @@ model Enquiries {
   id                Int @id     @default(autoincrement())
   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId            String
-  apartment         Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
+  home              Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
   HomeId            Int
   @@map("enquiries")
 }
