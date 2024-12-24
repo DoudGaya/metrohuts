@@ -14,6 +14,7 @@ import { getAllhomes } from '@/actions/homes'
 import { getAllApartments } from '@/actions/apartments'
 import { ApartmentType, Homes } from '@/typings'
 import HomeHeroSection from '@/components/HomeHeroSection'
+import ComprehensiveServices from '@/components/ComprehensiveServices'
 
 export default async function LandingPage() {
   
@@ -46,7 +47,7 @@ export default async function LandingPage() {
           className="py-16 h-screen flex bg-no-repeat bg-cover bg-fixed items-center"
         >
           <div className="container mx-auto bg-gray-950/50 py-10 px-4">
-            <h2 className="text-3xl font-bold text-center mb-12">Our Services</h2>
+            <h2 className="text-3xl font-bold text-center text-primary mb-12">Our Services</h2>
             <div className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3 gap-8">
               {[
 
@@ -73,7 +74,7 @@ export default async function LandingPage() {
                 </div>
               ))}
             </div>
-          </div>register
+          </div>
         </section>
         {
           apartmentListing.length > 0 ? (
@@ -88,6 +89,7 @@ export default async function LandingPage() {
           )
         }
         <CallToAction />
+
         <section
           className="py-16 bg-white"
         >

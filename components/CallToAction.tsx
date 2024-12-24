@@ -2,10 +2,11 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { testimonials } from '@/lib/customer-records'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, } from "@/components/ui/card"
 import Image from 'next/image'
 import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
+import ComprehensiveServices from './ComprehensiveServices'
 
 
 const CallToAction = () => {
@@ -72,9 +73,11 @@ initial="hidden"
 whileInView="visible"
 viewport={{ once: true }}
 variants={fadeIn}
-className="py-16 bg-black text-white"
+className="py-16 text-white"
 >
-<div className="container mx-auto px-4 flex flex-col space-y-4 justify-center text-center">
+
+  <ComprehensiveServices customStyle=' py-10' />
+{/* <div className="container mx-auto px-4 flex flex-col space-y-4 justify-center text-center">
   <h2 className="text-3xl font-bold mb-4">Elevate Your Lifestyle</h2>
   <p className="text-xl mb-8">Join our exclusive network of discerning property owners and investors.</p>
   <div className="max-w-md mx-auto">
@@ -92,7 +95,7 @@ className="py-16 bg-black text-white"
     </div>
     <p className="text-sm mt-2">Receive curated property listings and insider market insights.</p>
   </div>
-</div>
+</div> */}
 </motion.section>
 </div>
 

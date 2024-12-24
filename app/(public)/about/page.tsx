@@ -72,14 +72,16 @@ export default function AboutUs() {
       </section>
 
       {/* Team Section */}
-      <section className=" bg-gray-50">
+      <section className=" bg-gray-50 py-10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12"></h2>
-          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-3">
+          <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12"> 
+            Meet Our Team
+          </h2>
+          <div className="grid grid-cols-1 gap-12 sm:grid-cols-2 lg:grid-cols-4">
             {teamMembers.map((member, index) => (
               <div key={index} className="text-center">
                 <img
-                  className="mx-auto h-40 w-40 object-cover object-center rounded-full xl:h-56 xl:w-56"
+                  className="mx-auto h-40 w-40 border-[4px] border-primary object-cover object-center rounded-full xl:h-56 xl:w-56"
                   src={member.image.src}
                   alt={member.name}
                 />
@@ -99,9 +101,9 @@ export default function AboutUs() {
           <h2 className="text-3xl font-extrabold text-gray-900 text-center mb-12">What Our Clients Say</h2>
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
             {[
-              { quote: "Metrohuts made finding our dream home a breeze. Their expertise and dedication are unmatched!", author: "Sarah J." },
-              { quote: "As a first-time seller, I was nervous, but the team at Metrohuts guided me through every step. Highly recommended!", author: "Mike T." },
-              { quote: "The property management services from Metrohuts have been exceptional. They truly care about their clients.", author: "Lisa R." },
+              { quote: "Metrohuts made finding our dream home a breeze. Their expertise and dedication are unmatched!", author: "Mustapha Atiku J." },
+              { quote: "As a first-time seller, I was nervous, but the team at Metrohuts guided me through every step. Highly recommended!", author: "Sadiq Kabeer M." },
+              { quote: "The property management services from Metrohuts have been exceptional. They truly care about their clients.", author: "Abdulrahman Dauda Gaya." },
             ].map((testimonial, index) => (
               <Card key={index} className="bg-white shadow-lg">
                 <CardContent className="p-6">
