@@ -197,9 +197,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=' dark:text-yellow-200'>Booking Price</FormLabel>
+                <FormLabel className=''>Booking Price</FormLabel>
                 <FormControl>
-                  <Input className=' border-green-400 before:content-[NGN] '
+                  <Input className='before:content-[NGN] '
                     disabled={isPending}
                     { ...field }
                     onChange={(e) => {
@@ -225,7 +225,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
               <FormItem>
                 <FormLabel>Hero Image</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=' border-green-400'
+                  <Input disabled={isPending} className=''
                     type="file"
                     accept="image/*"
                     onChange={(e) => onChange(e.target.files?.[0])}
@@ -244,7 +244,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
               <FormItem>
                 <FormLabel>Other Pictures</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=' border-green-400'
+                  <Input disabled={isPending} className=''
                     type="file"
                     accept="image/*"
                     multiple

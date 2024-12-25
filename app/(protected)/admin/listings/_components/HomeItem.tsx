@@ -24,9 +24,6 @@ import {
 import { Homes } from '@/typings'
 
 
-
-
-
 interface HomeItemProps {
   home: Homes
   onDelete: (homeId: number) => void
@@ -41,28 +38,12 @@ export function HomeItem({ home, onDelete }: HomeItemProps) {
     onDelete(home.id)
   }
 
-
-
-
-// export function HomeItem({ home } : { home:  Homes}) {
-
-  // const fadeIn = {
-  //   hidden: { opacity: 0 },
-  //   visible: { opacity: 1, transition: { duration: 0.6 } }
-  // }
-
-  // const slideIn = {
-  //   hidden: { x: -50, opacity: 0 },
-  //   visible: { x: 0, opacity: 1, transition: { duration: 0.6 } }
-  // }
-
   
 return (
 <section
 className=" px-0"
 >
 <div className="">
-  {/* <h2 className="text-3xl font-bold text-center mb-12">Current Listings</h2> */}
   <div className="h-full px-0">
       <div className=' h-full'>
         <Card className=' h-full flex px-0 flex-col'>
@@ -118,8 +99,6 @@ className=" px-0"
           </CardContent>
         </Card>
       </div>
-      
-
   </div>
 </div>
 </section>

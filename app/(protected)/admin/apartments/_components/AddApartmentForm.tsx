@@ -1,11 +1,11 @@
 'use client'
-
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import * as z from 'zod'
 import { Button } from "@/components/ui/button"
 import { Textarea } from '@/components/ui/textarea'
+import { uploadMultipleFilesToS3 } from '@/actions/amazon-s3'
 import { Input } from "@/components/ui/input"
 import {
   Select,
@@ -22,9 +22,7 @@ import {
   FormLabel, 
   FormMessage 
 } from "@/components/ui/form"
-
 import { useRouter } from 'next/navigation'
-
 import { useToast } from '@/hooks/use-toast'
 import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { apartmentSchema } from '@/lib/schema'
@@ -36,7 +34,6 @@ interface AddApartmentProps {
   onSubmit: (data: ApartmentType) => void
   onClose: () => void
 }
-
 export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
   const [isPending, setIsPending] = useState(false)
   const router = useRouter()
@@ -64,6 +61,10 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
 
       if (values.heroImage) {
         formDataToSubmit.heroImage = await uploadFileToS3(values.heroImage, 'jigawa-state');
+      }
+      if (values.images) { 
+          const images = await uploadMultipleFilesToS3(values.images, 'jigawa-state');
+          formDataToSubmit.images = images;
       }
 
       const data = await createApartmentAction(formDataToSubmit)
@@ -194,7 +195,7 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
               <FormItem>
                 <FormLabel className=' dark:text-yellow-200'>Booking Price</FormLabel>
                 <FormControl>
-                  <Input className=' border-green-400 before:content-[NGN] '
+                  <Input className=' before:content-[NGN] '
                     disabled={isPending}
                     { ...field }
                     onChange={(e) => {
@@ -220,7 +221,7 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
               <FormItem>
                 <FormLabel>Hero Image</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=' border-green-400'
+                  <Input disabled={isPending} className=''
                     type="file"
                     accept="image/*"
                     onChange={(e) => onChange(e.target.files?.[0])}
@@ -239,7 +240,7 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
               <FormItem>
                 <FormLabel>Other Pictures</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=' border-green-400'
+                  <Input disabled={isPending} className=''
                     type="file"
                     accept="image/*"
                     multiple
@@ -251,124 +252,12 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
               </FormItem>
             )}
           />
-         
-
 
         </div>
         <Button type="submit" disabled={isPending}>
           {isPending ? 'Submitting...' : 'Submit'}
         </Button>
       </form>
-      {/* <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
-        <div className="grid grid-cols-1 gap-4">
-          <FormField
-            control={form.control}
-            name="title"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Title</FormLabel>
-                <FormControl>
-                  <Input disabled={isPending} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-  
-          <FormField
-            control={form.control}
-            name="description"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Description</FormLabel>
-                <FormControl>
-                  <Textarea disabled={isPending} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-        <FormField
-            control={form.control}
-            name="price"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel className=' dark:text-yellow-200'>Booking Price</FormLabel>
-                <FormControl>
-                  <Input
-                    disabled={isPending}
-                    { ...field }
-                    onChange={(e) => {
-                      const value = e.target.value.replace(/,/g, '');
-                      if (!isNaN(Number(value))) {
-                        field.onChange(Number(value).toLocaleString());
-                      }
-                    }}
-                    value={field.value}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-
-          <FormField
-            control={form.control}
-            name="heroImage"
-            render={({ field: { value, onChange, ...field } }) => (
-              <FormItem>
-                <FormLabel>Picture</FormLabel>
-                <FormControl>
-                  <Input
-                    disabled={isPending}
-                    className='border-green-400'
-                    type="file"
-                    accept="image/*"
-                    onChange={(e) => onChange(e.target.files?.[0])}
-                    {...field}
-                  />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-    <div className=" grid grid-cols-2 gap-4">
-          <FormField
-            control={form.control}
-            name="state"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>State</FormLabel>
-                <FormControl>
-                  <Input disabled={isPending} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-            <FormField
-            control={form.control}
-            name="lga"
-            render={({ field }) => (
-              <FormItem>
-                <FormLabel>Local Government</FormLabel>
-                <FormControl>
-                  <Input disabled={isPending} {...field} />
-                </FormControl>
-                <FormMessage />
-              </FormItem>
-            )}
-          />
-          </div>
-
-
-        </div>
-        <Button type="submit" disabled={isPending}>
-          {isPending ? 'Submitting...' : 'Submit'}
-        </Button>
-      </form> */}
     </Form>
   )
 }

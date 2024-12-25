@@ -79,13 +79,13 @@ export function ApartmentActionArea({
               <div className="flex space-x-2">
                 <Dialog open={isDialogOpen} onOpenChange={setIsDialogOpen}>
                   <DialogTrigger asChild>
-                    <Button className='font-poppins text-white dark:bg-green-500'>Add Apartment</Button>
+                    <Button className='font-poppins text-white dark:bg-primary'>Add Apartment</Button>
                   </DialogTrigger>
                   <DialogContent className="sm:max-w-[700px] max-h-[80%] md:max-w-xl overflow-y-auto">
                     <DialogHeader>
-                      <DialogTitle className='py-5 flex text-center bg-green-200 dark:bg-green-800/30 rounded-lg justify-center'>
-                        <p className='flex items-start text-center font-poppins dark:text-green-200 text-green-800'>Add Apartment </p>
-                      </DialogTitle>
+                        <DialogTitle className='py-5 flex text-center bg-orange-200 rounded-lg justify-center'>
+                          <p className='flex items-start text-center font-poppins dark:text-primary text-primary'>Add Apartment </p>
+                        </DialogTitle>
                     </DialogHeader>
                     <AddApartmentForm onSubmit={handleAddApartment} onClose={() => setIsDialogOpen(false)} />
                   </DialogContent>
@@ -104,7 +104,7 @@ export function ApartmentActionArea({
                     setSearchTerm(e.target.value)
                     setCurrentPage(1)
                   }}
-                  className="max-w-sm outline-green-500 border-green-500 placeholder:text-green-700 w-[350px]"
+                  className="max-w-sm outline-primary border-primary placeholder:text-primary w-[350px]"
                 />
               </div>
             </div>
