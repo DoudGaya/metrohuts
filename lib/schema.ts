@@ -140,6 +140,17 @@ export const loginSchema = z.object({
     heroImage: fileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
     images: multipleFileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
+
+  
+  export const enquirySchema = z.object({
+    userId: z.string().min(2, {
+      message: "Please select a user for this enquiry",
+    }),
+    homeId: z.string().min(2, {
+      message: "Please select a home for this enquiry",
+  }),
+  message: z.string().optional(),
+  })
   
 
   export const signUpSchema = z.object({
@@ -159,3 +170,7 @@ export const loginSchema = z.object({
       message: "Password confirmation must match",
     }),
   })
+
+
+
+

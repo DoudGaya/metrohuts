@@ -39,7 +39,7 @@ const EmailVerification = () => {
 
   return (
     <div>
-      <div className=" max-w-3xl flex items-center space-y-2 justify-center flex-col text-center bg-white">
+      <div className=" max-w-3xl flex items-center space-y-2 justify-center flex-col text-center bg-white py-6 px-10 drop-shadow-lg rounded-lg ">
         <h1 className=' text-2xl font-semibold'>Welcome to MetroHuts</h1>
           {!success && !error && (
             <div className=" flex space-y-2 items-center text-center flex-col py-3">

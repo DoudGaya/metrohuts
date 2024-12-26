@@ -53,7 +53,7 @@ const HomeListing = ( {homeListings}: {
 
               <CardContent className=' flex flex-col justify-between'>
                 <p className="text-gray-600 text-justify h-[100px] overflow-hidden text-sm mb-4">
-                  {home.description} ...
+                  {home.description}
                 </p>
                 <div className="flex justify-between items-center">
                   <span className="text-gray-800 text-sm font-bold">{home.price}</span>

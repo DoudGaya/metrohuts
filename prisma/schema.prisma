@@ -85,8 +85,10 @@ model Enquiries {
   id                Int @id     @default(autoincrement())
   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId            String
+  message           String?
   home              Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
   HomeId            Int
+  date              DateTime    @default(now())
   @@map("enquiries")
 }
 
