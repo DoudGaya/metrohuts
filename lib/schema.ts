@@ -105,9 +105,7 @@ export const loginSchema = z.object({
     address: z.string().min(2, {
       message: "Address must be at least 2 characters",
     }),
-    price: z.string().min(1, {
-      message: "Please add the price of the apartment",
-    }),
+    price: z.number(),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
@@ -130,9 +128,7 @@ export const loginSchema = z.object({
     address: z.string().min(2, {
       message: "Address must be at least 2 characters",
     }),
-    price: z.string().min(1, {
-      message: "Please add the price of the home",
-    }),
+    price: z.number(),
     homeStatus: z.enum([HomeStatus.ComingSoon, HomeStatus.Selling, HomeStatus.Sold]),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
@@ -141,14 +137,12 @@ export const loginSchema = z.object({
     images: multipleFileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
 
-  
+
   export const enquirySchema = z.object({
     userId: z.string().min(2, {
       message: "Please select a user for this enquiry",
     }),
-    homeId: z.string().min(2, {
-      message: "Please select a home for this enquiry",
-  }),
+    homeId: z.number(),
   message: z.string().optional(),
   })
   

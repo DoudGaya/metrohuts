@@ -49,7 +49,7 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
       images: undefined,
       status: undefined,
       lga: '',
-      price: '',
+      price: undefined,
       state: '',
     },
   })

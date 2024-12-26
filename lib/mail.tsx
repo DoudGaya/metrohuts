@@ -84,3 +84,32 @@ export const sendVerificationEmail = async (email: string, token: string) => {
   });
 };
 
+
+export const sendEnquiryEmail = async (
+  email: string, 
+  firstName: string, 
+  message: string, 
+  lastName: string, 
+  propertyTitle: string, 
+  propertyDetails: string
+) => {
+  const content = `
+    <h2 style="color: #f97316;">New Enquiry From Metrohuts</h2>
+    <p>A new enquiry has been submitted:</p>
+    <ul>
+      <li>Enquirer's Email: ${email}</li>
+      <li>Property: ${propertyTitle}</li>
+      <li>Property Details: ${propertyDetails}</li>
+    </ul>
+    <p>Please review and respond to this enquiry as soon as possible.</p>
+    <h3>Message</h3>
+    <p>${message}</p>
+  `;
+
+  await resend.emails.send({
+    from: ` ${firstName} ${lastName} <${email}`,
+    to: `adaag.ad@gmail.com`,
+    subject: `Enquiry for ${propertyTitle}`,
+    html: createEmailTemplate(content),
+  });
+} 

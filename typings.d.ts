@@ -28,7 +28,7 @@ interface ApartmentType {
     state: string;
     lga: string;
     address: string;
-    price: string;
+    price: number;
     description: string;
     slug: string;
     heroImage: string;
@@ -43,7 +43,7 @@ interface Homes {
     state: string;
     lga: string;
     address: string;
-    price: string;
+    price: number;
     slug: string;
     description: string;
     heroImage: string;
@@ -64,7 +64,7 @@ interface EnquiryType {
 interface BookingType {
     id: number;
     title: string;
-    price: string;
+    price: number;
     date: Date;
     checkInDate: Date;
     checkOutDate: Date;

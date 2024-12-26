@@ -35,7 +35,7 @@ model Apartment {
   state               String     
   lga                 String    
   address             String    
-  price               String     
+  price               Int     
   slug                String
   description         String     
   heroImage           String     
@@ -51,7 +51,7 @@ model Homes {
   state             String     
   lga               String     
   address           String     
-  price             String     
+  price             Int     
   slug              String
   description       String     
   heroImage         String     
@@ -67,7 +67,7 @@ model Homes {
 model Bookings {
   id                Int @id     @default(autoincrement())
   title             String
-  price             String
+  price             Int
   date              DateTime    @default(now())
   checkInDate       DateTime
   checkOutDate      DateTime

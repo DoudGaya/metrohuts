@@ -18,3 +18,15 @@ export const slugify = (text: string) => {
       .replace(/^-+/, '')             // Trim - from start of text
       .replace(/-+$/, '')             // Trim - from end of text
 }
+
+
+export function formatCurrency(amount: number): string {
+  return new Intl.NumberFormat('en-NG', {
+    style: 'currency',
+    currency: 'NGN',
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(amount);
+}
+
+

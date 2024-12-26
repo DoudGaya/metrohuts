@@ -30,7 +30,7 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
             lga,
             slug: slugify(title),
             status,
-            price,
+            price ,
             state,
             heroImage,
             images,

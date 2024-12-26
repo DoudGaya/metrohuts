@@ -33,6 +33,11 @@ export function UserHomeActionArea({
   const endIndex = startIndex + itemsPerPage
   const currentHome = filteredHomes.slice(startIndex, endIndex)
 
+
+
+
+
+
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
       <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark-bg border-b drop-shadow-sm  w-full">

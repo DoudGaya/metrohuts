@@ -48,7 +48,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
         description: "",
         lga: "",
         homeStatus: undefined,
-        price: "",
+        price: undefined,
         state: "",
         heroImage: undefined,
         images: undefined,

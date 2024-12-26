@@ -22,6 +22,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Homes } from '@/typings'
+import { formatCurrency } from '@/lib/utils'
 
 
 interface HomeItemProps {
@@ -75,7 +76,7 @@ className=" px-0"
               {home.description}
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-gray-800 text-sm font-bold"> <span className=' text-xs'>NGN</span> {home.price}</span>
+              <span className="text-gray-800 text-sm font-bold"> <span className=' text-xs'></span>{ formatCurrency(home.price)}</span>
               <AlertDialog>
           <AlertDialogTrigger asChild>
             <Button variant="link" className=' text-red-500' size="sm">Delete</Button>

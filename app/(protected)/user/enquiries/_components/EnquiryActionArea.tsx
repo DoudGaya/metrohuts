@@ -6,17 +6,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { EnquiriesItem } from './EnquiryItem'
-
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog"
 import { useToast } from "@/hooks/use-toast"
 import { deleteApartment } from '@/actions/apartments'
-import { ApartmentType, EnquiryType } from '@/typings'
+import { EnquiryType } from '@/typings'
 
 export function ApartmentActionArea({
   enquiries
