@@ -105,7 +105,9 @@ export const loginSchema = z.object({
     address: z.string().min(2, {
       message: "Address must be at least 2 characters",
     }),
-    price: z.number(),
+    price: z.string().min(1, {
+      message: "Please add the price of the apartment",
+    }),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
@@ -128,7 +130,9 @@ export const loginSchema = z.object({
     address: z.string().min(2, {
       message: "Address must be at least 2 characters",
     }),
-    price: z.number(),
+    price: z.string().min(1, {
+      message: "Please add the price of the home",
+    }),
     homeStatus: z.enum([HomeStatus.ComingSoon, HomeStatus.Selling, HomeStatus.Sold]),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",

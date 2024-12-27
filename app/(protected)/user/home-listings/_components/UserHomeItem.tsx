@@ -53,7 +53,7 @@ export function UserHomeItem({ home }: { home: Homes }) {
           <span>{home.state}, {home.lga}</span>
         </div>
         <p className="text-xl font-bold text-primary mb-2">
-          {formatCurrency(home.price)}
+          {home.price}
         </p>
         <p className="text-sm text-muted-foreground line-clamp-2 mb-4">{home.description}</p>
       </CardContent>
@@ -88,7 +88,7 @@ export function UserHomeItem({ home }: { home: Homes }) {
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Price</h4>
-                <p className="text-lg font-bold text-primary">{formatCurrency(home.price)}</p>
+                <p className="text-lg font-bold text-primary">{home.price}</p>
               </div>
               <div>
                 <h4 className="font-semibold mb-2">Status</h4>

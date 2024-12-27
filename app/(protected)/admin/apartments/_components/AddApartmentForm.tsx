@@ -177,8 +177,8 @@ export function AddApartmentForm({ onSubmit, onClose }: AddApartmentProps) {
                         <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
-                            <SelectItem value={ApartmentStatus.Available}>Coming Soon</SelectItem>
-                            <SelectItem value={ApartmentStatus.Booked }>Selling</SelectItem>
+                            <SelectItem value={ApartmentStatus.Available}>Available</SelectItem>
+                            <SelectItem value={ApartmentStatus.Booked }>Booked</SelectItem>
                             {/* <SelectItem value={HomeStatus.Sold}>Sold</SelectItem> */}
                       </SelectContent>
                     </Select>

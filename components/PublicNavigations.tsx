@@ -90,24 +90,40 @@ export const PublicNavigations = () => {
                     </motion.a>
                 ))}
                 <Separator orientation="vertical" className="h-6 border border-primary" />
-                <div className=" flex flex-row items-start  space-x-4">
+               {
+                    session.data ? 
                     <motion.a
-                        href={'/login'}
-                        className="rounded-full font-poppins px-2 py-2 text-primary"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        >
-                        {'Log In'}
-                    </motion.a>
-                    <motion.a
-                        href={'/register'}
-                        className="rounded-full bg-primary font-poppins px-6 py-2 text-white"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
-                        >
-                        {'Get Started'}
-                    </motion.a>
-                </div>
+                          href={'/user/dashboard'}
+                          className="text-gray-800 hover:text-primary transition duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          >
+                          {'Dashboard'}
+                      </motion.a>
+                      : 
+                      (
+                        <div className=" flex flex-row items-start  space-x-4">
+                        <motion.a
+                            href={'/login'}
+                            className="rounded-full font-poppins px-2 py-2 text-primary"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            >
+                            {'Log In'}
+                        </motion.a>
+                        <motion.a
+                            href={'/register'}
+                            className="rounded-full bg-primary font-poppins px-6 py-2 text-white"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            >
+                            {'Get Started'}
+                        </motion.a>
+                    </div>
+                      )
+               }
+               
+               
           </nav>
         </div>
       </header>

@@ -1,18 +1,5 @@
 import { ApartmentStatus, HomeStatus } from "@prisma/client"
 
-interface Project {
-    id: string 
-    title: string
-    length: string
-    description: string
-    duration: DateTime
-    valuation: string
-    state: string
-    city: string
-    location: string 
-    sharePrice: number 
-    roi: number
-}
 
 interface User {
     id: string
@@ -28,7 +15,7 @@ interface ApartmentType {
     state: string;
     lga: string;
     address: string;
-    price: number;
+    price: string;
     description: string;
     slug: string;
     heroImage: string;
@@ -43,7 +30,8 @@ interface Homes {
     state: string;
     lga: string;
     address: string;
-    price: number;
+    price: string;
+
     slug: string;
     description: string;
     heroImage: string;
@@ -64,7 +52,7 @@ interface EnquiryType {
 interface BookingType {
     id: number;
     title: string;
-    price: number;
+    price: string;
     date: Date;
     checkInDate: Date;
     checkOutDate: Date;

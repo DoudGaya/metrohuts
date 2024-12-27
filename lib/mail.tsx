@@ -86,10 +86,9 @@ export const sendVerificationEmail = async (email: string, token: string) => {
 
 
 export const sendEnquiryEmail = async (
-  email: string, 
-  firstName: string, 
-  message: string, 
-  lastName: string, 
+  email: string | null, 
+  name: string | null,
+  message: string | undefined, 
   propertyTitle: string, 
   propertyDetails: string
 ) => {
@@ -107,7 +106,7 @@ export const sendEnquiryEmail = async (
   `;
 
   await resend.emails.send({
-    from: ` ${firstName} ${lastName} <${email}`,
+    from: ` ${name}  <${email}`,
     to: `adaag.ad@gmail.com`,
     subject: `Enquiry for ${propertyTitle}`,
     html: createEmailTemplate(content),
