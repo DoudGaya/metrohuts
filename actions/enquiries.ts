@@ -51,8 +51,7 @@ export const createEnquiryAction = async (data: z.infer<typeof enquirySchema>) =
         if (!user) {
             return { error: "User not found" }
         }
-
-
+        
         await sendEnquiryEmail(
             user?.email,
             user?.name,
@@ -60,10 +59,7 @@ export const createEnquiryAction = async (data: z.infer<typeof enquirySchema>) =
             property.title,
             property.description
         )
-
-
         return { success: "Enquiry has been created successfully", enquiry: enquiry}
-
     } catch (error) {
         console.log(error)
     }

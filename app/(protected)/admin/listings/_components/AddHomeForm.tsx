@@ -197,7 +197,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="price"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className=''>Booking Price</FormLabel>
+                <FormLabel className=''>Selling Price</FormLabel>
                 <FormControl>
                   <Input className='before:content-[NGN] '
                     disabled={isPending}
@@ -215,9 +215,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
               </FormItem>
             )}
           />
-
-</div>
-
+      </div>
         <FormField
             control={form.control}
             name="heroImage"
