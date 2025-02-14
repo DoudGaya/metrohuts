@@ -22,9 +22,10 @@ import {
   DialogTrigger,
 } from "@/components/ui/dialog"
 import { AddHomeForm } from './AddHomeForm'
-import { deletehome } from '@/actions/homes'
+// import { deletehome } from '@/actions/homes'
 import { useToast } from "@/hooks/use-toast"
 import { Homes } from '@/typings'
+import { deleteHomeAction } from '@/actions/homes'
 
 export function HomeActionArea({
   homes
@@ -49,10 +50,10 @@ export function HomeActionArea({
   const endIndex = startIndex + itemsPerPage
   const currentHomes = filteredHomes.slice(startIndex, endIndex)
 
-    const handleHomeDelete = async (apartmentId: number) => {
+    const handleHomeDelete = async (homeId: number) => {
       try {
-        await deletehome(apartmentId)
-        setHomeItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
+        await deleteHomeAction(homeId, 'jigawa-state')
+        setHomeItems(prevItems => prevItems.filter(item => item.id !== homeId))
         toast({
           title: "Home Listing Deleted",
           description: "Home has been deleted successfully",

@@ -2,6 +2,7 @@
 import { db } from '@/lib/db'
 import { homeSchema } from '@/lib/schema'
 import { slugify } from '@/lib/utils'
+import { deleteFileFromS3 } from './amazon-s3'
 import * as z from 'zod'
 
 
@@ -58,14 +59,14 @@ export const getHomeById = async (id: number) => {
 }
 
 
-export const deletehome = async (id: number) => {
-    const home = await db.homes.delete({
-        where: {
-            id
-        }
-    })
-    return {success: "home has been deleted successfully"}
-}
+// export const deletehome = async (id: number) => {
+//     const home = await db.homes.delete({
+//         where: {
+//             id
+//         }
+//     })
+//     return {success: "home has been deleted successfully"}
+// }
 
 
 export const updatehome = async (id: number, values: z.infer<typeof homeSchema>) => {
@@ -105,3 +106,40 @@ export const updatehome = async (id: number, values: z.infer<typeof homeSchema>)
 
     return { success: "home has been updated successfully", home : home}
 }
+
+export const deleteHomeAction = async (homeId: number, bucketName: string) => {
+    try {
+      // Find the home record to get the file keys
+      const home = await db.homes.findUnique({
+        where: { id: homeId },
+      });
+  
+      if (!home) {
+        return { error: "Home not found" };
+      }
+  
+      // Delete hero image
+      if (home.heroImage) {
+        const heroImageKey = new URL(home.heroImage).pathname.slice(1); // Extract key from URL
+        await deleteFileFromS3(bucketName, heroImageKey);
+      }
+  
+      // Delete all other images if they exist
+      if (home.images && Array.isArray(home.images)) {
+        for (const imageUrl of home.images) {
+          const imageKey = new URL(imageUrl).pathname.slice(1);
+          await deleteFileFromS3(bucketName, imageKey);
+        }
+      }
+  
+      // Delete the home record from the database
+      await db.homes.delete({
+        where: { id: homeId },
+      });
+  
+      return { success: "Home and associated files deleted successfully" };
+    } catch (error) {
+      console.error("Error deleting home:", error);
+      return { error: "Failed to delete home" };
+    }
+  };

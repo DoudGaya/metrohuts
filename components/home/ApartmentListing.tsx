@@ -50,8 +50,6 @@ const ApaprtmentListing = ( {
                 <p className="text-sm text-gray-500">{property.state} { property.lga}</p>
                 <small className=" italic font-poppins"> {property.address}  </small>
               </CardHeader>
-
-
               <CardContent className=' h-full flex flex-col justify-between'>
                 <p className="text-gray-600 text-sm mb-4">
                   {property.description}

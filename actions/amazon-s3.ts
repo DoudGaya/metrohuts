@@ -1,10 +1,11 @@
-
+import { DeleteObjectCommand } from "@aws-sdk/client-s3";
 import { S3Client } from "@aws-sdk/client-s3";
 import { Upload } from "@aws-sdk/lib-storage";
 
 import process from "process";
 
-// Configure S3 client
+
+
 const s3Client = new S3Client({
   region: process.env.AWS_REGION,
   credentials: {
@@ -36,6 +37,23 @@ export const uploadFileToS3 = async (file: File, bucketName: string): Promise<st
     throw error;
   }
 };
+
+
+
+export const deleteFileFromS3 = async (bucketName: string, fileKey: string): Promise<void> => {
+  try {
+    const command = new DeleteObjectCommand({
+      Bucket: bucketName,
+      Key: fileKey,
+    });
+    await s3Client.send(command);
+    console.log(`File ${fileKey} deleted successfully from ${bucketName}`);
+  } catch (error) {
+    console.error(`Error deleting file ${fileKey} from S3:`, error);
+    throw error;
+  }
+};
+
 
 export const uploadMultipleFilesToS3 = async (files: FileList, bucketName: string): Promise<string[]> => {
   const uploadPromises = Array.from(files).map(file => uploadFileToS3(file, bucketName));

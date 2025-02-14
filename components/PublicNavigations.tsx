@@ -94,7 +94,7 @@ export const PublicNavigations = () => {
                     session.data ? 
                     <motion.a
                           href={'/user/dashboard'}
-                          className="text-gray-800 hover:text-primary transition duration-300"
+                          className="text-gray-800 bg-primary px-6 py-2 rounded-full hover:text-white transition duration-300"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           >

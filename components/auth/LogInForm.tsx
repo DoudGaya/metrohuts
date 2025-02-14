@@ -90,7 +90,7 @@ export function LoginForm() {
   }
 
   return (
-    <div className=" flex flex-col my-20 bg-white px-12 pt-10 border shadow-lg rounded-lg  w-full">
+    <div className=" flex flex-col my-20  px-6 pt-10 border shadow-lg rounded-lg  w-full">
       <div className=" w-full items-center justify-center py-2 ">
         <Image src={logo} alt="" className=" h-16 w-16 bg-rd-300" />
       </div>

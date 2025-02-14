@@ -8,14 +8,15 @@ import member2 from '@/assets/maikatifa.jpg'
 import chiefEngineer from '@/assets/zaks.jpg'
 
 export const teamMembers = [
+    {   id: '2',
+        image: director,
+        name: "Ahmad Ibrahim Ishaq", role: "President"
+     },
     {   id: '1',
         image: ceo,
         name: "Adam Ahmad Iliyasu", role: "Managing Director, (CEO)"
      },
-    {   id: '2',
-        image: director,
-        name: "Ahmad Ibrahim Ishaq", role: "Director"
-     },
+    
     {   id: '3',
         image: contractor,
         name: "Sahfiu Lawan", role: "Contractor"
@@ -34,7 +35,7 @@ export const teamMembers = [
      },
     {   id: '7',
         image: member1,
-        name: "Sani Musa", role: "Member"
+        name: "Hussaini Labaran Nuhu", role: "Member"
      },
     {   id: '1',
         image: chiefEngineer,
