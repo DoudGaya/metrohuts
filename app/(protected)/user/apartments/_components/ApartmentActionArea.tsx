@@ -33,33 +33,6 @@ export function ApartmentActionArea({
   const endIndex = startIndex + itemsPerPage
   const currentApartment = filteredApartments.slice(startIndex, endIndex)
 
-  const handleApartmentDelete = async (apartmentId: number) => {
-    try {
-      await deleteApartment(apartmentId)
-      setApartmentItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
-      toast({
-        title: "Apartment Deleted",
-        description: "Apartment has been deleted successfully",
-      })
-    } catch (error) {
-      console.error("Error deleting Apartment:", error)
-      toast({
-        title: "Error",
-        description: "Failed to delete Apartment. Please try again.",
-        variant: "destructive",
-      })
-    }
-  }
-
-  const handleAddApartment = (newApartment: ApartmentType) => {
-    setApartmentItems(prevItems => [...prevItems, newApartment])
-    setIsDialogOpen(false)
-    toast({
-      title: "Apartment Added",
-      description: "New Apartment has been added successfully",
-    })
-  }
-
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
       <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark-bg border-b drop-shadow-sm  w-full">
