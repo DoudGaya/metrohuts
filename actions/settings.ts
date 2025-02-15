@@ -1,7 +1,8 @@
 "use server"
 import * as z from 'zod'
 import { db } from '@/lib/db'
-import { getUserById } from '@/data/user'
+import { getUserByEmail, getUserById } from '@/data/user'
+import bcrypt from 'bcryptjs'
 import { currentUser } from '@/lib/auth'
 import { SettingsSchema, settingsSecurityDetailsSchema } from '@/lib/schema'
 import { handleUsersProfileImages } from './images'
@@ -63,18 +64,53 @@ export const profileRecordsUpdate = async (values: z.infer<typeof SettingsSchema
 
 export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecurityDetailsSchema>) => {
       const user = await currentUser();
-    if (!user) {
-        return {error: "Unauthorized"}
-    }
-   
-    const dbUser = await getUserById(user.id);
+
+      if (!user) {
+            return {error: "Unauthorized"}
+      }
+
+
+          const fieldValidation = settingsSecurityDetailsSchema.safeParse(values);
+          if (!fieldValidation.success) {
+               return { error: "field Validation failed " }
+          }
+          const {isTwoFactorEnabled, newPassword, newPasswordConfirmation, oldPassword } = fieldValidation.data
+
+
+          if (!newPassword || !newPasswordConfirmation || !oldPassword) {
+                return {error: "All fields are required"}
+          }
+
+          if (newPassword !== newPasswordConfirmation) return {error: "Password doesn not match"}
+
+            const dbUser = await getUserById(user.id);
+
+
+      
     if (!dbUser) {
         return {error: "Unauthorized"}
     }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10)
+
+        if (!dbUser.email) {
+            return {error: 'email does not exist'}
+        }
+        
+        // checking for an existing user
+        // @ts-check
+        const emailExist = await getUserByEmail(dbUser.email)
+        
+        if (emailExist) {
+            return {error: "User already Exist"}
+        }
+
+
     await db.user.update({
         where: {id: dbUser.id},
         data: {
             ...values,
+            password: hashedPassword,
            }
     })
     return {success: "Profile Updated"}

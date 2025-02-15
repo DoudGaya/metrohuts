@@ -44,7 +44,7 @@ export function ApartmentActionArea({
 
   const handleApartmentDelete = async (apartmentId: number) => {
     try {
-      await deleteApartment(apartmentId)
+      await deleteApartment(apartmentId, 'jigawa-state')
       setApartmentItems(prevItems => prevItems.filter(item => item.id !== apartmentId))
       toast({
         title: "Apartment Deleted",

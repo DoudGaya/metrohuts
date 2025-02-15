@@ -27,7 +27,7 @@ const adminNavs = [
     },
     {
       title: "Settings",
-      url: "#",
+      url: "/admin/profile",
       icon: Settings,
     },
   ]

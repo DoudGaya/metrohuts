@@ -7,6 +7,8 @@ interface User {
     email: string
     password: string
     image: string 
+    bookings: BookingType[]
+    enquiries: EnquiryType[]
 }
 
 interface ApartmentType {
