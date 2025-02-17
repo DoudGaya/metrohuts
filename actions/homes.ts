@@ -1,9 +1,13 @@
 "use server"
 import { db } from '@/lib/db'
-import { homeSchema } from '@/lib/schema'
+import { enquirySchema, homeSchema } from '@/lib/schema'
 import { slugify } from '@/lib/utils'
 import { deleteFileFromS3 } from './amazon-s3'
 import * as z from 'zod'
+import { getUserById } from '@/data/user'
+import { sendEnquiryEmail } from '@/lib/mail'
+
+
 
 
 export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
@@ -57,16 +61,6 @@ export const getHomeById = async (id: number) => {
     })
     return home
 }
-
-
-// export const deletehome = async (id: number) => {
-//     const home = await db.homes.delete({
-//         where: {
-//             id
-//         }
-//     })
-//     return {success: "home has been deleted successfully"}
-// }
 
 
 export const updatehome = async (id: number, values: z.infer<typeof homeSchema>) => {
@@ -143,3 +137,47 @@ export const deleteHomeAction = async (homeId: number, bucketName: string) => {
       return { error: "Failed to delete home" };
     }
   };
+
+
+
+  export const sendHomeRequestToAdmin = async (values: z.infer<typeof enquirySchema >) => {
+
+    const fieldValidation = enquirySchema.safeParse(values);
+    if (!fieldValidation.success) {
+         return { error: "field Validation failed " }
+    }
+
+    const { homeId, userId, message } = fieldValidation.data
+
+    const home = await getHomeById(homeId)
+
+    const user = await getUserById(userId)
+
+    if (!user) {
+        return { error: "User not found" }
+    }
+
+    if (!home) {
+        return { error: "Home not found" }
+    }
+
+    const homeRequest = await db.enquiries.create({
+        data: {
+            message,
+            home: {
+                connect: {
+                    id: homeId
+                }
+            },
+          user: {
+                connect: {
+                    id: userId
+                }
+            }
+        }
+    })
+
+    await sendEnquiryEmail(user.email, user.name, message, home.title, user.phone, home.description)
+
+    return { success: "Home request sent to admin successfully", homeRequest: homeRequest}
+  }

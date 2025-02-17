@@ -150,7 +150,8 @@ export const loginSchema = z.object({
     homeId: z.number(),
   message: z.string().optional(),
   })
-  
+
+
 
   export const signUpSchema = z.object({
     fullName: z.string().min(2, {

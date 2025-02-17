@@ -7,6 +7,7 @@ import { DarkButton } from "./DarkButton"
 import LogoutButton from "./auth/LogOutButton"
 import { RoleGate } from "./auth/RoleGate"
 import { useCurrentRole } from "@/hooks/use-current-role"
+import Link from "next/link"
 import { useCurrentUser } from "@/hooks/use-current-user"
 
 const adminNavs = [
@@ -41,7 +42,7 @@ const adminNavs = [
     },
     {
       title: "Home Listings",
-      url: "/user/home-listings",
+      url: "/user/listings",
       icon: Inbox,
     },
     {
@@ -82,9 +83,9 @@ import { UserRole } from "@prisma/client"
     return (
      <Sidebar className=" w-64 h-full bg-white dark:bg-black border-r dark:border-stone-800">
        <SidebarHeader className=" w-full dark:border-stone-800 flex px-4 border-b justify-start ">
-        <div className=" text-lg font-semibold font-poppins">
+        <Link href={'/'} className=" text-lg font-semibold font-poppins">
           <Image alt="" src={logo} className=" h-10 object-contain object-left" />
-        </div>
+        </Link>
       </SidebarHeader>
         <SidebarContent>
             <SidebarGroup>

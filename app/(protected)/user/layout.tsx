@@ -20,7 +20,7 @@ export default async function UserLayout({ children }: { children: React.ReactNo
       <SessionProvider session={session}>
            <SidebarProvider>
               <AppSidebar />
-              <main className=' w-full'>
+              <main className=' w-full bg-white text-gray-900 h-screen  dark:bg-dark dark:text-gray-300'>
                 <SidebarTrigger />
                    {children}
                    <Toaster />

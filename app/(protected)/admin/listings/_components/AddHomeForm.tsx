@@ -37,9 +37,6 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
   const router = useRouter()
   const { toast } = useToast()
 
-
-
-
   const form = useForm<z.infer<typeof homeSchema>>({
     resolver: zodResolver(homeSchema),
     defaultValues: {
@@ -52,7 +49,6 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
         state: "",
         heroImage: undefined,
         images: undefined,
-
     },
   })
 

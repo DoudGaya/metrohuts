@@ -39,10 +39,10 @@ const EmailVerification = () => {
 
   return (
     <div>
-      <div className=" max-w-3xl flex items-center space-y-2 justify-center flex-col text-center bg-white py-6 px-10 drop-shadow-lg rounded-lg ">
-        <h1 className=' text-2xl font-semibold'>Welcome to MetroHuts</h1>
+      <div className=" max-w-3xl flex items-center space-y-2 justify-center py-20 flex-col text-center dark:bg-black bg-white py-6 px-10 drop-shadow-lg rounded-lg ">
+        <h1 className=' text-2xl dark:text-primary font-semibold'>Welcome to MetroHuts</h1>
           {!success && !error && (
-            <div className=" flex space-y-2 items-center text-center flex-col py-3">
+            <div className=" flex space-y-2 dark:text-primary items-center text-center flex-col py-3">
               <p>Confirming your Email</p>
               <BeatLoader loading={true} size={8} className='' color='#ffda48'  />
             </div>

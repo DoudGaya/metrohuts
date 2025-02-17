@@ -47,10 +47,10 @@ const RootLayout = async ({ children }: { children:  React.ReactNode}) => {
     return (
       <html lang="en">
        <SessionProvider session={session}>
-       <body className={`text-gray-950 dark:bg-dark bg-gray-50`}>
+       <body className={`text-gray-950 bg-gray-50`}>
         <ThemeProvider
               attribute="class"
-              defaultTheme="system"
+              // defaultTheme="system"
               enableSystem
               disableTransitionOnChange
             >

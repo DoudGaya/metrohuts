@@ -89,7 +89,8 @@ export const sendEnquiryEmail = async (
   email: string | null, 
   name: string | null,
   message: string | undefined, 
-  propertyTitle: string, 
+  propertyTitle: string,
+  phone: string | null,
   propertyDetails: string
 ) => {
   const content = `
@@ -97,7 +98,9 @@ export const sendEnquiryEmail = async (
     <p>A new enquiry has been submitted:</p>
     <ul>
       <li>Enquirer's Email: ${email}</li>
+      <li>Enquirer's Email: ${name}</li>
       <li>Property: ${propertyTitle}</li>
+      <li>Enquirer's Phone: ${phone}</li>
       <li>Property Details: ${propertyDetails}</li>
     </ul>
     <p>Please review and respond to this enquiry as soon as possible.</p>
@@ -106,7 +109,7 @@ export const sendEnquiryEmail = async (
   `;
 
   await resend.emails.send({
-    from: ` ${name}  <${email}`,
+    from: 'Metrohuts <noreply@metrohuts.com>',
     to: `adaag.ad@gmail.com`,
     subject: `Enquiry for ${propertyTitle}`,
     html: createEmailTemplate(content),

@@ -16,7 +16,7 @@ const enquiries = await userEnquiries(userId)  as unknown as EnquiryType[]
 
 
   return (
-    <div className='flex bg-white dark:bg-dark-bg'>
+    <div className='flex bg-white dark:bg-dark'>
         <ApartmentActionArea enquiries={enquiries} />
     </div>
     )

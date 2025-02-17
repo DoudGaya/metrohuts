@@ -1,11 +1,7 @@
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from '@/components/ui/card'
 
 import Link from 'next/link'
-// import { fetchSummary } from '@/app/actions'
 
-// interface DashboardSummaryProps {
-//   type: PoliciesType[] | GalleryType[] | NewsType[] | ActivitiesType[]
-// }
 
 export async function DashboardSummary({ 
     count,
@@ -14,17 +10,16 @@ export async function DashboardSummary({
     count: number
     title: string
 }) {
-//   const summary = await fetchSummary(type)
   return (
-    <Card className=' bg-white space-y-2 dark:border-stone-800 dark:bg-black/30'>
+    <Card className=' space-y-2 border-0 bg-gray-200 dark:text-gray-300 dark:bg-black/30'>
       <CardHeader>
-        <CardTitle className="capitalize flex items-center justify-between">
+        <CardTitle className="capitalize py-4 flex items-center justify-between">
             <p className=' text-sm'>{title}</p>
-            <p className='text-xl font-semibold'>{count}</p>
+            <p className='text-2xl font-semibold'>{count}</p>
         </CardTitle>
       </CardHeader>
             <Link className='' href={`/user/${title.toLocaleLowerCase()}`}> 
-                <CardFooter className=' w-full text-sm font-poppins duration-75 font-medium transition-all ease-in-out delay-75 dark:hover:text-green-200 dark:border-stone-800 rounded-b-lg hover:bg-green-300/30 hover:text-green-800 border-t py-1' >
+                <CardFooter className=' w-full text-sm font-poppins duration-75 font-medium transition-all ease-in-out delay-75 border-t dark:hover:text-yellow-300 dark:border-primary rounded-b-lg hover:bg-yelow-300/30 hover:text-yellow-800 py-2' >
                     visit page
                 </CardFooter>
             </Link>

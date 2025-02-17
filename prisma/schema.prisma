@@ -60,11 +60,19 @@ model Homes {
   images            String[]
   @@map("homes")
 }
+model Enquiries {
+  id                Int @id     @default(autoincrement())
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+  message           String?
+  home              Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
+  HomeId            Int
+  date              DateTime    @default(now())
+  @@map("enquiries")
+}
 
 model Bookings {
   id                Int @id     @default(autoincrement())
-  title             String
-  price             String
   date              DateTime    @default(now())
   checkInDate       DateTime
   checkOutDate      DateTime
@@ -78,16 +86,7 @@ model Bookings {
 
 
 
-model Enquiries {
-  id                Int @id     @default(autoincrement())
-  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId            String
-  message           String?
-  home              Homes @relation(fields: [HomeId], references: [id], onDelete: Cascade)
-  HomeId            Int
-  date              DateTime    @default(now())
-  @@map("enquiries")
-}
+
 
 
 

@@ -60,7 +60,7 @@ const HomeDashboard = async () => {
 
 
   return (
-    <div className="p-6 bg-white dark:bg-black w-full border-t dark:border-stone-800 dark:bg-dark-bg min-h-[calc(100vh-5vh)] ">
+    <div className="p-6 bg-white dark:bg-black w-full border-t dark:border-stone-800 dark:text-gray-300 min-h-[calc(100vh-5vh)] ">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map((card) => (
           <Suspense key={card.id} fallback={<CardSkeleton />}>

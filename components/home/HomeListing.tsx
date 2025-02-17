@@ -2,7 +2,18 @@
 import Image from 'next/image'
 import { motion } from 'framer-motion'
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog"
+import Link from 'next/link'
+
+
 
 import { FaHome, FaHotel, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa'
 
@@ -17,18 +28,8 @@ import {
 import { useState } from 'react'
 // import { HomeType } from "@/typings"
 
-import {
-  AlertDialog,
-  AlertDialogAction,
-  AlertDialogCancel,
-  AlertDialogContent,
-  AlertDialogDescription,
-  AlertDialogFooter,
-  AlertDialogHeader,
-  AlertDialogTitle,
-  AlertDialogTrigger,
-} from "@/components/ui/alert-dialog"
 import { Homes } from '@/typings'
+import { useCurrentRole } from '@/hooks/use-current-role'
 import { HomeStatus } from '@prisma/client'
 
 
@@ -45,6 +46,9 @@ const HomeListing = ( {homeListings}: {
         hidden: { x: -50, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 0.6 } }
       }
+
+
+      const role = useCurrentRole()
 
       
   return (
@@ -66,7 +70,7 @@ const HomeListing = ( {homeListings}: {
             alt={home.title}
             width={400}
             height={300}
-            className="w-full h-[300px] object-cover rounded-t-lg"
+            className="w-full h-[250px] object-cover rounded-t-lg"
           />
 
           <CardHeader className=' '>
@@ -85,7 +89,7 @@ const HomeListing = ( {homeListings}: {
               </div>
            </div>
           </CardHeader>
-          <CardContent className='  h-full flex bg-white dark:bg-black space-y-3 flex-col'>
+          <CardContent className=' flex bg-white dark:bg-black space-y-3 flex-col'>
             <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
             <p className="text-gray-600 font-poppins dark:text-gray-300 line-clamp-3 overflow-hidden text-justify text-xs mb-4">
               {home.description}
@@ -117,7 +121,6 @@ const HomeListing = ( {homeListings}: {
                   />
                   <div className=" flex py-2 ">
                   <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> {home.homeStatus} </span>
-
                   </div>
                   <h4 className="font-semibold text-primary font-poppins mb-2">Gallery</h4>
                   <div className="">
@@ -151,57 +154,29 @@ const HomeListing = ( {homeListings}: {
               </SheetContent>
             </Sheet>
 
-           <div className=" flex space-x-3 items-center justify-center">
-            
-           <AlertDialog>
-              <AlertDialogTrigger asChild>
-                <Button variant="outline" size="sm" className='text-red-500'>
-                  Delete
-                </Button>
-              </AlertDialogTrigger>
-              <AlertDialogContent>
-                <AlertDialogHeader>
-                  <AlertDialogTitle>Delete Home</AlertDialogTitle>
-                </AlertDialogHeader>
-                <AlertDialogDescription>
-                  Are you sure you want to delete this home?
-                </AlertDialogDescription>
-                <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  <AlertDialogAction onClick={handleDelete} className='text-red-500'>Delete</AlertDialogAction>
-                </AlertDialogFooter>
-              </AlertDialogContent>
-            </AlertDialog>
-           </div>
+
+            <Link href={role ? `${role.toLocaleLowerCase()}/listings` : '/register'} className=' bg-primary text-black px-3 py-2 rounded-lg'>
+              Buy Now
+            </Link>
+            {/* <Dialog>
+              <DialogTrigger className=' bg-primary text-black px-3 py-2 rounded-lg'>
+                Buy Now
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Are you absolutely sure?</DialogTitle>
+                  <DialogDescription>
+                    This action cannot be undone. This will permanently delete your account
+                    and remove your data from our servers.
+                  </DialogDescription>
+                </DialogHeader>
+              </DialogContent>
+            </Dialog> */}
+
           </CardFooter>
 
         </Card>
-            {/* <Card className=' h-full flex flex-col'>
-              <Image
-                src={home.heroImage}
-                alt={home.title}
-                width={400}
-                height={300}
-                className="w-full h-[250px] object-cover rounded-t-lg"
-              />
-
-              <CardHeader className=' flex flex-col'>
-                <CardTitle className=' text-xl'>{home.title}</CardTitle>
-                <p className="text-sm text-gray-500">{home.state} {home.lga} </p>
-                <span className=' text-sm italic font-poppins'> {home.address} </span>
-              </CardHeader>
-              <CardContent className=' flex flex-col justify-between'>
-                <p className="text-gray-600 text-justify h-[100px] overflow-hidden text-sm mb-4">
-                  {home.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <span className="text-gray-800 text-sm font-bold">{home.price}</span>
-                  <Button variant={'link'} className=" text-yellow-500 bg-transparent font-semibold font-poppins">
-                    Details
-                  </Button>
-                </div>
-              </CardContent>
-            </Card> */}
+           
           </motion.div>
         ))}
       </div>

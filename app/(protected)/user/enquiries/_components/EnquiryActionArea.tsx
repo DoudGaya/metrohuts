@@ -35,12 +35,12 @@ export function ApartmentActionArea({
 
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
-      <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark-bg border-b drop-shadow-sm  w-full">
+      <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark border-b dark:border-primary drop-shadow-sm  w-full">
         <div className="w-full items-center flex px-6 justify-between py-4 rounded-lg">
           <div className="flex flex-col  md:space-y-0 md:flex-row justify-center w-full md:items-center">
             <div className="flex flex-col">
               <div className="mb-4 flex flex-col items-center justify-center text-center space-y-2">
-                <Label htmlFor="search" className='text-base font-poppins font-semibold'>Search Apartment </Label>
+                <Label htmlFor="search" className='text-base dark:bg-gray-900 dark:text-primary font-poppins font-semibold'>Search Apartment </Label>
                 <Input
                   id="search"
                   type="text"
@@ -50,7 +50,7 @@ export function ApartmentActionArea({
                     setSearchTerm(e.target.value)
                     setCurrentPage(1)
                   }}
-                  className="max-w-sm outline-primary border-primary placeholder:primary w-[350px]"
+                  className="max-w-sm outline-primary dark:bg-gray-900 border-primary placeholder:primary w-[350px]"
                 />
               </div>
             </div>
@@ -70,9 +70,9 @@ export function ApartmentActionArea({
                 ))
               ) : (
                 <div className="text-center w-full items-center text-primary flex flex-col justify-center col-span-3 py-16">
-                  <h2 className="text-3xl font-bold mb-4">No Apartment Available</h2>
+                  <h2 className="text-3xl font-bold mb-4"> No Enquiries</h2>
                   <p className="text-lg text-gray-600">
-                    There are currently no listings available. Please check back later.
+                    You have not make any enquiry. Please check back later.
                   </p>
                 </div>
               )
@@ -80,7 +80,7 @@ export function ApartmentActionArea({
           </div>
         </div>
       </ScrollArea>
-      <div className="flex justify-center py-4 bg-white dark:bg-dark-bg border-t">
+      <div className="flex justify-center py-4 bg-white dark:border-primary dark:bg-dark border-t">
         <Button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}
