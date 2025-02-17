@@ -88,18 +88,18 @@ import { UserRole } from "@prisma/client"
       </SidebarHeader>
         <SidebarContent>
             <SidebarGroup>
-                <SidebarGroupLabel> 
+                <SidebarGroupLabel className=" font-poppins font-semibold "> 
                   {role == UserRole.ADMIN ? UserRole.ADMIN : UserRole.USER}
                   {' DASHBOARD'}
                 </SidebarGroupLabel>
                 <SidebarGroupContent>
                     <SidebarMenu>
                         { role == UserRole.ADMIN.toString() &&  adminNavs.map(item => (
-                                <SidebarMenuItem key={item.title}>
-                                    <SidebarMenuButton asChild>
+                                <SidebarMenuItem className="" key={item.title}>
+                                    <SidebarMenuButton className="text-base hover:bg-primary py-2 hover:text-black"  asChild>
                                         <a href={item.url}>
-                                            <item.icon />
-                                            <span> {item.title} </span>
+                                            <item.icon className=" size-16" />
+                                            <span className=" py-2"> {item.title} </span>
                                         </a>
                                     </SidebarMenuButton>
                                 </SidebarMenuItem>
@@ -107,7 +107,7 @@ import { UserRole } from "@prisma/client"
                             }
                             {
                                 role == UserRole.USER.toString() && userNavs.map(item => (
-                                    <SidebarMenuItem key={item.title}>
+                                    <SidebarMenuItem className=" " key={item.title}>
                                         <SidebarMenuButton asChild>
                                             <a href={item.url}>
                                                 <item.icon />

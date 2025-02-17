@@ -32,6 +32,7 @@ import {
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
 import { Homes } from '@/typings'
+import { HomeStatus } from '@prisma/client'
 
 
 interface HomeItemProps {
@@ -56,7 +57,7 @@ className=" px-0"
 <div className="">
   <div className="h-full px-0">
       <div className=' h-full'>
-        <Card className=' h-full flex px-0 flex-col'>
+        <Card className=' h-full justify-between bg-white  dark:bg-black border-gray-200 dark:border-gray-800 text-dark dark:text-orange-200 flex px-0 flex-col'>
           <Image
             src={home?.heroImage}
             alt={home.title}
@@ -65,45 +66,43 @@ className=" px-0"
             className="w-full h-[300px] object-cover rounded-t-lg"
           />
 
-          <CardHeader>
+          <CardHeader className=' '>
             <CardTitle className=' text-base line-clamp-2'>{home?.title}</CardTitle>
-           <div className=" flex flex-col space-y-3 ">
-              <div className="text-sm flex flex-col space-y-1 bg-orange-100 rounded-lg py-2 space-x-3 text-gray-700">
+           <div className=" flex flex-col  space-y-3 ">
+              <div className="text-sm flex flex-col space-y-1 bg-orange-100 dark:bg-dark rounded-lg py-2 space-x-3 dark:text-gray-300 text-gray-700">
                    <div className=" flex items-center px-2 font-semibold  space-x-1">
                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-4 flex-none">
                       <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
                       <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
                     </svg>
-                    <p>Address</p>
+                    {/* <p>Address</p> */}
+                    <p className=' font-semibold'>{home.state + ' '+ home.lga }</p>
                    </div>
                       <p className=' text-xs line-clamp-2'> {home.address} </p>
-                    <p className=' font-semibold'>{home.state + ' '+ home.lga }</p>
               </div>
            </div>
           </CardHeader>
-
-
-          <CardContent className=' h-full flex flex-col justify-between'>
-            <p className="text-gray-600 overflow-hidden text-justify text-sm h-[100px] mb-4">
+          <CardContent className='  h-full flex bg-white dark:bg-black space-y-3 flex-col'>
+            <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
+            <p className="text-gray-600 font-poppins dark:text-gray-300 line-clamp-3 overflow-hidden text-justify text-xs mb-4">
               {home.description}
             </p>
             <div className="flex justify-between items-center">
-              <span className="text-gray-800 text-sm font-bold"> <span className=' text-xs'>NGN</span> {home.price}</span>
-              
+              <span className="text-green-500 text-xl font-mono font-bold"> <span className=' text-xs'>NGN</span> {home.price}</span>
             </div>
           </CardContent>
         
           <CardFooter className=' flex justify-between items-center'>
             <Sheet>
               <SheetTrigger asChild>
-                <Button variant="outline" size="sm">
+                <button className=' bg-transparent border-0 hover:underline'>
                   Details
-                </Button>
+                </button>
               </SheetTrigger>
-              <SheetContent className="sm:max-w-[700px] max-w-full w-full h-full overflow-y-auto">
+              <SheetContent className="sm:max-w-[700px] bg-white dark:bg-dark dark:border-primary/50 dark:text-gray-300 max-w-full w-full h-full overflow-y-auto">
                 <SheetHeader>
-                  <SheetTitle>{home.title}</SheetTitle>
-                  <SheetDescription>{home.address}</SheetDescription>
+                  <SheetTitle className=' text-2xl font-poppins text-primary'>{home.title}</SheetTitle>
+                  <SheetDescription >{home.address}</SheetDescription>
                 </SheetHeader>
                 <div className="mt-4 space-y-4">
                   <Image
@@ -113,7 +112,11 @@ className=" px-0"
                     height={300}
                     className="rounded-lg h-[400px] w-full object-cover"
                   />
-                  <h4 className="font-semibold mb-2">Gallery</h4>
+                  <div className=" flex py-2 ">
+                  <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> {home.homeStatus} </span>
+
+                  </div>
+                  <h4 className="font-semibold text-primary font-poppins mb-2">Gallery</h4>
                   <div className="">
                     {home.images && home.images.length > 0 && (
                       <div className=' grid grid-cols-3 gap-2'>
@@ -131,22 +134,23 @@ className=" px-0"
                     )}
                   </div>
                   <div>
-                    <h4 className="font-semibold mb-2">Description</h4>
-                    <p className="text-sm text-muted-foreground">{home.description}</p>
+                    <h4 className="font-semibold text-primary mb-2">Description</h4>
+                    <p className="text-sm text-muted-foreground text-pretty font-poppins">{home.description}</p>
                   </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Location</h4>
-                    <p className="text-sm text-muted-foreground">{home.address}, {home.lga}, {home.state}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold mb-2">Price</h4>
-                    <p className="text-sm text-muted-foreground">{home.price}</p>
+                  
+                  <div className=' flex flex-col space-y-1'>
+                    <div className=" flex flex-col">
+                    <h4 className="font-semibold">Price</h4>
+                    <p className="font-mono text-2xl font-bold text-green-500">{ 'NGN ' + home.price}</p>
+                    </div>
                   </div>
                 </div>
               </SheetContent>
             </Sheet>
 
-            <AlertDialog>
+           <div className=" flex space-x-3 items-center justify-center">
+            
+           <AlertDialog>
               <AlertDialogTrigger asChild>
                 <Button variant="outline" size="sm" className='text-red-500'>
                   Delete
@@ -165,6 +169,7 @@ className=" px-0"
                 </AlertDialogFooter>
               </AlertDialogContent>
             </AlertDialog>
+           </div>
           </CardFooter>
 
         </Card>

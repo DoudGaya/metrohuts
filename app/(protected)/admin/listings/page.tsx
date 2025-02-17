@@ -10,7 +10,7 @@ const AdminCasePage = async () => {
   const homes = await getAllhomes() as Homes[]
 
   return (
-    <div className='flex bg-white dark:bg-dark-bg'>
+    <div className='flex bg-white dark:bg-dark'>
         <HomeActionArea homes={homes} />
     </div>
     )

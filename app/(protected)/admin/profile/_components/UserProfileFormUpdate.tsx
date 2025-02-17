@@ -114,7 +114,7 @@ export const UserProfileFormUpdate = ( {editModal, changeModal}: {editModal: str
     }
     if (editModal === "profile") {
         return (
-           <div className=" flex flex-col space-y-4 h-fit shadow-sm w-full  bg-white rounded-lg">
+           <div className=" flex flex-col space-y-4 h-fit shadow-sm w-full  bg-white dark:bg-black rounded-lg">
            <div className="font-poppins flex justify-between text-xl px-4 bg-primary rounded-t-lg py-4">
             <h2 className=''>Update Profile Details</h2>
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
@@ -130,14 +130,14 @@ export const UserProfileFormUpdate = ( {editModal, changeModal}: {editModal: str
                     name="image"
                     render={({ field }) => (
                       <FormItem>
-                        <FormLabel className=' flex flex-col p-4 rounded-md border border-dotted items-center justify-center text-center space-y-4'>
+                        <FormLabel className=' flex flex-col dark:bg-black p-4 border-primary rounded-md border border-dotted items-center justify-center text-center space-y-4'>
                           <div className="">
                           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M12 16.5V9.75m0 0 3 3m-3-3-3 3M6.75 19.5a4.5 4.5 0 0 1-1.41-8.775 5.25 5.25 0 0 1 10.233-2.33 3 3 0 0 1 3.758 3.848A3.752 3.752 0 0 1 18 19.5H6.75Z" />
                           </svg>
                           </div>
                         <FormControl className=' w-full items-center justify-center text-center flex'>
-                          <Input disabled={isPending} type='file' onChange={handleImageChange} className=" border-none" placeholder="Name" />
+                          <Input disabled={isPending} type='file' onChange={handleImageChange} className=" bg-gray-100 dark:bg-black border-primary outline-yellow-500 border-none" placeholder="Name" />
                         </FormControl>
                         </FormLabel>
                         <FormMessage />
@@ -151,7 +151,7 @@ export const UserProfileFormUpdate = ( {editModal, changeModal}: {editModal: str
                       <FormItem>
                         <FormLabel>Name</FormLabel>
                         <FormControl>
-                          <Input disabled={isPending} className=" outline-yellow-500" placeholder="Name" {...field} />
+                          <Input disabled={isPending} className=" bg-gray-100 dark:bg-gray-950 border-primary outline-yellow-500" placeholder="Name" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>
@@ -166,7 +166,7 @@ export const UserProfileFormUpdate = ( {editModal, changeModal}: {editModal: str
                           <FormItem>
                             <FormLabel>Email Address</FormLabel>
                             <FormControl>
-                              <Input disabled={isPending} className=" outline-yellow-500" placeholder="Email Address" {...field} />
+                              <Input disabled={isPending} className=" bg-gray-100 dark:bg-gray-950 border-primary outline-yellow-500" placeholder="Email Address" {...field} />
                             </FormControl>
                             <FormMessage />
                           </FormItem>
@@ -180,7 +180,7 @@ export const UserProfileFormUpdate = ( {editModal, changeModal}: {editModal: str
                       <FormItem>
                         <FormLabel>Phone Number</FormLabel>
                         <FormControl>
-                          <Input disabled={isPending} className=" outline-yellow-500" placeholder="(234) 000 000 000" {...field} />
+                          <Input disabled={isPending} className=" bg-gray-100 dark:bg-gray-950 border-primary outline-yellow-500" placeholder="(234) 000 000 000" {...field} />
                         </FormControl>
                         <FormMessage />
                       </FormItem>

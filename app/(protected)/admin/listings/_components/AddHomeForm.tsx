@@ -93,17 +93,17 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
 
   
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8">
+    <Form {...form} >
+      <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 dark:text-orange-200">
         <div className="grid grid-cols-1 gap-4">
           <FormField
             control={form.control}
             name="title"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Title</FormLabel>
+                <FormLabel className=' text-primary'>Title</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} {...field} />
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -114,9 +114,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="description"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Home Description</FormLabel>
+                <FormLabel className=' text-primary'>Home Description</FormLabel>
                 <FormControl>
-                  <Textarea className=' h-[120px]' disabled={isPending} {...field} />
+                  <Textarea className=' dark:bg-dark dark:border-gray-700 border-gray-200  h-[120px]' disabled={isPending} {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -128,9 +128,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="address"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Address</FormLabel>
+                <FormLabel className=' text-primary'>Address</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} {...field} />
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -144,9 +144,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="state"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>State</FormLabel>
+                <FormLabel className=' text-primary'>State</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} {...field} />
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -157,9 +157,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="lga"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Local Government</FormLabel>
+                <FormLabel className=' text-primary'>Local Government</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} {...field} />
+                  <Input disabled={isPending} className=' dark:border-gray-700 focus-visible:ring-0 border-gray-200 dark:bg-dark' {...field} />
                 </FormControl>
                 <FormMessage />
               </FormItem>
@@ -174,10 +174,10 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="homeStatus"
             render={({ field }) => (
               <FormItem>
-                <FormLabel>Status</FormLabel>
+                <FormLabel className=' text-primary'>Status</FormLabel>
                 <FormControl>
                   <Select disabled={isPending} onValueChange={field.onChange} defaultValue={field.value}>
-                      <SelectTrigger>
+                      <SelectTrigger className=' dark:border-gray-700 border-gray-200  dark:bg-dark text-primary active:border-primary'>
                         <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
@@ -199,7 +199,7 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
               <FormItem>
                 <FormLabel className=''>Selling Price</FormLabel>
                 <FormControl>
-                  <Input className='before:content-[NGN] '
+                  <Input className='before:content-[NGN] dark:bg-dark border-primary'
                     disabled={isPending}
                     { ...field }
                     onChange={(e) => {
@@ -221,9 +221,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="heroImage"
             render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
-                <FormLabel>Hero Image</FormLabel>
+                <FormLabel className=' text-primary'>Hero Image</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=''
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark'
                     type="file"
                     accept="image/*"
                     onChange={(e) => onChange(e.target.files?.[0])}
@@ -240,9 +240,9 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
             name="images"
             render={({ field: { value, onChange, ...field } }) => (
               <FormItem>
-                <FormLabel>Other Pictures</FormLabel>
+                <FormLabel className=' text-primary'>Other Pictures</FormLabel>
                 <FormControl>
-                  <Input disabled={isPending} className=''
+                  <Input disabled={isPending} className=' dark:border-gray-700 border-gray-200  dark:bg-dark' 
                     type="file"
                     accept="image/*"
                     multiple
@@ -254,9 +254,6 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
               </FormItem>
             )}
           />
-         
-
-
         </div>
         <Button type="submit" disabled={isPending}>
           {isPending ? 'Submitting...' : 'Submit'}

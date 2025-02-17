@@ -7,7 +7,6 @@ import { Label } from "@/components/ui/label"
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { ApartmentItem } from './ApartmentItem'
 import { useToast } from "@/hooks/use-toast"
-import { deleteApartment } from '@/actions/apartments'
 import { ApartmentType } from '@/typings'
 
 export function ApartmentActionArea({
@@ -28,10 +27,13 @@ export function ApartmentActionArea({
     item?.description?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
+
+
   const totalPages = Math.ceil(filteredApartments.length / itemsPerPage)
   const startIndex = (currentPage - 1) * itemsPerPage
   const endIndex = startIndex + itemsPerPage
   const currentApartment = filteredApartments.slice(startIndex, endIndex)
+
 
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">

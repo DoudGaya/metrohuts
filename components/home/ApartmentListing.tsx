@@ -29,7 +29,7 @@ const ApaprtmentListing = ( {
     whileInView="visible"
     viewport={{ once: true }}
     variants={fadeIn}
-    className="py-16 bg-white"
+    className="py-16 bg-white dark:bg-dark"
   >
     <div className="container mx-auto px-4">
       <h2 className="text-3xl font-bold text-center text-primary mb-12">Apartment Listings</h2>

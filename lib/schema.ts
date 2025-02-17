@@ -112,8 +112,8 @@ export const loginSchema = z.object({
       message: "Description must be at least 2 characters",
     }),
     status: z.enum(['Available', 'Booked']).optional(),
-    heroImage: fileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
-    images: multipleFileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    heroImage: fileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    images: multipleFileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
 
 
@@ -137,9 +137,10 @@ export const loginSchema = z.object({
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
-    heroImage: fileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
-    images: multipleFileValidation(5000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    heroImage: fileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    images: multipleFileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
+
 
 
   export const enquirySchema = z.object({

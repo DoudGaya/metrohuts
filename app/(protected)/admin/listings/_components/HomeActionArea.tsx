@@ -91,7 +91,7 @@ export function HomeActionArea({
                   <DialogTrigger asChild>
                     <Button className='font-poppins text-white dark:bg-primary'>Add Home</Button>
                   </DialogTrigger>
-                  <DialogContent className="sm:max-w-[700px] max-h-[80%] md:max-w-xl overflow-y-auto">
+                  <DialogContent className="sm:max-w-[700px] bg-white dark:bg-black max-h-[80%] md:max-w-xl overflow-y-auto">
                     <DialogHeader>
                       <DialogTitle className='py-5 flex text-center bg-orange-200 dark:text-orange-200 rounded-lg justify-center'>
                         <p className='flex items-start text-center font-poppins text-orange-600'>Add Home</p>
@@ -123,7 +123,7 @@ export function HomeActionArea({
       </div>
       <ScrollArea className="flex-grow dark:bg-dark ">
         <div className="p-4">
-          <div className="grid grid-cols-1 dark:bg-dark h-full md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 dark:bg-dark h-full md:grid-cols-2 lg:grid-cols-3 gap-4">
             {currentHomes.map((home) => (
               <HomeItem home={home} key={home.id} onDelete={handleHomeDelete}  />
             ))}

@@ -31,14 +31,14 @@ export const UserProfileDetails = ({ changeModal }) => {
 
 
   return (
-  <div className=" flex h-full w-full">
+  <div className=" flex w-full">
       <div className='w-full p-3 bg-white dark:bg-stone-950 shadow-sm rounded-lg flex flex-col'>
         <div className=" flex flex-col w-full py-8 space-y-6 items-center justify-center">
            <div className=" flex flex-col items-center space-y-3 justify-center">
                 <div className=" flex flex-col items-center space-y-3 justify-center">
                         <div className=" h-[90px] w-[90px] rounded-full overflow-hidden border-4 border-primary ">
                             { user.image ? <Image height={1000} width={1000} src={ user.image } className=' object-center object-cover w-full h-full rounded-full' alt='' />  : (
-                                <div className=" w-full h-full text-lg  flex items-center justify-center rounded-full bg-white font-poppins">
+                                <div className=" w-full h-full text-lg  flex items-center justify-center rounded-full dark:bg-black bg-white font-poppins">
                                     MH
                                 </div>  
                             )}

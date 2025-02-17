@@ -61,9 +61,6 @@ model Homes {
   @@map("homes")
 }
 
-
-
-
 model Bookings {
   id                Int @id     @default(autoincrement())
   title             String

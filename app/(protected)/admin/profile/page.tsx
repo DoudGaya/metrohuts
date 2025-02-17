@@ -12,8 +12,8 @@ const ProfilePage = () => {
     setEditModal(message)
   }
   return (
-    <div className=' flex w-full p-2 h-full'>
-      <div className=" grid grid-cols-1 gap-4 w-full md:grid-cols-3">
+    <div className=' flex w-full p-2'>
+      <div className=" grid grid-cols-1 w-full gap-4 md:grid-cols-3">
         <UserProfileDetails changeModal={changeModal} />
         <UserProfileFormUpdate editModal={editModal} changeModal={changeModal} />
         <SecurityDetailsForm editModal={editModal} changeModal={changeModal} />
