@@ -48,6 +48,7 @@ interface EnquiryType {
     userId:             string
     home:               Homes
     message:            string
+    date:               Date
     homeId:             number
 }
 
@@ -58,6 +59,6 @@ interface BookingType {
     date: Date;
     checkInDate: Date;
     checkOutDate: Date;
-    userId: string;
-    apartmentId: number;
+    apartment: ApartmentType;
+    user: User;
 }

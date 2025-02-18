@@ -57,10 +57,49 @@ export const createEnquiryAction = async (data: z.infer<typeof enquirySchema>) =
             user?.name,
             message,
             property.title,
+            user?.phone,
             property.description
         )
         return { success: "Enquiry has been created successfully", enquiry: enquiry}
     } catch (error) {
         console.log(error)
     }
+}
+
+
+export const getUSerEnquiries = async (userId: string) => {
+    const enquiries = await db.enquiries.findMany({
+        where: {
+            userId
+        },
+        include: {
+            home: true
+        }
+    })
+    return enquiries
+}
+
+
+export const getEnquiryById = async (id: number) => {
+    const enquiry = await db.enquiries.findUnique({
+        where: {
+            id
+        },
+        include: {
+            home: true,
+            user: true
+        }
+    })
+    return enquiry
+}
+
+
+export const getAllEnquiries = async () => {
+    const enquiries = await db.enquiries.findMany({
+        include: {
+            home: true,
+            user: true
+        }
+    })
+    return enquiries
 }

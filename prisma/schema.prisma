@@ -28,7 +28,6 @@ model User {
 }
 
 
-
 model Apartment {
   id                  Int        @id @default(autoincrement())
   title               String     
@@ -40,10 +39,52 @@ model Apartment {
   description         String     
   heroImage           String     
   images              String[]
-  booking             Bookings?
+  bookings            Bookings[] // Changed from booking to bookings (plural) and made it an array
   status              ApartmentStatus @default(Available)  
   @@map("apartments")
 }
+
+model Bookings {
+  id                Int @id     @default(autoincrement())
+  date              DateTime    @default(now())
+  checkInDate       DateTime
+  checkOutDate      DateTime
+  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId            String
+  apartment         Apartment   @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+  apartmentId       Int         // Removed @unique constraint
+  @@map("bookings")
+}
+
+
+// model Apartment {
+//   id                  Int        @id @default(autoincrement())
+//   title               String     
+//   state               String     
+//   lga                 String    
+//   address             String    
+//   price               String     
+//   slug                String
+//   description         String     
+//   heroImage           String     
+//   images              String[]
+//   booking             Bookings?
+//   status              ApartmentStatus @default(Available)  
+//   @@map("apartments")
+// }
+
+// model Bookings {
+//   id                Int @id     @default(autoincrement())
+//   date              DateTime    @default(now())
+//   checkInDate       DateTime
+//   checkOutDate      DateTime
+//   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId            String
+//   apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+//   apartmentId       Int @unique
+//   @@map("bookings")
+// }
+
 
 model Homes {
   id                Int        @id @default(autoincrement())
@@ -71,17 +112,17 @@ model Enquiries {
   @@map("enquiries")
 }
 
-model Bookings {
-  id                Int @id     @default(autoincrement())
-  date              DateTime    @default(now())
-  checkInDate       DateTime
-  checkOutDate      DateTime
-  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-  userId            String
-  apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
-  apartmentId       Int @unique
-  @@map("bookings")
-}
+// model Bookings {
+//   id                Int @id     @default(autoincrement())
+//   date              DateTime    @default(now())
+//   checkInDate       DateTime
+//   checkOutDate      DateTime
+//   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+//   userId            String
+//   apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+//   apartmentId       Int @unique
+//   @@map("bookings")
+// }
 
 
 

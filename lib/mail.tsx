@@ -115,3 +115,37 @@ export const sendEnquiryEmail = async (
     html: createEmailTemplate(content),
   });
 } 
+
+
+
+export const sendBookingMailToAdmin = async (
+  email: string | null, 
+  name: string | null,
+  checkInDate: Date | undefined, 
+  checkOutData: Date | undefined, 
+  propertyTitle: string,
+  phone: string | null,
+  propertyDetails: string
+) => {
+  const content = `
+    <h2 style="color: #f97316;">New Enquiry From Metrohuts</h2>
+    <p>A new Booking has been submitted:</p>
+    <ul>
+      <li>User's Email: ${email}</li>
+      <li>User's Name: ${name}</li>
+      <li>Apartment: ${propertyTitle}</li>
+      <li>User's Phone: ${phone}</li>
+      <li>Checkin Date : ${checkInDate?.toLocaleDateString()}</li>
+      <li>Chechout Date: ${checkOutData?.toLocaleDateString()}</li>
+      <li>Apartment Details: ${propertyDetails}</li>
+    </ul>
+    <p>Please review and respond to this enquiry as soon as possible.</p>
+  `;
+
+  await resend.emails.send({
+    from: 'Metrohuts <noreply@metrohuts.com>',
+    to: `adaag.ad@gmail.com`,
+    subject: `Enquiry for ${propertyTitle}`,
+    html: createEmailTemplate(content),
+  });
+} 

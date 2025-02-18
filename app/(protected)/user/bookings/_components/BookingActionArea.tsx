@@ -5,17 +5,17 @@ import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { ScrollArea } from '@/components/ui/scroll-area'
-import { EnquiriesItem } from './EnquiryItem'
+import { BookingItem } from './BookingItem'
 import { useToast } from "@/hooks/use-toast"
 import { deleteApartment } from '@/actions/apartments'
-import { EnquiryType } from '@/typings'
+import { BookingType, EnquiryType } from '@/typings'
 
-export function ApartmentActionArea({
-  enquiries
+export function BookingActionArea({
+  bookings
 }: {
-  enquiries: EnquiryType[]
+  bookings: BookingType[]
 }) {
-  const [anquiriesItem, setEnquiriesItem] = useState<EnquiryType[]>([...enquiries])
+  const [bookingsItems, setBookingsItems] = useState<BookingType[]>([...bookings])
   const [currentPage, setCurrentPage] = useState(1)
   const [searchTerm, setSearchTerm] = useState('')
   const [isDialogOpen, setIsDialogOpen] = useState(false)
@@ -23,9 +23,9 @@ export function ApartmentActionArea({
 
   const itemsPerPage = 20
 
-  const filtereEnquiries = anquiriesItem.filter(item =>
-    item?.home?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    item?.home?.description?.toLowerCase().includes(searchTerm.toLowerCase())
+  const filtereEnquiries = bookingsItems.filter(item =>
+    item?.apartment?.title?.toLowerCase().includes(searchTerm.toLowerCase()) ||
+    item?.apartment?.description?.toLowerCase().includes(searchTerm.toLowerCase())
   )
 
   const totalPages = Math.ceil(filtereEnquiries.length / itemsPerPage)
@@ -61,8 +61,8 @@ export function ApartmentActionArea({
         <div className="p-4">
           <div className="grid max-w-7xl w-full items-center justify-center mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {
-              anquiriesItem.length > 0 ? (
-                currentEnquiries.map( (en) => <EnquiriesItem key={en.id} enquiry={en}/>)
+              bookingsItems.length > 0 ? (
+                currentEnquiries.map( (booking) => <BookingItem key={booking.id} booking={booking}/>)
               ) : (
                 <div className="text-center w-full items-center text-primary flex flex-col justify-center col-span-3 py-16">
                   <h2 className="text-3xl font-bold mb-4"> No Enquiries</h2>

@@ -152,6 +152,20 @@ export const loginSchema = z.object({
   })
 
 
+  export const bookingSchema = z.object({
+    userId: z.string().min(2, {
+      message: "Please select a user for this booking",
+    }),
+    apartmentId: z.number(),
+    checkInDate: z.string().min(2, {
+      message: "Please select a check in date",
+    }),
+    checkOutDate: z.string().min(2, {
+      message: "Please select a check out date",
+    }),
+  })
+
+
 
   export const signUpSchema = z.object({
     fullName: z.string().min(2, {

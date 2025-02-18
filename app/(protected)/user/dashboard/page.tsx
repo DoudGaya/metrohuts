@@ -6,7 +6,7 @@ import { CardSkeleton } from './_components/card-skeleton'
 import { getAllRecords } from '@/actions/admin'
 import { getAllhomes } from '@/actions/homes'
 import { ApartmentType, BookingType, EnquiryType, Homes } from '@/typings'
-import { getAllApartments } from '@/actions/apartments'
+import { getAllApartments, getBookingsByUserId } from '@/actions/apartments'
 import { userBookings, userEnquiries } from '@/data/user'
 import { auth } from '@/auth'
 
@@ -21,7 +21,7 @@ const HomeDashboard = async () => {
 
   const homes = await getAllhomes() as Homes[]
   const apartments = await getAllApartments() as ApartmentType[]
-  const bookings = await userBookings(user.id) as BookingType[]
+  const bookings = await getBookingsByUserId(user.id) as unknown as BookingType[]
   const enquiries = await userEnquiries(user.id) as unknown as EnquiryType[]
 
 

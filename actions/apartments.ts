@@ -1,10 +1,12 @@
 "use server"
 import { db } from '@/lib/db'
-import { apartmentSchema } from '@/lib/schema'
+import { apartmentSchema, bookingSchema } from '@/lib/schema'
 import { slugify } from '@/lib/utils'
 import { ApartmentStatus } from '@prisma/client'
 import * as z from 'zod'
 import { deleteFileFromS3 } from './amazon-s3'
+import { getUserById } from '@/data/user'
+import { sendBookingMailToAdmin } from '@/lib/mail'
 
 
 export const createApartmentAction = async (values: z.infer<typeof apartmentSchema >) => {
@@ -48,7 +50,7 @@ export const getAllApartments = async () => {
 }
 
 
-export const etApartmentById = async (id: number) => {
+export const getApartmentById = async (id: number) => {
     const apartment = await db.apartment.findUnique({
         where: {
             id
@@ -143,3 +145,70 @@ export const deleteApartment = async (homeId: number, bucketName: string) => {
       return { error: "Failed to delete home" };
     }
   };
+
+    export const sendBookingRequestToAdmin = async (values: z.infer<typeof bookingSchema >) => {
+  
+      const fieldValidation = bookingSchema.safeParse(values);
+      if (!fieldValidation.success) {
+           return { error: "field Validation failed " }
+      }
+  
+      const { apartmentId, userId, checkInDate, checkOutDate } = fieldValidation.data
+  
+      const home = await getApartmentById(apartmentId)
+  
+      const user = await getUserById(userId)
+  
+      if (!user) {
+          return { error: "User not found" }
+      }
+  
+      if (!home) {
+          return { error: "Home not found" }
+      }
+  
+      const homeRequest = await db.bookings.create({
+          data: {
+              checkInDate,
+              checkOutDate,
+              apartment: {
+                  connect: {
+                      id: apartmentId
+                  }
+              },
+            user: {
+                  connect: {
+                      id: userId
+                  }
+              }
+          }
+      })
+  
+      await sendBookingMailToAdmin(user.email, user.name, new Date(checkInDate), new Date(checkOutDate), home.title, user.phone, home.description)
+  
+      return { success: "Home request sent to admin successfully", homeRequest: homeRequest}
+    }
+
+
+
+    export const getBookingsByUserId = async (userId: string) => {
+        const bookings = await db.bookings.findMany({
+            where: {
+                userId
+            },
+            include: {
+                apartment: true
+            }
+        })
+        return bookings
+    }
+
+    export const getAllBookings = async () => {
+        const bookings = await db.bookings.findMany({
+            include: {
+                apartment: true,
+                user: true
+            }
+        })
+        return bookings
+    }

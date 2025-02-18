@@ -1,5 +1,5 @@
 'use client'
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, BoxesIcon, CalendarCheck, PhoneCallIcon, Settings } from "lucide-react"
 import logo from '@/assets/metrohuts-logo.png'
 import Image from "next/image"
 import { DarkButton } from "./DarkButton"
@@ -27,6 +27,11 @@ const adminNavs = [
       icon: Calendar,
     },
     {
+      title: "Bookings",
+      url: "/admin/bookings",
+      icon: CalendarCheck,
+    },
+    {
       title: "Settings",
       url: "/admin/profile",
       icon: Settings,
@@ -51,9 +56,14 @@ const adminNavs = [
       icon: Calendar,
     },
     {
+      title: "Bookings",
+      url: "/user/bookings",
+      icon: CalendarCheck,
+    },
+    {
       title: "My Enquiries",
       url: "/user/enquiries",
-      icon: Calendar,
+      icon: PhoneCallIcon,
     },
 
     {
@@ -78,7 +88,6 @@ import {
 import { UserRole } from "@prisma/client"
   
   export function AppSidebar() {
-
     const role = useCurrentRole()
     return (
      <Sidebar className=" w-64 h-full bg-white dark:bg-black border-r dark:border-stone-800">
