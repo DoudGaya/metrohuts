@@ -110,7 +110,7 @@ export const sendEnquiryEmail = async (
 
   await resend.emails.send({
     from: 'Metrohuts <noreply@metrohuts.com>',
-    to: `adaag.ad@gmail.com`,
+    to: `metrohuts.ng@gmail.com`,
     subject: `Enquiry for ${propertyTitle}`,
     html: createEmailTemplate(content),
   });
@@ -144,7 +144,7 @@ export const sendBookingMailToAdmin = async (
 
   await resend.emails.send({
     from: 'Metrohuts <noreply@metrohuts.com>',
-    to: `adaag.ad@gmail.com`,
+    to: `metrohuts.ng@gmail.com`,
     subject: `Enquiry for ${propertyTitle}`,
     html: createEmailTemplate(content),
   });
