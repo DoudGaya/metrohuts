@@ -1,5 +1,5 @@
 'use client'
-import { Calendar, Home, Inbox, BoxesIcon, CalendarCheck, PhoneCallIcon, Settings } from "lucide-react"
+import { Calendar, Home, Inbox, BoxesIcon, CalendarCheck, PhoneCall, UsersRound, PhoneCallIcon, Settings } from "lucide-react"
 import logo from '@/assets/metrohuts-logo.png'
 import Image from "next/image"
 import { DarkButton } from "./DarkButton"
@@ -26,11 +26,21 @@ const adminNavs = [
       url: "/admin/apartments",
       icon: Calendar,
     },
+    // {
+    //   title: "Bookings",
+    //   url: "/admin/bookings",
+    //   icon: CalendarCheck,
+    // },
     {
-      title: "Bookings",
-      url: "/admin/bookings",
-      icon: CalendarCheck,
+      title: "Users",
+      url: "/admin/users",
+      icon: UsersRound,
     },
+    // {
+    //   title: "Enquiries",
+    //   url: "/admin/enquiries",
+    //   icon: PhoneCall,
+    // },
     {
       title: "Settings",
       url: "/admin/profile",
