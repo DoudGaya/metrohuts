@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
+
 import {
   Sheet,
   SheetContent,
@@ -27,6 +28,7 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog"
+
 import { ApartmentType } from "@/typings"
 
 interface GalleryItemProps {

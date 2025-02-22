@@ -70,8 +70,8 @@ export function ApartmentActionArea({
   }
 
   return (
-    <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
-      <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark-bg border-b drop-shadow-sm  w-full">
+    <div className="flex flex-col w-full h-full">
+      <div className="flex flex-col max-h-min py-0 my-0 bg-white dark:bg-dark border-b dark:border-stone-800 drop-shadow-sm  w-full">
         <div className="w-full items-center flex px-6 justify-between py-4 rounded-lg">
           <div className="flex flex-col space-y-8 md:space-y-0 md:flex-row w-full md:justify-between md:items-center">
             <div className="flex space-y-2 flex-col">
@@ -104,7 +104,7 @@ export function ApartmentActionArea({
                     setSearchTerm(e.target.value)
                     setCurrentPage(1)
                   }}
-                  className="max-w-sm outline-primary border-primary placeholder:text-primary w-[350px]"
+                  className="max-w-sm outline-primary dark:bg-dark border-primary placeholder:text-primary w-[350px]"
                 />
               </div>
             </div>
@@ -120,7 +120,7 @@ export function ApartmentActionArea({
           </div>
         </div>
       </ScrollArea>
-      <div className="flex justify-center py-4 bg-white dark:bg-dark-bg border-t">
+      <div className="flex justify-center py-4 bg-white dark:bg-dark border-t border-stone-800 ">
         <Button
           onClick={() => setCurrentPage(prev => Math.max(prev - 1, 1))}
           disabled={currentPage === 1}

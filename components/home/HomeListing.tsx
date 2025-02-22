@@ -90,7 +90,11 @@ const HomeListing = ( {homeListings}: {
            </div>
           </CardHeader>
           <CardContent className=' flex bg-white dark:bg-black space-y-3 flex-col'>
-            <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
+            <span className={`${home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> 
+            {
+            home.homeStatus == HomeStatus.Ongoing ? 'Project Selling' : home.homeStatus == HomeStatus.Completed ? 'Completed Selling' : home.homeStatus == HomeStatus.Sold ? 'Sold Out' : ''
+            } 
+            </span>
             <p className="text-gray-600 font-poppins dark:text-gray-300 line-clamp-3 overflow-hidden text-justify text-xs mb-4">
               {home.description}
             </p>
@@ -120,7 +124,11 @@ const HomeListing = ( {homeListings}: {
                     className="rounded-lg h-[400px] w-full object-cover"
                   />
                   <div className=" flex py-2 ">
-                  <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> {home.homeStatus} </span>
+                  <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> 
+                  {
+                  home.homeStatus == HomeStatus.Ongoing ? 'Project Selling' : home.homeStatus == HomeStatus.Completed ? 'Completed Selling' : home.homeStatus == HomeStatus.Sold ? 'Sold Out' : ''
+                  } 
+                  </span>
                   </div>
                   <h4 className="font-semibold text-primary font-poppins mb-2">Gallery</h4>
                   <div className="">
@@ -158,21 +166,7 @@ const HomeListing = ( {homeListings}: {
             <Link href={role ? `${role.toLocaleLowerCase()}/listings` : '/register'} className=' bg-primary text-black px-3 py-2 rounded-lg'>
               Buy Now
             </Link>
-            {/* <Dialog>
-              <DialogTrigger className=' bg-primary text-black px-3 py-2 rounded-lg'>
-                Buy Now
-              </DialogTrigger>
-              <DialogContent>
-                <DialogHeader>
-                  <DialogTitle>Are you absolutely sure?</DialogTitle>
-                  <DialogDescription>
-                    This action cannot be undone. This will permanently delete your account
-                    and remove your data from our servers.
-                  </DialogDescription>
-                </DialogHeader>
-              </DialogContent>
-            </Dialog> */}
-
+          
           </CardFooter>
 
         </Card>
