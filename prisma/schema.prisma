@@ -156,8 +156,8 @@ enum ApartmentStatus {
 
 enum HomeStatus {
   Sold
-  ComingSoon
-  Selling
+  Ongoing
+  Completed
 }
 
 enum UserRole {

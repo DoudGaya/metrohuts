@@ -177,8 +177,8 @@ export function AddHomeForm({ onSubmit, onClose }: AddHomeFormProps) {
                         <SelectValue placeholder="Select Home Status" />
                       </SelectTrigger>
                       <SelectContent>
-                            <SelectItem value={HomeStatus.ComingSoon}>Coming Soon</SelectItem>
-                            <SelectItem value={HomeStatus.Selling}>Selling</SelectItem>
+                            <SelectItem value={HomeStatus.Ongoing}>Project Selling</SelectItem>
+                            <SelectItem value={HomeStatus.Completed}>Completed Selling</SelectItem>
                             <SelectItem value={HomeStatus.Sold}>Sold</SelectItem>
                       </SelectContent>
                     </Select>

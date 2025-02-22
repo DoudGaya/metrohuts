@@ -118,7 +118,7 @@ export function UserHomeItem({ home }: { home: Homes }) {
      </div>
     </CardHeader>
     <CardContent className='  h-full flex bg-white dark:bg-black space-y-3 flex-col'>
-      <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
+      <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
       <p className="text-gray-600 font-poppins dark:text-gray-300 line-clamp-3 overflow-hidden text-justify text-xs mb-4">
         {home.description}
       </p>
@@ -148,7 +148,7 @@ export function UserHomeItem({ home }: { home: Homes }) {
               className="rounded-lg h-[400px] w-full object-cover"
             />
             <div className=" flex py-2 ">
-            <span className={`${home.homeStatus == HomeStatus.ComingSoon ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Selling ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> {home.homeStatus} </span>
+            <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> {home.homeStatus} </span>
 
             </div>
             <h4 className="font-semibold text-primary font-poppins mb-2">Gallery</h4>
