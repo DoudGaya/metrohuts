@@ -28,7 +28,7 @@ export const regsiter = async (values: z.infer<typeof signUpSchema>) => {
         return {error: "User already Exist"}
     }
 
-    await db.user.create({
+   const user = await db.user.create({
         data: {
             name: fullName,
             email,
@@ -40,5 +40,5 @@ export const regsiter = async (values: z.infer<typeof signUpSchema>) => {
 
     const verificationToken = await generateVerificationToken(email)
     await sendVerificationEmail(verificationToken.email, verificationToken.token)
-    return {success: "Check your email to verify your account!"}
+    return {success: "Check your email to verify your account!", user: user}
 }

@@ -133,7 +133,7 @@ export const loginSchema = z.object({
     price: z.string().min(1, {
       message: "Please add the price of the home",
     }),
-    homeStatus: z.enum([HomeStatus.Completed, HomeStatus.Ongoing, HomeStatus.Sold]),
+    homeStatus: z.enum([HomeStatus.ComingSoon, HomeStatus., HomeStatus.Sold]),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
@@ -165,6 +165,25 @@ export const loginSchema = z.object({
     }),
   })
 
+
+  export const UserRegistrationSchema = z.object({
+    fullName: z.string().min(2, {
+      message: "Please provide your Full Name",
+    }),
+    email: z.string().min(3, {
+      message: "Email address must be less than 2 characters",
+    }),
+    password: z.string().min(6, {
+      message: "Password must be at least 6 characters",
+    }),
+    phone: z.string().min(2, {
+      message: "Password confirmation must match characters.",
+    }),
+    passwordConfirmation: z.string().min(6, {
+      message: "Password confirmation must match",
+    }),
+    role: z.enum(['USER', 'ADMIN']).optional(),
+  })
 
 
   export const signUpSchema = z.object({

@@ -1,4 +1,4 @@
-import { ApartmentStatus, HomeStatus } from "@prisma/client"
+import { ApartmentStatus, HomeStatus, UserRole } from "@prisma/client"
 
 
 interface User {
@@ -7,6 +7,7 @@ interface User {
     email: string
     password: string
     image: string 
+    role: UserRole
     bookings: BookingType[]
     enquiries: EnquiryType[]
 }
