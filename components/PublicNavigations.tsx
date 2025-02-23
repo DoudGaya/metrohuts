@@ -32,13 +32,7 @@ export const PublicNavigations = () => {
         hidden: { x: -50, opacity: 0 },
         visible: { x: 0, opacity: 1, transition: { duration: 0.6 } }
       }
-    
       const menuItems = [{name: "Home", url: '/', id: 1}, {name: "About", url: '/about', id: 2}, {name: "Services", url: '/services', id: 3}]
-    
-    //   const SideNav = () => (
-      
-    //   )
-
   return (
 <>
 <header className=" bg-white/80 h-16 text-primary shadow-md items-center fixed top-0 left-0 right-0 z-50">
@@ -73,6 +67,38 @@ export const PublicNavigations = () => {
                             </motion.a>
                         </SheetTrigger>
                     ))}
+                     {
+                    session.data ? 
+                    <motion.a
+                          href={'/user/dashboard'}
+                          className="text-gray-800 bg-primary px-6 py-2 rounded-full hover:text-white transition duration-300"
+                          whileHover={{ scale: 1.05 }}
+                          whileTap={{ scale: 0.95 }}
+                          >
+                          {'Dashboard'}
+                      </motion.a>
+                      : 
+                      (
+                        <div className=" flex flex-row items-start  space-x-4">
+                        <motion.a
+                            href={'/login'}
+                            className="rounded-full font-poppins px-2 py-2 text-primary"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            >
+                            {'Log In'}
+                        </motion.a>
+                        <motion.a
+                            href={'/register'}
+                            className="rounded-full bg-primary font-poppins px-6 py-2 text-white"
+                            whileHover={{ scale: 1.05 }}
+                            whileTap={{ scale: 0.95 }}
+                            >
+                            {'Get Started'}
+                        </motion.a>
+                    </div>
+                      )
+               }
                     </div>
             </SheetContent>
           </Sheet>
@@ -122,7 +148,6 @@ export const PublicNavigations = () => {
                     </div>
                       )
                }
-               
                
           </nav>
         </div>
