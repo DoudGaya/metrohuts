@@ -133,7 +133,7 @@ export const loginSchema = z.object({
     price: z.string().min(1, {
       message: "Please add the price of the home",
     }),
-    homeStatus: z.enum([HomeStatus.ComingSoon, HomeStatus., HomeStatus.Sold]),
+    homeStatus: z.enum([HomeStatus.Completed, HomeStatus.Ongoing, HomeStatus.Sold]),
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
