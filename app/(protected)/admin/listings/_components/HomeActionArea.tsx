@@ -1,14 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { signOut, useSession } from 'next-auth/react'
-import Link from 'next/link'
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover"
-import { DarkButton } from '@/components/DarkButton'
+
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
@@ -68,6 +61,16 @@ export function HomeActionArea({
         })
       }
     }
+
+    const handleHomeUpdate = (updatedHome: Homes) => {
+      setHomeItems(prevItems =>
+        prevItems.map(item => item.id === updatedHome.id ? updatedHome : item)
+      )
+      toast({
+        title: "Home Updated",
+        description: "Home has been updated successfully",
+      })
+    }
   
     const HandleHomeAdd = (newHome: Homes) => {
       setHomeItems(prevItems => [...prevItems, newHome])
@@ -77,8 +80,6 @@ export function HomeActionArea({
         description: "New Home has been added successfully",
       })
     }
-
-    
   return (
     <div className="flex flex-col w-full h-[calc(100vh-5vh)]">
       <div className="flex flex-col max-h-min py-0 my-0 dark:bg-dark dark:bg-dark-bg border-b dark:border-zinc-800 drop-shadow-sm  w-full">
@@ -125,7 +126,7 @@ export function HomeActionArea({
         <div className="p-4">
           <div className="grid grid-cols-1 dark:bg-dark h-full md:grid-cols-2 lg:grid-cols-3 gap-4">
             {currentHomes.map((home) => (
-              <HomeItem home={home} key={home.id} onDelete={handleHomeDelete}  />
+              <HomeItem home={home} key={home.id} onUpdate={handleHomeUpdate} onDelete={handleHomeDelete}  />
             ))}
           </div>
         </div>

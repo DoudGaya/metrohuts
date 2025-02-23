@@ -67,6 +67,11 @@ export const settingsSecurityDetailsSchema = z.object({
   newPassword: z.optional(z.string()),
   newPasswordConfirmation: z.optional(z.string()),
   isTwoFactorEnabled: z.optional(z.boolean()),
+}).refine(data => {
+  if (data.newPassword !== data.newPasswordConfirmation) {
+    return false;
+  }
+  return true;
 }) 
 
 
