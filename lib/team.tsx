@@ -5,6 +5,7 @@ import marketer from '@/assets/yaqub.jpg'
 import admin from '@/assets/ahmad_ado.jpg'
 import member1 from '@/assets/sani_musa.jpg'
 import member2 from '@/assets/maikatifa.jpg'
+import saniMusa from '@/assets/musa.jpg'
 import chiefEngineer from '@/assets/zaks.jpg'
 
 export const teamMembers = [
@@ -21,7 +22,7 @@ export const teamMembers = [
         name: "Salihu Labaran Nuhu", role: "Director (GM)"
      },
      {   id: '9',
-        image: 'member1',
+        image: saniMusa,
         name: "Sani Musa", role: "Non-Executive Director"
      },
     {   id: '4',
