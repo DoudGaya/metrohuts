@@ -1,0 +1,136 @@
+{
+    "site_info": {
+      "site_id": "GEO001",
+      "location": {
+        "latitude": 34.0522,
+        "longitude": -118.2437,
+        "elevation": 285.5,
+        "unit": "meters"
+      },
+      "collection_date": "2024-02-19",
+      "sampling_method": "core_drilling"
+    },
+    "geological_data": {
+      "lithology": {
+        "rock_type": "sandstone",
+        "age": {
+          "period": "Cretaceous",
+          "absolute_age": 95.5,
+          "unit": "million_years"
+        },
+        "grain_size": {
+          "value": 0.5,
+          "unit": "mm"
+        },
+        "porosity": {
+          "value": 25.5,
+          "unit": "percent"
+        }
+      },
+      "stratigraphy": {
+        "formation_name": "Morrison Formation",
+        "layer_thickness": {
+          "value": 15.3,
+          "unit": "meters"
+        },
+        "dip": {
+          "value": 15,
+          "unit": "degrees"
+        },
+        "strike": {
+          "value": 285,
+          "unit": "degrees"
+        }
+      }
+    },
+    "geophysical_data": {
+      "seismic": {
+        "p_wave_velocity": {
+          "value": 4500,
+          "unit": "meters_per_second"
+        },
+        "s_wave_velocity": {
+          "value": 2500,
+          "unit": "meters_per_second"
+        },
+        "density": {
+          "value": 2.65,
+          "unit": "grams_per_cubic_centimeter"
+        }
+      },
+      "magnetic": {
+        "magnetic_susceptibility": {
+          "value": 0.0025,
+          "unit": "SI"
+        },
+        "total_magnetic_field": {
+          "value": 48500,
+          "unit": "nanoTesla"
+        }
+      },
+      "electrical": {
+        "resistivity": {
+          "value": 100,
+          "unit": "ohm_meters"
+        },
+        "conductivity": {
+          "value": 0.01,
+          "unit": "siemens_per_meter"
+        }
+      }
+    },
+    "geochemical_data": {
+      "major_elements": {
+        "SiO2": {
+          "value": 65.2,
+          "unit": "weight_percent"
+        },
+        "Al2O3": {
+          "value": 15.3,
+          "unit": "weight_percent"
+        },
+        "Fe2O3": {
+          "value": 4.8,
+          "unit": "weight_percent"
+        },
+        "CaO": {
+          "value": 3.2,
+          "unit": "weight_percent"
+        }
+      },
+      "trace_elements": {
+        "Cu": {
+          "value": 45,
+          "unit": "ppm"
+        },
+        "Zn": {
+          "value": 67,
+          "unit": "ppm"
+        },
+        "Pb": {
+          "value": 12,
+          "unit": "ppm"
+        }
+      },
+      "isotopes": {
+        "delta_13C": {
+          "value": -25.5,
+          "unit": "per_mil"
+        },
+        "delta_18O": {
+          "value": -8.2,
+          "unit": "per_mil"
+        }
+      }
+    },
+    "metadata": {
+      "data_quality": "high",
+      "analysis_methods": {
+        "geochemical": "XRF_and_ICP_MS",
+        "geophysical": "surface_seismic_survey",
+        "geological": "core_logging"
+      },
+      "last_updated": "2024-02-19T08:00:00Z",
+      "version": "1.0"
+    }
+}

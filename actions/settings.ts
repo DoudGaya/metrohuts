@@ -65,10 +65,9 @@ export const profileRecordsUpdate = async (values: z.infer<typeof SettingsSchema
 export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecurityDetailsSchema>) => {
       const user = await currentUser();
 
-      if (!user) {
-            return {error: "Unauthorized"}
-      }
-
+            if (!user) {
+                    return {error: "Unauthorized"}
+            }
 
           const fieldValidation = settingsSecurityDetailsSchema.safeParse(values);
           if (!fieldValidation.success) {
@@ -82,7 +81,6 @@ export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecu
           }
 
           if (newPassword !== newPasswordConfirmation) return {error: "Password doesn not match"}
-
             const dbUser = await getUserById(user.id);
 
 
@@ -98,7 +96,7 @@ export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecu
         }
         
         // checking for an existing user
-        // @ts-check
+        
         const emailExist = await getUserByEmail(dbUser.email)
         
         if (emailExist) {

@@ -7,8 +7,6 @@ import { UserRole } from "@prisma/client"
 import { getTwoFactorConfirmationByUserId } from "./data/two-factor-confirmation"
 import { redirect } from "next/navigation"
 import { getAccountByUserId } from "./actions/account"
-
-
  
 export const { auth, handlers, signIn, signOut } = NextAuth({
     pages: {
@@ -42,7 +40,6 @@ export const { auth, handlers, signIn, signOut } = NextAuth({
                 
                 const twofactorConfirmation = await getTwoFactorConfirmationByUserId(existingUser.id)
                 if (!twofactorConfirmation) return false
-
                 await db.twoFactorConfirmation.delete({
                     where: {id: twofactorConfirmation.id }
                 })

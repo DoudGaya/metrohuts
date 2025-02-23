@@ -97,6 +97,15 @@ export const userEnquiries = async (userId: string) => {
     }
 }
 
-
-
-
+export const getAllUsers = async () => {
+    try {
+        const users = await db.user.findMany({
+            include: {
+                bookings: true,
+                enquiries: true
+        }})
+        return users
+    } catch (error) {
+        console.log(error)
+    }
+}
