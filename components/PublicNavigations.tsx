@@ -6,8 +6,6 @@ import { Button } from "@/components/ui/button"
 // import logo from '@/public/metrohuts-logo.svg'
 import logo from '@/assets/metrohuts-logo.png'
 
-
-
 import {
     Sheet,
     SheetContent,
@@ -71,7 +69,7 @@ export const PublicNavigations = () => {
                     session.data ? 
                     <motion.a
                           href={'/user/dashboard'}
-                          className="text-gray-800 bg-primary px-6 py-2 rounded-full hover:text-white transition duration-300"
+                          className="text-gray-800 font-semibold bg-primary px-6 py-2 rounded-full hover:text-white transition duration-300"
                           whileHover={{ scale: 1.05 }}
                           whileTap={{ scale: 0.95 }}
                           >
@@ -82,7 +80,7 @@ export const PublicNavigations = () => {
                         <div className=" flex flex-row items-start  space-x-4">
                         <motion.a
                             href={'/login'}
-                            className="rounded-full font-poppins px-2 py-2 text-primary"
+                            className="rounded-full font-semibold font-poppins px-2 py-2 text-primary"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             >
@@ -90,7 +88,7 @@ export const PublicNavigations = () => {
                         </motion.a>
                         <motion.a
                             href={'/register'}
-                            className="rounded-full bg-primary font-poppins px-6 py-2 text-white"
+                            className="rounded-full font-semibold bg-primary font-poppins px-6 py-2 text-white"
                             whileHover={{ scale: 1.05 }}
                             whileTap={{ scale: 0.95 }}
                             >
