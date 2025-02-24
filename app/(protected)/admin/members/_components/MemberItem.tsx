@@ -45,16 +45,13 @@ interface MemberProps {
 export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
 
 
-
-
   const handleDelete = () => {
     onDelete(member.id)
   }
-
   
 return (
 <div className="">
-  
+
 </div>
 )
 }
