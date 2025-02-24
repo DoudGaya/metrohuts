@@ -30,13 +30,15 @@ import {
 } from "@/components/ui/alert-dialog"
 
 import { ApartmentType } from "@/typings"
+import { EditApartmentForm } from "./EditApartmentForm"
 
 interface GalleryItemProps {
   apartment: ApartmentType
   onDelete: (apartmentId: number) => void
+  onUpdate: (updatedApartment: ApartmentType) => void
 }
 
-export function ApartmentItem({ apartment, onDelete }: GalleryItemProps) {
+export function ApartmentItem({ apartment, onDelete, onUpdate }: GalleryItemProps) {
   const handleDelete = () => {
     onDelete(apartment.id)
   }
@@ -135,6 +137,20 @@ className=" px-0"
                     <p className="text-sm text-muted-foreground">{apartment.price}</p>
                   </div>
                 </div>
+              </SheetContent>
+            </Sheet>
+
+            <Sheet>
+              <SheetTrigger asChild>
+                <Button variant="outline" size="sm">
+                  Edit
+                </Button>
+              </SheetTrigger>
+              <SheetContent className="sm:max-w-[700px] bg-white dark:bg-dark dark:border-primary/50 dark:text-gray-300">
+                <SheetHeader>
+                  <SheetTitle className="text-2xl font-poppins text-primary">Edit Apartment</SheetTitle>
+                </SheetHeader>
+                <EditApartmentForm apartment={apartment} onSubmit={onUpdate} onClose={() => {}} />
               </SheetContent>
             </Sheet>
 

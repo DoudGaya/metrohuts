@@ -98,6 +98,18 @@ export const loginSchema = z.object({
     }),
   })
 
+  export const teamMemberSchema = z.object({
+    name: z.string().min(2, {
+      message: "Name must be at least 2 characters",
+    }),
+    role: z.string().min(2, {
+      message: "Role must be at least 2 characters",
+    }),
+    email: z.string().min(2, {
+      message: "Role must be at least 2 characters",
+    }),
+    image: fileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+  })
 
 
 

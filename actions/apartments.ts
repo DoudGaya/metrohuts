@@ -19,7 +19,7 @@ export const createApartmentAction = async (values: z.infer<typeof apartmentSche
         description,
         lga,
         price,
-        state,
+        state,  
         heroImage,
         images,
         status,

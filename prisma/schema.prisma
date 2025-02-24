@@ -57,6 +57,16 @@ model Bookings {
 }
 
 
+model TeamMember {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  role        String
+  image       String
+  @@map("teamMember")
+}
+
+
 // model Apartment {
 //   id                  Int        @id @default(autoincrement())
 //   title               String     
