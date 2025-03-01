@@ -10,10 +10,10 @@ export const metadata: Metadata = {
   title: "Metrohuts Homes",
   description: "Make yourself at home, because you are home. Find beautiful apartments from MetroHuts ",
   openGraph: {
-    title: 'Acme',
+    title: 'Metrohuts',
     description: 'Welcome to Metrohuts Homes',
     url: 'https://metrohuts.com',
-    siteName: 'Acme',
+    siteName: 'Metrohuts Homes',
     locale: 'en_US',
     type: 'website',
   },
