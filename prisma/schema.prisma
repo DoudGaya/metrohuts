@@ -11,25 +11,25 @@ datasource db {
 
 
 model User {
-  id                  String      @id @default(uuid())
+  id                  String              @id @default(uuid())
   name                String? 
-  email               String?     @unique
+  email               String?             @unique
   password            String?
   phone               String?
-  emailVerified       DateTime? @map("email_verified")
+  emailVerified       DateTime?           @map("email_verified")
   image               String?
-  role                UserRole @default(USER)
+  role                UserRole            @default(USER)
   accounts            Account[]
   bookings            Bookings[]
   enquiries           Enquiries[]
-  isTwoFactorEnabled Boolean @default(false)
+  isTwoFactorEnabled Boolean              @default(false)
   TwoFactorConfirmation TwoFactorConfirmation?
   @@map("user")
 }
 
 
 model Apartment {
-  id                  Int        @id @default(autoincrement())
+  id                  Int                 @id @default(autoincrement())
   title               String     
   state               String     
   lga                 String    
@@ -39,51 +39,23 @@ model Apartment {
   description         String     
   heroImage           String     
   images              String[]
-  bookings            Bookings[] // Changed from booking to bookings (plural) and made it an array
-  status              ApartmentStatus @default(Available)  
+  bookings            Bookings[] 
+  status              ApartmentStatus     @default(Available)  
   @@map("apartments")
 }
 
 model Bookings {
-  id                Int @id     @default(autoincrement())
-  date              DateTime    @default(now())
+  id                Int @id               @default(autoincrement())
+  date              DateTime              @default(now())
   checkInDate       DateTime
   checkOutDate      DateTime
-  user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  user              User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
   userId            String
-  apartment         Apartment   @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
+  apartment         Apartment             @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
   apartmentId       Int         // Removed @unique constraint
   @@map("bookings")
 }
 
-
-// model Apartment {
-//   id                  Int        @id @default(autoincrement())
-//   title               String     
-//   state               String     
-//   lga                 String    
-//   address             String    
-//   price               String     
-//   slug                String
-//   description         String     
-//   heroImage           String     
-//   images              String[]
-//   booking             Bookings?
-//   status              ApartmentStatus @default(Available)  
-//   @@map("apartments")
-// }
-
-// model Bookings {
-//   id                Int @id     @default(autoincrement())
-//   date              DateTime    @default(now())
-//   checkInDate       DateTime
-//   checkOutDate      DateTime
-//   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   userId            String
-//   apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
-//   apartmentId       Int @unique
-//   @@map("bookings")
-// }
 
 
 model Homes {
@@ -111,25 +83,6 @@ model Enquiries {
   date              DateTime    @default(now())
   @@map("enquiries")
 }
-
-// model Bookings {
-//   id                Int @id     @default(autoincrement())
-//   date              DateTime    @default(now())
-//   checkInDate       DateTime
-//   checkOutDate      DateTime
-//   user              User        @relation(fields: [userId], references: [id], onDelete: Cascade)
-//   userId            String
-//   apartment         Apartment @relation(fields: [apartmentId], references: [id], onDelete: Cascade)
-//   apartmentId       Int @unique
-//   @@map("bookings")
-// }
-
-
-
-
-
-
-
 
 model Account {
   id                 String      @id @default(uuid())
