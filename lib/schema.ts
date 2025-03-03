@@ -105,9 +105,6 @@ export const loginSchema = z.object({
     role: z.string().min(2, {
       message: "Role must be at least 2 characters",
     }),
-    email: z.string().min(2, {
-      message: "Role must be at least 2 characters",
-    }),
     image: fileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
 

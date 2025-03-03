@@ -14,26 +14,33 @@ import { homeSchema, teamMemberSchema } from '@/lib/schema'
 import { uploadFileToS3 } from '@/actions/amazon-s3'
 import { useToast } from '@/hooks/use-toast'
 import { Homes, TeamMemberType } from '@/typings'
-import { createMemberAction } from '@/actions/teamMember'
+import { createMemberAction, updateTeamMember } from '@/actions/teamMember'
 
-interface AddMemberProps {
-  onSubmit: (data: TeamMemberType) => void
-  onClose: () => void
-}
+// interface AddMemberProps {
+//   onSubmit: (data: TeamMemberType) => void
+//   onClose: () => void
+// }
+
+interface EditMemberProps {
+    member: TeamMemberType
+    onSubmit: (data: TeamMemberType) => void
+    onClose: () => void
+  }
 
 
-export function AddMemberForm({ onSubmit, onClose }: AddMemberProps) {
+export function EditMemberForm({ onSubmit, onClose, member  }: EditMemberProps) {
   
   const [isPending, setIsPending] = useState(false)
   const router = useRouter()
   const { toast } = useToast()
+  
 
   const form = useForm<z.infer<typeof teamMemberSchema>>({
     resolver: zodResolver(teamMemberSchema),
     defaultValues: {
-      image: '',
-      name: '',
-      role: undefined
+      image: undefined,
+      name: member.name,
+      role: member.role
     },
   })
 
@@ -49,21 +56,21 @@ export function AddMemberForm({ onSubmit, onClose }: AddMemberProps) {
 
       if (values.image) { 
         const image = await uploadMultipleFilesToS3(values.image, 'jigawa-state');
-        formDataToSubmit.immage = image;
+        formDataToSubmit.image = image;
       }
-      const data = await createMemberAction(formDataToSubmit)
+      const data = await updateTeamMember(member.id, formDataToSubmit)
       onSubmit(data.member as TeamMemberType)
       form.reset()
       onClose()
       toast({
-        title: "Member Added",
+        title: "Member Updated",
         description: "New Member  has been added successfully",
       })
     } catch (error) {
       console.error('Error submitting form:', error)
       toast({
         title: "Error",
-        description: "Failed to add Home. Please try again.",
+        description: "Failed to update member. Please try again.",
         variant: "destructive",
       })
     } finally {

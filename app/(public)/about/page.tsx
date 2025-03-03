@@ -1,9 +1,15 @@
+import { getAllTeamMembers } from "@/actions/teamMember"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { teamMembers } from "@/lib/team"
+// import { teamMembers } from "@/lib/team"
+import { TeamMemberType } from "@/typings"
 import { Home, Key, DollarSign, Users, Star, PhoneCall } from "lucide-react"
 
-export default function AboutUs() {
+
+
+
+export default async function AboutUs() {
+  const teamMembers = await getAllTeamMembers() as TeamMemberType[]
   return (
     <div className="bg-white">
       {/* Hero Section */}
@@ -82,7 +88,7 @@ export default function AboutUs() {
               <div key={index} className="text-center">
                 <img
                   className="mx-auto h-40 w-40 border-[4px] border-primary object-cover object-center rounded-full xl:h-56 xl:w-56"
-                  src={member.image.src}
+                  src={member.image}
                   alt={member.name}
                 />
                 <div className="mt-6">

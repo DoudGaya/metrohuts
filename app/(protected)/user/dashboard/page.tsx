@@ -9,6 +9,7 @@ import { ApartmentType, BookingType, EnquiryType, Homes } from '@/typings'
 import { getAllApartments, getBookingsByUserId } from '@/actions/apartments'
 import { userBookings, userEnquiries } from '@/data/user'
 import { auth } from '@/auth'
+import FailToFetch from '@/components/errors/FailToFetch'
 
 const HomeDashboard = async () => {
 
@@ -24,6 +25,10 @@ const HomeDashboard = async () => {
   const bookings = await getBookingsByUserId(user.id) as unknown as BookingType[]
   const enquiries = await userEnquiries(user.id) as unknown as EnquiryType[]
 
+
+  if (!homes || !apartments || !bookings || !enquiries) {
+    return <FailToFetch />
+  }
 
 
 

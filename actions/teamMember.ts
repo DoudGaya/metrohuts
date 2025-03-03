@@ -27,7 +27,6 @@ export const createMemberAction = async (values: z.infer<typeof teamMemberSchema
          return { error: "field Validation failed " }
     }
     const { 
-      email,
       name,
       role,
       image
@@ -35,7 +34,6 @@ export const createMemberAction = async (values: z.infer<typeof teamMemberSchema
 
      const member = await db.teamMember.create({
         data: {
-          email,
           image,
           name,
           role
@@ -89,10 +87,12 @@ export const updateTeamMember = async (id: number, data: z.infer<typeof teamMemb
         name,
         role,
         image,
-        email
     } = fieldValidation.data
 
-    try {
+
+    if (!id) {
+        return { error: 'Team Member not Found'}
+    }
         const teamMember = await db.teamMember.update({
             where: {
                 id
@@ -101,13 +101,10 @@ export const updateTeamMember = async (id: number, data: z.infer<typeof teamMemb
                 name,
                 role,
                 image,
-                email,
             }
         })
-        return {data: teamMember, success: 'Team Member updated successfully'}
-    } catch (error) {
-        console.log(error)
-    }
+        return {member: teamMember, success: 'Team Member updated successfully'}
+   
 }
 
 
@@ -125,7 +122,7 @@ export const createTeamMember = async (data: z.infer<typeof teamMemberSchema>) =
         name,
         role,
         image,
-        email
+
     } = fieldValidation.data
 
     try {
@@ -134,7 +131,6 @@ export const createTeamMember = async (data: z.infer<typeof teamMemberSchema>) =
                 name,
                 role,
                 image,
-                email,
             }
         })
         return {data: teamMember, success: 'Team Member created successfully'}
