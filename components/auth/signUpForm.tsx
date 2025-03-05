@@ -110,7 +110,7 @@ export function SignUpForm() {
             <FormItem>
               <FormLabel>Email Address</FormLabel>
               <FormControl>
-                <Input disabled={isPending} className=" outline-primary" placeholder="Email Address" {...field} />
+                <Input disabled={isPending} type="email" className=" outline-primary" placeholder="Email Address" {...field} />
               </FormControl>
               <FormMessage />
             </FormItem>

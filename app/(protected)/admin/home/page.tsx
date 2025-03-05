@@ -19,6 +19,7 @@ const HomeDashboard = async () => {
     id: number;
     title: string;
     count: number;
+    url: string
   }
 
 
@@ -26,23 +27,27 @@ const HomeDashboard = async () => {
     {
       id: 1,
       title: "Homes",
-      count: homes.length
+      count: homes.length,
+      url: '/admin/listings'
     },
   
     {
       id: 2,
       title: "Apartments",
-      count: apartments.length
+      count: apartments.length,
+      url: '/admin/apartments'
     },
     {
       id: 3,
       title: "Bokings",
-      count: bookings.length
+      count: bookings.length,
+      url: '/admin/bookings'
     },
     {
       id: 4,
       title: "Users",
-      count: users.length
+      count: users.length,
+      url: '/admin/users'
     },
   ]
 
@@ -52,7 +57,7 @@ const HomeDashboard = async () => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {cards.map((card) => (
           <Suspense key={card.id} fallback={<CardSkeleton />}>
-            <DashboardSummary  count={card.count} title={card.title} />
+            <DashboardSummary  count={card.count} url={card.url} title={card.title} />
           </Suspense>
         ))}
       </div>

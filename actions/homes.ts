@@ -43,6 +43,8 @@ export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
      })
 
 
+
+     
      return { success: "home has been created successfully", home: home}
 
 }
@@ -63,7 +65,7 @@ export const getHomeById = async (id: number) => {
 }
 
 
-export const updatehome = async (id: number, values: z.infer<typeof homeSchema>) => {
+export const updateHomeAction = async (id: number, values: z.infer<typeof homeSchema>) => {
     const fieldValidation = homeSchema.safeParse(values);
     if (!fieldValidation.success) {
          return { error: "field Validation failed " }

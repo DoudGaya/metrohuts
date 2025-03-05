@@ -26,11 +26,11 @@ const adminNavs = [
       url: "/admin/apartments",
       icon: Calendar,
     },
-    // {
-    //   title: "Bookings",
-    //   url: "/admin/bookings",
-    //   icon: CalendarCheck,
-    // },
+    {
+      title: "Team Members",
+      url: "/admin/members",
+      icon: CalendarCheck,
+    },
     {
       title: "Users",
       url: "/admin/users",

@@ -73,28 +73,22 @@ export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecu
           if (!fieldValidation.success) {
                return { error: "field Validation failed " }
           }
-          const {isTwoFactorEnabled, newPassword, newPasswordConfirmation, oldPassword } = fieldValidation.data
+          const { newPassword, newPasswordConfirmation, oldPassword } = fieldValidation.data
 
 
           if (!newPassword || !newPasswordConfirmation || !oldPassword) {
                 return {error: "All fields are required"}
           }
-
           if (newPassword !== newPasswordConfirmation) return {error: "Password doesn not match"}
             const dbUser = await getUserById(user.id);
-
-
       
     if (!dbUser) {
         return {error: "Unauthorized"}
     }
-
         const hashedPassword = await bcrypt.hash(newPassword, 10)
-
         if (!dbUser.email) {
             return {error: 'email does not exist'}
         }
-        
         // checking for an existing user
         
         const emailExist = await getUserByEmail(dbUser.email)
@@ -102,8 +96,6 @@ export const securityRecordsUpdate = async ( values: z.infer<typeof settingsSecu
         if (emailExist) {
             return {error: "User already Exist"}
         }
-
-
     await db.user.update({
         where: {id: dbUser.id},
         data: {

@@ -67,7 +67,7 @@ export const SecurityDetailsForm = ( {editModal, changeModal}: {editModal: strin
     if (editModal == 'security') {
         return (
            <div className=" flex flex-col space-y-4 h-fit dark:bg-black shadow-sm max-h-min w-full bg-white rounded-lg">
-           <div className=" font-poppins flex justify-between px-4 text-xl bg-black dark:bg-primary text-primary rounded-t-lg py-4">
+           <div className=" font-poppins flex justify-between px-4 text-xl bg-black dark:bg-primary text-primary dark:text-black rounded-t-lg py-4">
            <h2 className=''>Update Security Settings</h2>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor" className="size-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M9 12.75 11.25 15 15 9.75m-3-7.036A11.959 11.959 0 0 1 3.598 6 11.99 11.99 0 0 0 3 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285Z" />
@@ -122,7 +122,7 @@ export const SecurityDetailsForm = ( {editModal, changeModal}: {editModal: strin
                     />
                   </div>
 
-                  <div className="py-4">
+                  {/* <div className="py-4">
                   <FormField
                     control={form.control}
                     name="isTwoFactorEnabled"
@@ -141,7 +141,7 @@ export const SecurityDetailsForm = ( {editModal, changeModal}: {editModal: strin
                       </FormItem>
                     )}
                   />
-                  </div>
+                  </div> */}
                   {/* { success ?  <FormSuccess message={success} /> ? error : <FormError message={error} /> : "" } */}
                   <Button type="submit" disabled={isPending} className=" dark:bg-text-black bg-black hover:bg-black/80 dark:bg-gray-800 text-primary w-full">Update Security Records</Button> 
                 </form>

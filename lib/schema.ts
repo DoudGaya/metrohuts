@@ -67,6 +67,11 @@ export const settingsSecurityDetailsSchema = z.object({
   newPassword: z.optional(z.string()),
   newPasswordConfirmation: z.optional(z.string()),
   isTwoFactorEnabled: z.optional(z.boolean()),
+}).refine(data => {
+  if (data.newPassword !== data.newPasswordConfirmation) {
+    return false;
+  }
+  return true;
 }) 
 
 
@@ -93,6 +98,18 @@ export const loginSchema = z.object({
     }),
   })
 
+  export const teamMemberSchema = z.object({
+    name: z.string().min(2, {
+      message: "Name must be at least 2 characters",
+    }),
+    role: z.string().min(2, {
+      message: "Role must be at least 2 characters",
+    }),
+    email: z.string().min(2, {
+      message: "Role must be at least 2 characters",
+    }),
+    image: fileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+  })
 
 
 
@@ -112,8 +129,8 @@ export const loginSchema = z.object({
       message: "Description must be at least 2 characters",
     }),
     status: z.enum(['Available', 'Booked']).optional(),
-    heroImage: fileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
-    images: multipleFileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    heroImage: fileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    images: multipleFileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
 
 
@@ -137,8 +154,8 @@ export const loginSchema = z.object({
     description: z.string().min(2, {
       message: "Description must be at least 2 characters",
     }),
-    heroImage: fileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
-    images: multipleFileValidation(10000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    heroImage: fileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
+    images: multipleFileValidation(100000000, ['image/jpeg', 'image/png', 'image/gif']).optional(),
   })
 
 

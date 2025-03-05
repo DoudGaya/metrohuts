@@ -42,6 +42,8 @@ export function ApartmentActionArea({
   const endIndex = startIndex + itemsPerPage
   const currentApartment = filteredApartments.slice(startIndex, endIndex)
 
+  
+
   const handleApartmentDelete = async (apartmentId: number) => {
     try {
       await deleteApartment(apartmentId, 'jigawa-state')
@@ -59,6 +61,16 @@ export function ApartmentActionArea({
       })
     }
   }
+
+     const handleApartmentUpdate = (updatedApartment: ApartmentType) => {
+       setApartmentItems(prevItems =>
+         prevItems.map(item => item.id === updatedApartment.id ? updatedApartment : item)
+       )
+       toast({
+         title: "Home Updated",
+         description: "Home has been updated successfully",
+       })
+     }
 
   const handleAddApartment = (newApartment: ApartmentType) => {
     setApartmentItems(prevItems => [...prevItems, newApartment])
@@ -115,7 +127,7 @@ export function ApartmentActionArea({
         <div className="p-4">
           <div className="grid max-w-7xl mx-auto grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {currentApartment.map((apartment) => (
-              <ApartmentItem apartment={apartment} key={apartment.id} onDelete={handleApartmentDelete} />
+              <ApartmentItem apartment={apartment} onUpdate={handleApartmentUpdate} key={apartment.id} onDelete={handleApartmentDelete} />
             ))}
           </div>
         </div>

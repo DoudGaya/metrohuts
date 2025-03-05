@@ -8,9 +8,11 @@ import Link from 'next/link'
 // }
 
 export async function DashboardSummary({ 
+    url,
     count,
     title,
  }: {
+    url: string
     count: number
     title: string
 }) {
@@ -23,7 +25,7 @@ export async function DashboardSummary({
             <p className='text-xl font-semibold'>{count}</p>
         </CardTitle>
       </CardHeader>
-            <Link className='' href={`/user/${title.toLocaleLowerCase()}`}> 
+            <Link className='' href={url}> 
                 <CardFooter className=' w-full text-sm font-poppins duration-75 dark:text-gray-300 font-medium transition-all ease-in-out delay-75 dark:bg-stone-700/30 border dark:border-stone-800 rounded-b-lg py-1' >
                     visit page
                 </CardFooter>

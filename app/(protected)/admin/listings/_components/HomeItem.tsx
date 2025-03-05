@@ -8,6 +8,8 @@ import {
   CardTitle ,
   CardFooter
 } from "@/components/ui/card"
+import { EditHomeForm } from './EditHomeForm'
+import { Dialog, DialogContent } from "@/components/ui/dialog"
 import {
   Sheet,
   SheetContent,
@@ -38,10 +40,13 @@ import { HomeStatus } from '@prisma/client'
 interface HomeItemProps {
   home: Homes
   onDelete: (homeId: number) => void
+  onUpdate: (updatedHome: Homes) => void
 }
 
-export function HomeItem({ home, onDelete }: HomeItemProps) {
+export function HomeItem({ home, onDelete, onUpdate }: HomeItemProps) {
 
+
+  const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
 
 
@@ -83,7 +88,11 @@ className=" px-0"
            </div>
           </CardHeader>
           <CardContent className='  h-full flex bg-white dark:bg-black space-y-3 flex-col'>
-            <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> {home.homeStatus} </span>
+            <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-xs`}> 
+            {
+                  home.homeStatus == HomeStatus.Ongoing ? 'Project Selling' : home.homeStatus == HomeStatus.Completed ? 'Completed Selling' : home.homeStatus == HomeStatus.Sold ? 'Sold Out' : ''
+                  } 
+            </span>
             <p className="text-gray-600 font-poppins dark:text-gray-300 line-clamp-3 overflow-hidden text-justify text-xs mb-4">
               {home.description}
             </p>
@@ -93,7 +102,7 @@ className=" px-0"
           </CardContent>
         
           <CardFooter className=' flex justify-between items-center'>
-            <Sheet>
+          <Sheet>
               <SheetTrigger asChild>
                 <button className=' bg-transparent border-0 hover:underline'>
                   Details
@@ -116,14 +125,48 @@ className=" px-0"
                   <span className={`${home.homeStatus == HomeStatus.Ongoing ? ' bg-yellow-500/50 text-stone-950' : home.homeStatus == HomeStatus.Completed ? ' bg-yellow-500/50 text-green-950' : home.homeStatus == HomeStatus.Sold ? ' bg-red-500/50 text-red-950' : ''} max-w-max py-0.5 font-poppins font-semibold px-2 rounded-full text-lg`}> 
                   {
                   home.homeStatus == HomeStatus.Ongoing ? 'Project Selling' : home.homeStatus == HomeStatus.Completed ? 'Completed Selling' : home.homeStatus == HomeStatus.Sold ? 'Sold Out' : ''
-                } 
+                  } 
                    </span>
 
                   </div>
                   <h4 className="font-semibold text-primary font-poppins mb-2">Gallery</h4>
+                  <Dialog open={!!selectedImage} onOpenChange={() => setSelectedImage(null)}>
+                    <DialogContent className="max-w-[90vw] max-h-[90vh] p-0 bg-transparent border-0">
+                      {selectedImage && (
+                        <div className="relative w-full h-full flex items-center justify-center">
+                          <Image
+                            src={selectedImage || "/placeholder.svg"}
+                            alt="Full size image"
+                            width={1200}
+                            height={800}
+                            className="object-contain max-h-[85vh] rounded-lg"
+                          />
+                        </div>
+                      )}
+                    </DialogContent>
+                  </Dialog>
+
+                  {/* this section */}
                   <div className="">
-                    {home.images && home.images.length > 0 && (
-                      <div className=' grid grid-cols-3 gap-2'>
+                  {home.images && home.images.length > 0 && (
+            <div className="grid grid-cols-2 gap-2">
+              {home.images.map((image, index) => (
+                <div
+                  key={index}
+                  className="cursor-pointer transition-transform hover:scale-[1.02]"
+                  onClick={() => setSelectedImage(image)}
+                >
+                  <Image
+                    src={image || "/placeholder.svg"}
+                    alt={`${home.title} - Image ${index + 1}`}
+                    width={100}
+                    height={100}
+                    className="rounded-md w-full object-center h-[200px] overflow-hidden object-cover"
+                  />
+                </div>
+              ))}
+                    {/* {home.images && home.images.length > 0 && (
+                      <div className=' grid grid-cols-2 gap-2'>
                           {home.images.map((image, index) => (
                             <Image
                               key={index}
@@ -131,12 +174,13 @@ className=" px-0"
                               alt={`${home.title} - Image ${index + 1}`}
                               width={100}
                               height={100}
-                              className="rounded-md w-full h-full  object-cover"
+                              className="rounded-md w-full object-center h-[200px] overflow-hidden object-cover"
                             />
-                          ))}
+                          ))} */}
                         </div>
                     )}
                   </div>
+                  {/* this section */}
                   <div>
                     <h4 className="font-semibold text-primary mb-2">Description</h4>
                     <p className="text-sm text-muted-foreground text-pretty font-poppins">{home.description}</p>
@@ -151,12 +195,27 @@ className=" px-0"
                 </div>
               </SheetContent>
             </Sheet>
+      
 
+        
            <div className=" flex space-x-3 items-center justify-center">
-            
+                  
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="outline" className=' dark:bg-black' size="sm">
+                Edit
+              </Button>
+            </SheetTrigger>
+            <SheetContent className="sm:max-w-[700px] bg-white dark:bg-dark dark:border-primary/50 dark:text-gray-300 max-w-full w-full h-full overflow-y-auto">
+              <SheetHeader>
+                <SheetTitle className="text-2xl font-poppins text-primary">Edit Home</SheetTitle>
+              </SheetHeader>
+              <EditHomeForm home={home} onSubmit={onUpdate} onClose={() => {}} />
+            </SheetContent>
+          </Sheet>
            <AlertDialog>
               <AlertDialogTrigger asChild>
-                <Button variant="outline" size="sm" className='text-red-500'>
+                <Button variant="outline" size="sm" className='text-red-500  dark:bg-black'>
                   Delete
                 </Button>
               </AlertDialogTrigger>
