@@ -13,7 +13,7 @@ export const metadata: Metadata = {
     title: 'Metrohuts',
     description: 'Welcome to Metrohuts Homes',
     url: 'https://metrohuts.com',
-    siteName: 'metrohuts.com',
+    siteName: 'Metrohuts Homes',
     locale: 'en_US',
     type: 'website',
   },

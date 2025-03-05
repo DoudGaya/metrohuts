@@ -93,7 +93,6 @@ export function EditHomeForm({ home, onSubmit, onClose }: EditHomeFormProps) {
   return (
     <Form {...form}>
       <form onSubmit={form.handleSubmit(handleSubmit)} className="space-y-8 dark:text-orange-200">
-        {/* Form fields are identical to AddHomeForm */}
         <div className="grid grid-cols-1 gap-4">
           <FormField
             control={form.control}

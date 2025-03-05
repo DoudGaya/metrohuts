@@ -17,6 +17,7 @@ import {
 } from "@/components/ui/alert-dialog"
 import type { TeamMemberType } from "@/typings"
 import { Mail } from "lucide-react"
+import { EditMemberForm } from "./EditMember"
 
 interface MemberProps {
   member: TeamMemberType
@@ -32,7 +33,7 @@ export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
   return (
     <Card className="w-full max-w-md bg-white dark:bg-black border-gray-200 dark:border-gray-800">
       <CardHeader className="flex flex-row items-center gap-4 pb-2">
-        <div className="relative h-16 w-16 rounded-full overflow-hidden">
+        <div className="relative h-16 w-16 rounded-full border-2 border-primary overflow-hidden">
           <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
         </div>
         <div className="flex flex-col">
@@ -44,7 +45,7 @@ export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
       <CardContent className="pb-4">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
           <Mail className="h-4 w-4" />
-          <span>{member.email}</span>
+          {/* <span>{member.email}</span> */}
         </div>
       </CardContent>
 
@@ -73,10 +74,10 @@ export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
                   <h4 className="text-sm font-medium text-primary">Role</h4>
                   <p className="text-sm text-muted-foreground">{member.role}</p>
                 </div>
-                <div>
+                {/* <div>
                   <h4 className="text-sm font-medium text-primary">Email</h4>
                   <p className="text-sm text-muted-foreground">{member.email}</p>
-                </div>
+                </div> */}
               </div>
             </div>
           </SheetContent>
@@ -93,6 +94,7 @@ export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
               <SheetHeader>
                 <SheetTitle className="text-2xl font-semibold text-primary">Edit Team Member</SheetTitle>
               </SheetHeader>
+              <EditMemberForm onClose={() => {}} member={member} onSubmit={onUpdate}  />
               {/* Add your EditMemberForm component here */}
             </SheetContent>
           </Sheet>
@@ -123,63 +125,3 @@ export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
     </Card>
   )
 }
-
-
-
-// import { motion } from 'framer-motion'
-// import { FaHome, FaHotel, FaSearch, FaStar, FaCheckCircle } from 'react-icons/fa'
-// import { 
-//   Card, 
-//   CardContent, 
-//   CardHeader, 
-//   CardTitle ,
-//   CardFooter
-// } from "@/components/ui/card"
-// import { EditHomeForm } from './EditHomeForm'
-// import {
-//   Sheet,
-//   SheetContent,
-//   SheetDescription,
-//   SheetHeader,
-//   SheetTitle,
-//   SheetTrigger,
-// } from "@/components/ui/sheet"
-// import { useState } from 'react'
-// // import { HomeType } from "@/typings"
-// import { Button } from "@/components/ui/button"
-// import Image from "next/image"
-// import {
-//   AlertDialog,
-//   AlertDialogAction,
-//   AlertDialogCancel,
-//   AlertDialogContent,
-//   AlertDialogDescription,
-//   AlertDialogFooter,
-//   AlertDialogHeader,
-//   AlertDialogTitle,
-//   AlertDialogTrigger,
-// } from "@/components/ui/alert-dialog"
-// import { Homes, TeamMemberType } from '@/typings'
-// import { HomeStatus } from '@prisma/client'
-
-
-// interface MemberProps {
-//   member: TeamMemberType
-//   onDelete: (homeId: number) => void
-//   onUpdate: (updatedHome: TeamMemberType) => void
-// }
-
-// export function MemberItem({ member, onDelete, onUpdate }: MemberProps) {
-
-
-//   const handleDelete = () => {
-//     onDelete(member.id)
-//   }
-  
-// return (
-// <div className="">
-
-// </div>
-// )
-// }
-

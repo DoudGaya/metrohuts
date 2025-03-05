@@ -50,8 +50,16 @@ export const createHomeAction = async (values: z.infer<typeof homeSchema >) => {
 }
 
 export const getAllhomes = async () => {
+  
+  try {
     const home =  await db.homes.findMany()
+    
     return home
+    } catch (error) {
+      console.log(error)
+
+      return {error: 'Something Went Wrong'}
+    }
 }
 
 

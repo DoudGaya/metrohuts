@@ -41,7 +41,7 @@ export function EditHomeForm({ home, onSubmit, onClose }: EditHomeFormProps) {
     defaultValues: {
       title: home.title,
       address: home.address,
-      description: home.description,
+    description: home.description,
       lga: home.lga,
       homeStatus: home.homeStatus,
       price: home.price,
