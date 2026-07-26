@@ -45,7 +45,7 @@ const RootLayout = async ({ children }: { children:  React.ReactNode}) => {
     const session = await auth()
 
     return (
-      <html lang="en">
+      <html lang="en" suppressHydrationWarning>
        <SessionProvider session={session}>
        <body className={`text-gray-950 bg-gray-50`}>
         <ThemeProvider
